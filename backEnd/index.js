@@ -8,7 +8,7 @@ const config = require('./config.json');//has credentials
 const User = require('./models/user.js'); //this refers to the structure for user ojects
 const Conference = require('./models/conference.js'); //this refers to the structure for product ojects
 
-const port = 3000; //set server port
+const port = 5000; //set server port
 
 //connect to db
 
@@ -42,12 +42,46 @@ app.get('/', (req, res) => res.send('Hello World!')) //prints message on load
 //keep this always at the bottom so that you can see the errors reported
 app.listen(port, () => console.log(`Mongodb app listening on port ${port}!`))
 
+//Roys requests
+
 // display users
-app.get('/displayUsers', (req, res) => { //create request to show all products within Product
-  User.find().then(result => { // finds Product db
-    res.send(result); //print result
+
+app.get('/displayUsers', (req,res)=>{ //create request to show all products within Product
+  User.find().then(result =>{ // finds User db
+  res.send(result); //print result
   })
 });
+
+// display user by Id
+app.get('/viewUser/:id', (req,res)=>{ //create request to delete a product
+  const idParam = req.params.id; //set new reference idParam from last forward slash in request
+  const user = req.params.userId;
+    User.findOne({_id:idParam},(err, productResult)=>{ //search Product db for id
+    if (productResult) { //do this if present
+		 res.send(productResult);
+	} else { //if not found do this
+      res.send('not found') //no match message
+    }
+  }).catch(err => res.send(err)); //error e=message
+});
+
+// edit/update item
+app.patch('/updateUser/:id',(req,res)=> {
+  const idParam = req.params.id;
+  User.findById(idParam,(err,item)=> {
+    const updatedUser = {
+      username : req.body.username,
+  	  email : req.body.email,
+  	  password : req.body.password,
+  	  imageUrl : req.body.imgUrl
+    };
+    User.updateOne({_id:idParam}, updatedUser).then(result => {
+      res.send(result);
+    }).catch(err => res.send(err));
+  }).catch(err => res.send('not found'));
+});
+
+// Roy end
 
 // Bella start
 //register user
