@@ -1,3 +1,8 @@
+
+console.log('howdy');
+
+// ICONS
+feather.replace();
 // Make sure this matches your backend address
 var backendAddress = 'http://localhost:3000';
 

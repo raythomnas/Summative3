@@ -2,7 +2,9 @@
 <html>
 
 <head>
+	<title>Summative3</title>
 	<meta charset="UTF-8">
+
 	<meta name="description" content="Conference app">
 	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 	<meta name="author" content="team project">
@@ -37,8 +39,88 @@
 			<div class="form-group">
 				<label for="registerPhoto">Profile photo (Optional)</label>
 				<input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
-			</div>
+			</div
 
+
+<!-- HEADER: LOGO, USER FAVICON, LOGOUT ICON -->
+	
+	<nav class="navbar navbar-expand-lg header-style">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="navbar-brand" href="frontEnd/index.html"><h2>M E E T apps</h2><span class="sr-only">(current)</span></a> <!-- here introduce image logo -->
+			</li>
+			<li class="nav-item">
+				<img src="#" alt="event img">
+			</li>
+			<li class="nav-item">
+				<p>Hi, Valeria</p>
+			</li>
+			<li class="nav-item">
+				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="log-out"></i></a>
+			</li>
+		</ul>
+	</nav><!-- header menu -->
+	
+
+<!-- BODY: LANDING PAGE-->
+	<div>
+	<!-- Popular events -->
+		<h3 class="container-fluid">Popular this week</h3>
+		<div class="img-event_top">
+			<img src="#" alt="event img">
+		</div>
+		<div class="row">
+			<div class="col center">
+				<i class="icon-body" data-feather="calendar"></i>
+				<p>04.04.2020</p>
+			</div>
+			<div class="col">
+				<p class="title-event_top">Covid-19: All you need to know</p>
+			</div>
+		</div>
+		<br>
+	<!-- All Events -->
+		<h4 class="container-fluid">Events</h4>
+
+		<div class="card mb-3" style="max-width: 540px;">
+			<div class="row no-gutters">
+			    <div class="col-md-4">
+			    	<img src="#" class="card-img" alt="event image">
+			    </div>
+			    <div class="col-md-8">
+			    	<div class="card-body">
+			    		<a href="#"><h5 class="card-title">Climate change</h5></a>
+			        	<p class="card-text">30.03.2020.</p>
+			        	<p class="card-text">7:00PM</p>
+			        	<p class="card-text">Victoria University</p>
+			      	</div>
+			    </div>
+			</div>
+		</div>	
+	</div><!-- container-landing page -->
+
+
+<!-- FOOTER: STICKY BOTTOM MENU -->
+	<nav class="navbar fixed-bottom navbar-expand-lg nav-style">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="log-in"></i></a>
+			</li>
+			<li>
+				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="user"></i></a>
+			</li>
+			<li class="nav-item">
+				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="home"></i><span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="user-plus"></i></a>
+			</li>
+			<li class="nav-item">
+				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="log-out"></i></a>
+			</li>
+		</ul>
+	</nav>
+		
 			<button type="submit" class="btn btn-primary">Register</button>
 
 			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
@@ -67,7 +149,7 @@
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/@popperjs/core/dist/umd/popper-base.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	
+	<script src="node_modules/feather-icons/dist/feather.js"></script>
 	<script src="js/script.js"></script>
 </body>
 
