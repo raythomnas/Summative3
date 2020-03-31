@@ -1,17 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
-  	<meta name="description" content="Conference app">
-  	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
-  	<meta name="author" content="team project">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Conference app">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="team project">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+
 <body>
+	<div class="container">
 
-	<h1>Hi</h1>
+		<!-- Bella start -->
+		<!-- Register form -->
+		<form id="registerForm" action="#">
+			<h2>Register</h2>
+			<div class="form-group">
+				<label for="registerUsername">Username</label>
+				<input type="text" class="form-control" id="registerUsername" placeholder="Username">
+			</div>
 
-<script src="js/script.js"></script>
+			<div class="form-group">
+				<label for="registerEmail">Email</label>
+				<input type="email" class="form-control" id="registerEmail" placeholder="Email address">
+			</div>
+
+			<div class="form-group">
+				<label for="registerPassword">Password</label>
+				<input type="password" class="form-control" id="registerPassword" placeholder="Password">
+			</div>
+
+			<div class="form-group">
+				<label for="registerPhoto">Profile photo (Optional)</label>
+				<input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Register</button>
+
+			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
+		</form>
+
+		<!-- Login form -->
+		<form id="loginForm" action="#">
+			<h2>Login</h2>
+			<div class="form-group">
+				<label for="loginEmail">Email</label>
+				<input type="email" class="form-control" id="loginEmail" placeholder="Email address">
+			</div>
+
+			<div class="form-group">
+				<label for="loginPassword">Password</label>
+				<input type="password" class="form-control" id="loginPassword" placeholder="Password">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Login</button>
+
+			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
+		</form>
+		<!-- Bella end -->
+	</div>
+
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/@popperjs/core/dist/umd/popper-base.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+	<script src="js/script.js"></script>
 </body>
+
 </html>
