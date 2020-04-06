@@ -15,36 +15,10 @@
 </head>
 
 <body>
-	<div class="container">
-
-		<!-- Bella start -->
-		<!-- Register form -->
-		<form id="registerForm" action="#">
-			<h2>Register</h2>
-			<div class="form-group">
-				<label for="registerUsername">Username</label>
-				<input type="text" class="form-control" id="registerUsername" placeholder="Username">
-			</div>
-
-			<div class="form-group">
-				<label for="registerEmail">Email</label>
-				<input type="email" class="form-control" id="registerEmail" placeholder="Email address">
-			</div>
-
-			<div class="form-group">
-				<label for="registerPassword">Password</label>
-				<input type="password" class="form-control" id="registerPassword" placeholder="Password">
-			</div>
-
-			<div class="form-group">
-				<label for="registerPhoto">Profile photo (Optional)</label>
-				<input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
-			</div
 
 
-<!-- HEADER: LOGO, USER FAVICON, LOGOUT ICON -->
-	
-	<nav class="navbar navbar-expand-lg header-style">
+<!-- HEADER: LOGO, USER FAVICON, LOGOUT ICON (Vale)-->
+	<nav class="navbar fixed-top navbar-expand-lg header-style">
 		<ul class="navbar-nav">
 			<li class="nav-item">
 				<a class="navbar-brand" href="frontEnd/index.html"><h2>M E E T apps</h2><span class="sr-only">(current)</span></a> <!-- here introduce image logo -->
@@ -60,10 +34,12 @@
 			</li>
 		</ul>
 	</nav><!-- header menu -->
-	
+	</div>
 
-<!-- BODY: LANDING PAGE-->
-	<div>
+
+	<div class="container"> <!-- Add after this <div> all the other content -->
+
+<!-- LANDING PAGE (Vale)-->
 	<!-- Popular events -->
 		<h3 class="container-fluid">Popular this week</h3>
 		<div class="img-event_top">
@@ -97,10 +73,56 @@
 			    </div>
 			</div>
 		</div>	
-	</div><!-- container-landing page -->
+
+<!-- REGISTRATION FORM (Bella)-->
+		<form id="registerForm" action="#">
+			<h2>Register</h2>
+			<div class="form-group">
+				<label for="registerUsername">Username</label>
+				<input type="text" class="form-control" id="registerUsername" placeholder="Username">
+			</div>
+
+			<div class="form-group">
+				<label for="registerEmail">Email</label>
+				<input type="email" class="form-control" id="registerEmail" placeholder="Email address">
+			</div>
+
+			<div class="form-group">
+				<label for="registerPassword">Password</label>
+				<input type="password" class="form-control" id="registerPassword" placeholder="Password">
+			</div>
+
+			<div class="form-group">
+				<label for="registerPhoto">Profile photo (Optional)</label>
+				<input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
+			</div>
+		<button type="submit" class="btn btn-primary">Register</button>
+
+			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
+		</form>
+
+<!-- LOGIN FORM (Bella)-->
+		<form id="loginForm" action="#">
+			<h2>Login</h2>
+			<div class="form-group">
+				<label for="loginEmail">Email</label>
+				<input type="email" class="form-control" id="loginEmail" placeholder="Email address">
+			</div>
+
+			<div class="form-group">
+				<label for="loginPassword">Password</label>
+				<input type="password" class="form-control" id="loginPassword" placeholder="Password">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Login</button>
+
+			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
+		</form>
+		
+	</div> <!-- Add above this <div> all the other sections of code -->
 
 
-<!-- FOOTER: STICKY BOTTOM MENU -->
+	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
 	<nav class="navbar fixed-bottom navbar-expand-lg nav-style">
 		<ul class="navbar-nav">
 			<li class="nav-item">
@@ -120,31 +142,6 @@
 			</li>
 		</ul>
 	</nav>
-		
-			<button type="submit" class="btn btn-primary">Register</button>
-
-			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
-		</form>
-
-		<!-- Login form -->
-		<form id="loginForm" action="#">
-			<h2>Login</h2>
-			<div class="form-group">
-				<label for="loginEmail">Email</label>
-				<input type="email" class="form-control" id="loginEmail" placeholder="Email address">
-			</div>
-
-			<div class="form-group">
-				<label for="loginPassword">Password</label>
-				<input type="password" class="form-control" id="loginPassword" placeholder="Password">
-			</div>
-
-			<button type="submit" class="btn btn-primary">Login</button>
-
-			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
-		</form>
-		<!-- Bella end -->
-	</div>
 
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/@popperjs/core/dist/umd/popper-base.min.js"></script>
