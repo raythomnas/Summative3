@@ -6,6 +6,25 @@ feather.replace();
 // Make sure this matches your backend address
 var backendAddress = 'http://localhost:3000';
 
+var backendAddress2 = 'http://localhost:5000';
+
+
+//Custom backend address for other port (roy)
+ let url;
+
+ $.ajax({
+        url :'http://teamproject/frontEnd/config.json',
+        type :'GET',
+        dataType :'json',
+        success : function(configData){
+            console.log(configData);
+            url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
+        },
+        error:function (){
+            console.log('oops');
+        }
+});
+
 // jQuery - wait until the page has finished loading
 $(function () {
     // Bella start
@@ -33,7 +52,7 @@ $(function () {
         } else {
             // Send the form values to the backend
             $.ajax({
-                url: backendAddress + '/register',
+                url: backendAddress2 + '/register',
                 method: 'POST',
                 data: {
                     username: username,
@@ -74,7 +93,7 @@ $(function () {
         } else {
             // Send the form values to the backend
             $.ajax({
-                url: backendAddress + '/login',
+                url: backendAddress2 + '/login',
                 method: 'POST',
                 data: {
                     email: email,
@@ -100,4 +119,89 @@ $(function () {
     });
 
     // Bella end
+
+    //Roy start
+    
+
+$('#test').click(function(){
+         event.preventDefault();
+        console.log('view all fired');
+   $.ajax({
+  url :`${backendAddress2}/displayUsers`,
+  type :'GET',
+  dataType :'json',
+  success : function(viewUser){
+    console.log(viewUser);
+    for(let i=0; i<viewUser.length; i++){
+      document.getElementById('usersAllDump').innerHTML += `<p>${viewUser[i]._id}</p>`;
+   }// for loop
+  },//success
+  error:function(){
+    console.log('error: cannot call api');
+  }//error
+  }); //ajax
+});
+
+$('#checkById').click(function(){
+         event.preventDefault();
+        console.log('view by id fired');
+        let  givenId = $('#viewUserId').val(); 
+   $.ajax({
+  url :`${backendAddress2}/viewUser/${givenId}`,
+  type :'GET',
+  dataType :'json',
+  success : function(viewUser){
+    console.log(viewUser);
+      document.getElementById('userDump').innerHTML += `<p>${viewUser.username}</p>`;
+  },//success
+  error:function(){
+    console.log('error: cannot call api');
+  }//error
+  }); //ajax
+});
+
+
+// update user (Edit User Form) - profile page
+$('#changeUserBtn').click(function(){
+  event.preventDefault();
+
+  let  userID = $('#idCheckEdit').val();
+  let  username = $('#usernameEdit').val();
+  let  email = $('#userEmailEdit').val();
+  let  password = $('#userPasswordEdit').val();
+  let  userImg = $('#userImgEdit').val();
+
+  console.log(userID, username, email, password);
+
+  // if (username == '' || email == '' || password == '' || userImg == ''){
+  //   alert('Please enter all details');
+  // } else {
+
+    if (username == ''){
+        username =  sessionStorage['username']
+    };
+
+  $.ajax({
+    url :`${backendAddress2}/updateUser/${userID}`,
+    type :'PATCH',
+    data:{
+      _id : userID,
+      username : username,
+      email : email,
+      password : password
+      },
+    success : function(data){
+      console.log(data);
+      alert('your profile has been updated!');
+      document.getElementById('userChangedDump').innerHTML += `<p>${data.username}</p>`;
+    },//success
+    error:function(){
+      console.log('error: cannot call api');
+    }//error
+
+    });//ajax
+  // } //else
+});//update user function for Edit User Form
+
+//     // roy end
 });
