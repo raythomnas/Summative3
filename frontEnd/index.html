@@ -119,8 +119,83 @@
 			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
 		</form>
 		
-	</div> <!-- Add above this <div> all the other sections of code -->
 
+
+
+<!-- Roys view users, view a user, edit user -->
+
+<!-- Just going to work on getting the connection going with this one so ignore the ones below for now -->
+		<form id="viewAllForm">
+			<h2>View all users</h2>
+		
+		<p class="btn btn-primary" id="test">View all</p>
+
+		<div id="usersAllDump">
+			
+		</div>
+
+		</form>
+
+
+
+		<!-- view user by id -->
+
+		<form id="viewUserForm" action="#">
+			<h2>view user</h2>
+			<div class="form-group">
+				<label for="viewUserId">Id</label>
+				<input type="text" class="form-control" id="viewUserId" placeholder="User Id">
+			</div>
+
+			<p type="submit" class="btn btn-primary" id="checkById">View</p>
+					<div id="userDump">
+			
+		</div>
+		</form>
+
+		<!-- edit user -->
+
+				<form id="editForm">
+			<h2>Edit a user</h2>
+						<div class="form-group">
+				<label for="idCheckEdit">Enter Id</label>
+				<input type="text" class="form-control" id="idCheckEdit" placeholder="Id here">
+			</div>
+
+			<div class="form-group">
+				<label for="usernameEdit">New Username</label>
+				<input type="text" class="form-control" id="usernameEdit" placeholder="New username">
+			</div>
+
+			<div class="form-group">
+				<label for="userEmailEdit">New Email</label>
+				<input type="email" class="form-control" id="userEmailEdit" placeholder="New email address">
+			</div>
+
+			<div class="form-group">
+				<label for="userPasswordEdit">New Password</label>
+				<input type="password" class="form-control" id="userPasswordEdit" placeholder="New password">
+			</div>
+
+			<div class="form-group">
+				<label for="userImgEdit">New Profile photo (Optional)</label>
+				<input type="text" class="form-control" id="userImgEdit" placeholder="New photo URL">
+			</div>
+		<p type="submit" class="btn btn-primary" id="changeUserBtn">Commit changes</p>
+
+		<div id="userChangedDump">
+			
+		</div>
+
+		</form>
+
+
+ 		<div style="height: 50px;">
+			<p>move</p>
+		</div>
+		
+		
+	</div> <!-- Add above this <div> all the other sections of code -->
 
 	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
 	<nav class="navbar fixed-bottom navbar-expand-lg nav-style">
