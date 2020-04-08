@@ -112,6 +112,15 @@ $(function () {
                         // Successfully logged in
                         console.log("Successfully logged in");
                         console.log(response);
+                        // roys added session storage bits
+                        sessionStorage.setItem('userID', response['_id']);
+                        sessionStorage.setItem('userName',response['username']);
+                        sessionStorage.setItem('userEmail',response['email']);
+                        sessionStorage.setItem('photoUrl',response['photoUrl']);
+                        sessionStorage.setItem('password',password);
+                        console.log(sessionStorage);
+                        //roys addition end
+
                     }
                 }
             });
@@ -177,18 +186,24 @@ $('#changeUserBtn').click(function(){
   //   alert('Please enter all details');
   // } else {
 
-    if (username == ''){
-        username =  sessionStorage['username']
+        if (username == ''){
+        username = sessionStorage['userName']
+    };
+        if (email == ''){
+        email = sessionStorage['userEmail']
+    };
+        if (password == ''){
+        password = sessionStorage['password']
     };
 
   $.ajax({
     url :`${backendAddress2}/updateUser/${userID}`,
     type :'PATCH',
     data:{
-      _id : userID,
       username : username,
       email : email,
-      password : password
+      password : password,
+      photoUrl : userImg
       },
     success : function(data){
       console.log(data);
