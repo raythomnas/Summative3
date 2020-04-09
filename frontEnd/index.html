@@ -18,24 +18,21 @@
 
 
 <!-- HEADER: LOGO, USER FAVICON, LOGOUT ICON (Vale)-->
-	<nav class="navbar fixed-top navbar-expand-lg header-style">
-		<ul class="navbar-nav">
-			<li class="nav-item">
+	<nav class="navbar fixed-top navbar-expand-lg nav-style_top">
+		<ul class="navbar-nav container">
+			<li class="nav-item col-6">
 				<a class="navbar-brand" href="frontEnd/index.html"><h2>M E E T apps</h2><span class="sr-only">(current)</span></a> <!-- here introduce image logo -->
 			</li>
+			<!-- <li class="nav-item">
+				<a class="navbar-link" href="#"><i class="nav-icon_top" data-feather="user-plus"></i></a>
+				<p class="nav-text_top">R E G I S T E R/ L O G I N</p>
+			</li> -->
 			<li class="nav-item">
-				<img src="#" alt="event img">
-			</li>
-			<li class="nav-item">
-				<p>Hi, Valeria</p>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="log-out"></i></a>
+				<a class="navbar-link" href="#"><i class="nav-icon_top" data-feather="user"></i></a>
+				<p class="nav-text_top">Hi, Vale O.</p>
 			</li>
 		</ul>
 	</nav><!-- header menu -->
-	</div>
-
 
 	<div class="container"> <!-- Add after this <div> all the other content -->
 
@@ -54,7 +51,9 @@
 				<p class="title-event_top">Covid-19: All you need to know</p>
 			</div>
 		</div>
+		<hr class="hr-border">
 		<br>
+
 	<!-- All Events -->
 		<h4 class="container-fluid">Events</h4>
 
@@ -65,7 +64,7 @@
 			    </div>
 			    <div class="col-md-8">
 			    	<div class="card-body">
-			    		<a href="#"><h5 class="card-title">Climate change</h5></a>
+			    		<a href="#"><h5 class="card-title">Climate change & COVID-19</h5></a>
 			        	<p class="card-text">30.03.2020.</p>
 			        	<p class="card-text">7:00PM</p>
 			        	<p class="card-text">Victoria University</p>
@@ -73,6 +72,133 @@
 			    </div>
 			</div>
 		</div>	
+
+<!-- EVENTS PAGE (Vale)-->
+	<!-- Image, Title -->
+	<img class="container" src="../frontEnd/assets/img/climateChange.jpg" alt="image event"><br><br>
+	<h3>Climate change & COVID-19</h3>
+	<hr class="hr-border">
+
+	<!-- Icons: Events details -->
+	<div class="container container-icons_event">
+		<div class="row">
+			<div class="col-3">
+				<i class="icon-event" data-feather="calendar"></i>
+			</div>
+			<div class="col-9">
+				28.04.2020.   7.00PM
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3">
+				<i class="icon-event" data-feather="map-pin"></i>
+			</div>
+			<div class="col-9">
+				33 Bunny Street, Pipitea, Wellington 6011
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3">
+				<i class="icon-event" data-feather="dollar-sign"></i>
+			</div>
+			<div class="col-9">
+				$30 NZD
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3">
+				<i class="icon-event" data-feather="check-circle"></i>
+			</div>
+			<div class="col-9">
+				Not refund
+			</div>
+		</div> 
+	</div> <!-- END Icons: Events details -->
+	<hr class="hr-border">
+
+	<!-- Event Toggle starts here-->
+	<div class="accordion" id="accordionEvent">
+	<!--Location-->
+		<div class="row">
+			<h5 class="col-10" id="eventLocation">Location</h5>
+			<div class="col-2">
+				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+					<i class="icon-toggle" data-feather="plus"></i>
+				</button>
+			</div>
+		</div>
+		<div id="collapseZero" class="collapse" aria-labelledby="eventLocation" data-parent="#accordionEvent">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5995.46262803489!2d174.76776037680438!3d-41.29295176709171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38b02952575dbb%3A0xadf3ba89622116f0!2sVictoria%20University%20of%20Wellington!5e0!3m2!1sen!2snz!4v1586092129767!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+		</div>
+		<hr class="hr-border">
+
+	<!-- Event Description -->
+		<div class="row">
+			<h5 class="col-10" id="eventDescription">Event Description</h5>
+			<div class="col-2">
+				<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					<i class="icon-toggle" data-feather="plus"></i>
+				</button>
+			</div>
+		</div>
+		<p id="collapseOne" class="collapse container" aria-labelledby="eventDescription" data-parent="#accordionEvent">Climate change is sowing pandemic diseases. Corona virus in America. No vaccine is likely to block for long ... Climate change is sowing pandemic diseases. Corona virus in America. No vaccine is likely to block for long ... Climate change is sowing pandemic diseases. Corona virus in America. No vaccine is likely to block for long ... Climate change is sowing pandemic diseases. Corona virus in America. No vaccine is likely to block for long ... 
+		</p>
+		<hr class="hr-border">
+
+	<!--Organizers-->
+		<div class="row">
+			<h5 class="col-10" id="eventOrganizer">Organizer</h5>
+			<div class="col-2">
+				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					<i class="icon-toggle" data-feather="plus"></i>
+				</button>
+			</div>
+		</div>
+		<div id="collapseTwo" class="collapse" aria-labelledby="eventOrganizer" data-parent="#accordionEvent">
+			<img src="#" alt="logo">
+			<p>Victoria University</p>
+		</div>
+		<hr class="hr-border">
+		
+	<!-- Speakers-->
+		<div class="row">
+			<h5 class="col-10" id="eventSpeakers">Speakers</h5>
+			<div class="col-2">
+				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					<i class="icon-toggle" data-feather="plus"></i>
+				</button>
+			</div>
+		</div>
+		<div id="collapseThree" class="collapse" aria-labelledby="eventSpeakers" data-parent="#accordionEvent">
+			<img src="#" alt="image speaker">
+			<p>John</p>
+			<img src="#" alt="img speaker">
+			<p>Anna</p>
+		</div>
+		<hr class="hr-border">
+
+	<!-- Questions & Answers -->
+		<div class="row">
+			<h5 class="col-10" id="eventQA">Questions & Answers</h5>
+			<div class="col-2">
+				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					<i class="icon-toggle" data-feather="plus"></i>
+				</button>
+			</div>
+		</div>
+		<div id="collapseFour" class="collapse" aria-labelledby="eventQA" data-parent="#accordionEvent">
+			<div class="row container-comments">
+				<i class="icon-q&a" data-feather="user"></i>
+				<p class="col">jajjajaja</p>
+			</div>
+		</div>
+		<a href="#"></a> <!-- Link this to registration/login -->
+	</div> <!-- end accordion event -->
+
+
+
+
+
 
 <!-- REGISTRATION FORM (Bella)-->
 		<form id="registerForm" action="#">
@@ -193,30 +319,18 @@
 		</form>
 
 
- 		<div style="height: 50px;">
-			<p>move</p>
-		</div>
-		
-		
 	</div> <!-- Add above this <div> all the other sections of code -->
 
 	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
-	<nav class="navbar fixed-bottom navbar-expand-lg nav-style">
-		<ul class="navbar-nav">
+	<nav class="navbar fixed-bottom navbar-expand-lg nav-style_bottom">
+		<ul class="navbar-nav container">
 			<li class="nav-item">
-				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="log-in"></i></a>
-			</li>
-			<li>
-				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="user"></i></a>
+				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="home"></i></a>
+				<p class="nav-text_bottom">H O M E</p>
 			</li>
 			<li class="nav-item">
-				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="home"></i><span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="user-plus"></i></a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-link" href="#"><i class="icon-menu" data-feather="log-out"></i></a>
+				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
+				<p class="nav-text_bottom">L O G O U T</p>
 			</li>
 		</ul>
 	</nav>

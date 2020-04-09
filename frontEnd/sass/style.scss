@@ -1,3 +1,100 @@
-body{
-	background-color: grey;
+* {
+  margin: 0px;
+}
+
+body {
+  background-color: white;
+}
+
+h3, h4 {
+  color: #ef7b45;
+}
+
+/*LINES <HR>*/
+.hr-border {
+  border-top: 0.1rem solid #cdedf6;
+}
+
+/*NAV TOP*/
+.nav-style_top {
+  background-color: #5eb1bf;
+  height: 150px;
+}
+
+/*NAV BOTTOM*/
+.nav-style_bottom {
+  background-color: #5eb1bf;
+}
+
+.nav-text_top{
+	color: white;
+	font-size: 12px;
+}
+.nav-text_bottom{
+	color: white;
+	font-size: 10px;
+}
+
+/*ICONS*/
+.nav-icon_top {
+	background-color: white;
+  	color: #5eb1bf;
+  	height: 50px;
+  	width: 50px;
+  	stroke-width: 1px;
+  	border-radius: 30px;
+}
+
+.nav-icon_bottom {
+  color: white;
+  height: 30px;
+  width: 30px;
+  stroke-width: 1px;
+}
+
+.icon-event{
+  color: #ef7b45;
+  Stroke-width: 1px;
+  // opacity: 60%;
+}
+
+.icon-toggle{
+	color: #5eb1bf;
+	stroke-width: 1px;
+}
+
+.container-icons_event{
+	padding-left: 250px;
+}
+
+.icon-q&a{
+	background-color: #5eb1bf;
+	color: white;
+	
+}
+
+a {
+  color: #cdedf6;
+}
+
+/*LANDING*/
+/*IMAGE TOP*/
+.img-event_top {
+  background-color: blue;
+  width: 100%;
+  height: 200px;
+}
+
+.title-event_top {
+  color: #042a2b;
+  font-size: 1.5rem;
+}
+
+.icon-body {
+  color: #5eb1bf;
+}
+
+// QUESTIONS AND ANSWERS
+.container-comments{
+	background-color: #cdedf6;
 }
