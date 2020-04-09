@@ -68,6 +68,7 @@ app.get('/viewUser/:id', (req,res)=>{ //create request to delete a product
 // edit/update user
 app.patch('/updateUser/:id',(req,res)=> {
   const idParam = req.params.id;
+  console.log(idParam);
   User.findById(idParam,(err,item)=> {
     const hash = bcryptjs.hashSync(req.body.password);
     const updatedUser = {

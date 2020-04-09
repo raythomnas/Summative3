@@ -124,8 +124,9 @@
 
 <!-- Roys view users, view a user, edit user -->
 
-<!-- Just going to work on getting the connection going with this one so ignore the ones below for now -->
-		<form id="viewAllForm">
+<!-- View all users form, just here for checking -->
+
+<!-- 		<form id="viewAllForm">
 			<h2>View all users</h2>
 		
 		<p class="btn btn-primary" id="test">View all</p>
@@ -134,34 +135,35 @@
 			
 		</div>
 
-		</form>
+		</form> -->
 
 
 
-		<!-- view user by id -->
+		<!-- view logged in user details -->
 
-		<form id="viewUserForm" action="#">
-			<h2>view user</h2>
-			<div class="form-group">
-				<label for="viewUserId">Id</label>
-				<input type="text" class="form-control" id="viewUserId" placeholder="User Id">
+		<form id="viewUserForm" action="#" class="hidden">
+			<h2>view profile</h2>
+			<p type="submit" class="btn btn-primary" id="checkById">View</p>
+
+			<div id="userDump">
 			</div>
 
-			<p type="submit" class="btn btn-primary" id="checkById">View</p>
-					<div id="userDump">
-			
-		</div>
 		</form>
 
 		<!-- edit user -->
 
-				<form id="editForm">
+				<form id="editForm" class="hidden">
+<div id="passwordCheckForm">
 			<h2>Edit a user</h2>
 						<div class="form-group">
-				<label for="idCheckEdit">Enter Id</label>
-				<input type="text" class="form-control" id="idCheckEdit" placeholder="Id here">
+				<label for="idCheckEdit">Enter Password</label>
+				<input type="text" class="form-control" id="idCheckEdit" placeholder="Password here">
 			</div>
+					<p type="submit" class="btn btn-primary" id="changeUserPassCheck">Commit changes</p>
+		</div>
 
+
+	<div id="hiddenEditForm" class="hidden">
 			<div class="form-group">
 				<label for="usernameEdit">New Username</label>
 				<input type="text" class="form-control" id="usernameEdit" placeholder="New username">
@@ -182,10 +184,11 @@
 				<input type="text" class="form-control" id="userImgEdit" placeholder="New photo URL">
 			</div>
 		<p type="submit" class="btn btn-primary" id="changeUserBtn">Commit changes</p>
+	</div>
 
-		<div id="userChangedDump">
-			
-		</div>
+	<div id="userChangedDump">
+		
+	</div>
 
 		</form>
 

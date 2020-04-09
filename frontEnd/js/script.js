@@ -119,6 +119,8 @@ $(function () {
                         sessionStorage.setItem('photoUrl',response['photoUrl']);
                         sessionStorage.setItem('password',password);
                         console.log(sessionStorage);
+                        $('#viewUserForm').css("display", "block");
+                        
                         //roys addition end
 
                     }
@@ -142,7 +144,8 @@ $('#test').click(function(){
   success : function(viewUser){
     console.log(viewUser);
     for(let i=0; i<viewUser.length; i++){
-      document.getElementById('usersAllDump').innerHTML += `<p>${viewUser[i]._id}</p>`;
+      document.getElementById('usersAllDump').innerHTML += `<p>${viewUser[i].username}</p>
+                                                            <p>${viewUser[i]._id}</p>`;
    }// for loop
   },//success
   error:function(){
@@ -154,19 +157,38 @@ $('#test').click(function(){
 $('#checkById').click(function(){
          event.preventDefault();
         console.log('view by id fired');
-        let  givenId = $('#viewUserId').val(); 
-   $.ajax({
-  url :`${backendAddress2}/viewUser/${givenId}`,
-  type :'GET',
-  dataType :'json',
-  success : function(viewUser){
-    console.log(viewUser);
-      document.getElementById('userDump').innerHTML += `<p>${viewUser.username}</p>`;
-  },//success
-  error:function(){
-    console.log('error: cannot call api');
-  }//error
+        let  givenId = sessionStorage['userID']
+       $.ajax({
+      url :`${backendAddress2}/viewUser/${givenId}`,
+      type :'GET',
+      dataType :'json',
+      success : function(viewUser){
+        console.log(viewUser);
+          document.getElementById('userDump').innerHTML += `<p>${viewUser.username}</p>
+                                                            <p>${viewUser.email}</p>
+                                                        <p>${viewUser.photoUrl}</p>`;
+        $('#editForm').css("display", "block");
+      },//success
+      error:function(){
+        console.log('error: cannot call api');
+      }//error
   }); //ajax
+});
+
+
+//update user password check
+
+$('#changeUserPassCheck').click(function(){
+  event.preventDefault();
+   let  userPassW = $('#idCheckEdit').val();
+
+   if (userPassW == sessionStorage['password']){
+    $('#hiddenEditForm').css("display", "block");
+    $('#passwordCheckForm').css("display", "none");
+   } else {
+    alert('incorrect password');
+   }
+
 });
 
 
@@ -174,17 +196,13 @@ $('#checkById').click(function(){
 $('#changeUserBtn').click(function(){
   event.preventDefault();
 
-  let  userID = $('#idCheckEdit').val();
+  let  userID = sessionStorage['userID'];
   let  username = $('#usernameEdit').val();
   let  email = $('#userEmailEdit').val();
   let  password = $('#userPasswordEdit').val();
   let  userImg = $('#userImgEdit').val();
 
-  console.log(userID, username, email, password);
-
-  // if (username == '' || email == '' || password == '' || userImg == ''){
-  //   alert('Please enter all details');
-  // } else {
+  console.log(userID, username, email, password, userImg);
 
         if (username == ''){
         username = sessionStorage['userName']
@@ -195,6 +213,9 @@ $('#changeUserBtn').click(function(){
         if (password == ''){
         password = sessionStorage['password']
     };
+        if (userImg == ''){
+        userImg = sessionStorage['photoUrl']
+    };
 
   $.ajax({
     url :`${backendAddress2}/updateUser/${userID}`,
@@ -203,12 +224,12 @@ $('#changeUserBtn').click(function(){
       username : username,
       email : email,
       password : password,
-      photoUrl : userImg
+      imgUrl : userImg
       },
     success : function(data){
       console.log(data);
       alert('your profile has been updated!');
-      document.getElementById('userChangedDump').innerHTML += `<p>${data.username}</p>`;
+      document.getElementById('userChangedDump').innerHTML += `<p>details changed</p>`;
     },//success
     error:function(){
       console.log('error: cannot call api');
