@@ -42,6 +42,8 @@ app.get('/', (req, res) => res.send('Hello World!')) //prints message on load
 //keep this always at the bottom so that you can see the errors reported
 app.listen(port, () => console.log(`Mongodb app listening on port ${port}!`))
 
+
+//-------------------------------------USERS section-------------------------------------//
 //Roys requests
 
 // display users
@@ -129,5 +131,121 @@ app.post('/login', (req, res) => {
 }); // login user
 
 // Bella end
+
+//------------------------------^User Section^----------------------------------------//
+
+//-----------------------------QUESTIONS & ANSWERS (VALE)-----------------------------//
+
+//Create a Post (C)RUD
+app.post('/writePost', (req, res)=>{
+  Post.findOne({authorId: req.body.text.imageUrl},(err, postResult)=>{
+    if (postResult){
+      const post = new Post({
+        _id: new mongoose.Types.ObjectId,
+        authorId: req.body.authorId,
+        text: req.body.text,
+        imageUrl: req.body.imageUrl,
+      });
+      post.save().then(result =>{
+        res.send(result);
+      }).catch(err => res.send(err));
+    }
+  });
+});
+
+//Retrieve all POSTS C(R)UD
+app.get('/allPost', (req, res)=>{
+  Post.find().then(result =>{
+    res.send(result);
+  });
+});
+
+//Update project CR(U)D
+app.patch('/updatePost/:id', (req, res)=>{
+  const idParam = req.params.id;
+  Post.findById(idParam,(err, project)=>{
+    const updatedPost = {
+      text: req.body.text,
+      imageUrl: req.body.imageUrl,
+    };
+    Post.updateOne({_id:idParam}, updatedProject).then(result =>{
+      res.send(result); 
+    }).catch(err => res.send(err));
+  }).catch(err => res.send('Not Found'));
+});
+
+//Delete project CRU(D)
+app.delete('/deleteProject/:id', (req, res)=>{
+  const idParam = req.params.id;
+  Project.findOne({_id:idParam}, (err, project)=>{
+    if (project) {
+      Project.deleteOne({_id:idParam}, err=>{
+        res.send('Post deleted')
+      });
+    } else {
+      res.send('Not found')
+    }
+  }).catch(err => res.send(err));
+});
+//----------------------------^POSTS Section^-----------------------------------------//
+
+//-----------------------------COMMENTS (VALE)---------------------------------------//
+
+//Create a Comment (C)RUD
+app.post('/writeComment', (req, res)=>{
+  Comment.findOne({authorId: req.body.text.imageUrl},(err, commentResult)=>{
+    if (commentResult){
+      const comment = new Comment({
+        _id: new mongoose.Types.ObjectId,
+        authorId: req.body.authorId,
+        postId: req.body.postId,
+        text: req.body.text,
+        imageUrl: req.body.imageUrl,
+      });
+      comment.save().then(result =>{
+        res.send(result);
+      }).catch(err => res.send(err));
+    }
+  });
+});
+
+//Retrieve all POSTS C(R)UD
+app.get('/allComment', (req, res)=>{
+  Comment.find().then(result =>{ // shoul I add a const post id??
+    res.send(result);
+  });
+});
+
+//Update project CR(U)D
+app.patch('/updateComment/:id', (req, res)=>{
+  const idParam = req.params.id;
+  Comment.findById(idParam,(err, project)=>{
+    const updatedComment = {
+      text: req.body.text,
+      imageUrl: req.body.imageUrl,
+    };
+    Comment.updateOne({_id:idParam}, updatedComment).then(result =>{
+      res.send(result); 
+    }).catch(err => res.send(err));
+  }).catch(err => res.send('Not Found'));
+});
+
+//Delete project CRU(D)
+app.delete('/deleteComment/:id', (req, res)=>{
+  const idParam = req.params.id;
+  Comment.findOne({_id:idParam}, (err, project)=>{
+    if (project) {
+      Comment.deleteOne({_id:idParam}, err=>{
+        res.send('Comment deleted')
+      });
+    } else {
+      res.send('Not found')
+    }
+  }).catch(err => res.send(err));
+});
+
+//----------------------------^COMMENTS Section^-----------------------------------------//
+
+
 
 //note there are no actual users logged this is just a request to test connectivity
