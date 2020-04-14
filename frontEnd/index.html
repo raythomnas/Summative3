@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<title>Summative3</title>
@@ -17,27 +17,33 @@
 <body>
 
 
-<!-- HEADER: LOGO, USER FAVICON, LOGOUT ICON (Vale)-->
-	<nav class="navbar fixed-top navbar-expand-lg nav-style_top">
+<!--===================== HEADER: LOGO, USER FAVICON, LOGOUT ICON (Vale)=================================-->
+	<nav id="nav" class="navbar fixed-top navbar-expand-lg nav-style_top">
 		<ul class="navbar-nav container">
-			<li class="nav-item col-6">
-				<a class="navbar-brand" href="frontEnd/index.html"><h2>M E E T apps</h2><span class="sr-only">(current)</span></a> <!-- here introduce image logo -->
+			<li id="homeBtn" class="nav-item col-6">
+				<a class="navbar-brand" href="#homePage"><h2>M E E T apps</h2><span class="sr-only">(current)</span></a> <!-- here introduce image logo -->
 			</li>
-			<!-- <li class="nav-item">
-				<a class="navbar-link" href="#"><i class="nav-icon_top" data-feather="user-plus"></i></a>
-				<p class="nav-text_top">R E G I S T E R/ L O G I N</p>
-			</li> -->
-			<li class="nav-item">
-				<a class="navbar-link" href="#"><i class="nav-icon_top" data-feather="user"></i></a>
+			<li id="registerBtn" class="nav-item">
+				<button type="button" class="btn btn-outline-light btn-lg nav-text_top">R E G I S T E R</button>
+			</li>
+			<li id="loginBtn" class="nav-item">
+				<button type="button" class="btn btn-outline-light btn-lg nav-text_top">L O G I N</button>
+			</li>
+
+			<li id="profileLink" class="nav-item">
+				<a class="navbar-link" href="#viewUserForm"><i class="nav-icon_top" data-feather="user"></i></a>
 				<p class="nav-text_top">Hi, Vale O.</p>
+			</li>
+			<li id="logoutBtn" class="nav-item">
+				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
+				<p class="nav-text_bottom">L O G O U T</p>
 			</li>
 		</ul>
 	</nav><!-- header menu -->
 
-	<div class="container"> <!-- Add after this <div> all the other content -->
-
-<!-- LANDING PAGE (Vale)-->
+<!--================================= HOME PAGE (Vale)==============================================-->
 	<!-- Popular events -->
+	<div id="homePage" class="container container-page">
 		<h3 class="container-fluid">Popular this week</h3>
 		<div class="img-event_top">
 			<img src="#" alt="event img">
@@ -57,14 +63,14 @@
 	<!-- All Events -->
 		<h4 class="container-fluid">Events</h4>
 
-		<div class="card mb-3" style="max-width: 540px;">
+		<div class="container card mb-3" style="max-width: 540px;">
 			<div class="row no-gutters">
 			    <div class="col-md-4">
 			    	<img src="#" class="card-img" alt="event image">
 			    </div>
 			    <div class="col-md-8">
 			    	<div class="card-body">
-			    		<a href="#"><h5 class="card-title">Climate change & COVID-19</h5></a>
+			    		<a href="#eventPage"><h5 class="card-title">Climate change & COVID-19</h5></a>
 			        	<p class="card-text">30.03.2020.</p>
 			        	<p class="card-text">7:00PM</p>
 			        	<p class="card-text">Victoria University</p>
@@ -72,136 +78,189 @@
 			    </div>
 			</div>
 		</div>	
-
-<!-- EVENTS PAGE (Vale)-->
+	</div> <!-- landing page ends -->
+	
+<!--======================================= EVENTS PAGE (Vale)======================================-->
 	<!-- Image, Title -->
-	<img class="container" src="../frontEnd/assets/img/climateChange.jpg" alt="image event"><br><br>
-	<h3>Climate change & COVID-19</h3>
-	<hr class="hr-border">
-
-	<!-- Icons: Events details -->
-	<div class="container container-icons_event">
-		<div class="row">
-			<div class="col-3">
-				<i class="icon-event" data-feather="calendar"></i>
-			</div>
-			<div class="col-9">
-				28.04.2020.   7.00PM
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-3">
-				<i class="icon-event" data-feather="map-pin"></i>
-			</div>
-			<div class="col-9">
-				33 Bunny Street, Pipitea, Wellington 6011
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-3">
-				<i class="icon-event" data-feather="dollar-sign"></i>
-			</div>
-			<div class="col-9">
-				$30 NZD
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-3">
-				<i class="icon-event" data-feather="check-circle"></i>
-			</div>
-			<div class="col-9">
-				Not refund
-			</div>
-		</div> 
-	</div> <!-- END Icons: Events details -->
-	<hr class="hr-border">
-
-	<!-- Event Toggle starts here-->
-	<div class="accordion" id="accordionEvent">
-	<!--Location-->
-		<div class="row">
-			<h5 class="col-10" id="eventLocation">Location</h5>
-			<div class="col-2">
-				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
-					<i class="icon-toggle" data-feather="plus"></i>
-				</button>
-			</div>
-		</div>
-		<div id="collapseZero" class="collapse" aria-labelledby="eventLocation" data-parent="#accordionEvent">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5995.46262803489!2d174.76776037680438!3d-41.29295176709171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38b02952575dbb%3A0xadf3ba89622116f0!2sVictoria%20University%20of%20Wellington!5e0!3m2!1sen!2snz!4v1586092129767!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-		</div>
+	<div id="eventPage" class="container container-page">
+		<img class="container" src="../frontEnd/assets/images/eventOne.jpg" alt="image event"><br><br>
+		<h3>Business Intelligence Summit 2020</h3>
 		<hr class="hr-border">
 
-	<!-- Event Description -->
-		<div class="row">
-			<h5 class="col-10" id="eventDescription">Event Description</h5>
-			<div class="col-2">
-				<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-					<i class="icon-toggle" data-feather="plus"></i>
-				</button>
+		<!-- Icons: Events details -->
+		<div class="container container-icons_event">
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="calendar"></i>
+				</div>
+				<div class="col-9">
+					4 - 5 Aug 2020   7.00PM
+				</div>
 			</div>
-		</div>
-		<p id="collapseOne" class="collapse container" aria-labelledby="eventDescription" data-parent="#accordionEvent">Climate change is sowing pandemic diseases. Corona virus in America. No vaccine is likely to block for long ... Climate change is sowing pandemic diseases. Corona virus in America. No vaccine is likely to block for long ... Climate change is sowing pandemic diseases. Corona virus in America. No vaccine is likely to block for long ... Climate change is sowing pandemic diseases. Corona virus in America. No vaccine is likely to block for long ... 
-		</p>
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="map-pin"></i>
+				</div>
+				<div class="col-9">
+					Heritage, Auckland
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="dollar-sign"></i>
+				</div>
+				<div class="col-9">
+					Super saver price $2499 + GST
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="check-circle"></i>
+				</div>
+				<div class="col-9">
+					Not refund
+				</div>
+			</div> 
+		</div> <!-- END Icons: Events details -->
+		<br>
+		<a href="https://www.conferenz.co.nz/events/2020-business-intelligence-summit" target="_blank"><button type="button" class="btn btn-buyTicket">Buy Tickets</button></a>
 		<hr class="hr-border">
 
-	<!--Organizers-->
-		<div class="row">
-			<h5 class="col-10" id="eventOrganizer">Organizer</h5>
-			<div class="col-2">
-				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-					<i class="icon-toggle" data-feather="plus"></i>
-				</button>
+		<!-- *********** Event Toggle starts here********** -->
+		<div class="accordion" id="accordionEvent">
+		<!--Location-->
+			<div class="row">
+				<h5 class="col-10" id="eventLocation">Location</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
 			</div>
-		</div>
-		<div id="collapseTwo" class="collapse" aria-labelledby="eventOrganizer" data-parent="#accordionEvent">
-			<img src="#" alt="logo">
-			<p>Victoria University</p>
-		</div>
-		<hr class="hr-border">
-		
-	<!-- Speakers-->
-		<div class="row">
-			<h5 class="col-10" id="eventSpeakers">Speakers</h5>
-			<div class="col-2">
-				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-					<i class="icon-toggle" data-feather="plus"></i>
-				</button>
+			<div id="collapseZero" class="collapse" aria-labelledby="eventLocation" data-parent="#accordionEvent">
+				<iframe class="container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5995.46262803489!2d174.76776037680438!3d-41.29295176709171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38b02952575dbb%3A0xadf3ba89622116f0!2sVictoria%20University%20of%20Wellington!5e0!3m2!1sen!2snz!4v1586092129767!5m2!1sen!2snz" width="400" height="250" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 			</div>
-		</div>
-		<div id="collapseThree" class="collapse" aria-labelledby="eventSpeakers" data-parent="#accordionEvent">
-			<img src="#" alt="image speaker">
-			<p>John</p>
-			<img src="#" alt="img speaker">
-			<p>Anna</p>
-		</div>
-		<hr class="hr-border">
+			<hr class="hr-border">
 
-	<!-- Questions & Answers -->
-		<div class="row">
-			<h5 class="col-10" id="eventQA">Questions & Answers</h5>
-			<div class="col-2">
-				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-					<i class="icon-toggle" data-feather="plus"></i>
-				</button>
+		<!-- Event Description -->
+			<div class="row">
+				<h5 class="col-10" id="eventDescription">Event Description</h5>
+				<div class="col-2">
+					<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
 			</div>
-		</div>
-		<div id="collapseFour" class="collapse" aria-labelledby="eventQA" data-parent="#accordionEvent">
-			<div class="row container-comments">
-				<i class="icon-q&a" data-feather="user"></i>
-				<p class="col">jajjajaja</p>
+			<p id="collapseOne" class="collapse container" aria-labelledby="eventDescription" data-parent="#accordionEvent">At the 2020 Business Intelligence Summit, you will explore the most recent trends in BI, the emerging role that BI plays in today's business environment, and the new technologies that help provide unparalleled insights into how your market is moving and evolving. With the help of our expert presenters, this Summit will help you examine all facets of the sector and gain expertise in analytics, machine learning, AI, data science, cloud, digitisation and IoT.<br><br>
+			Being quick on the uptake of emerging technologies, and an increasing dependency on and growing usage of data are all vital for company growth and success in the modern, fast-paced and highly competitive business environment.<br><br>
+			Look forward to two days of high-quality content that will show you how to best utilise your data when making critical decisions!.<br><br>
+			WHY YOU SHOULD ATTEND:<br>
+			Gain insights from leading Kiwi organisations sharing their BI journey<br>
+			Learn and exchange best practices on how to succeed in nowadays world of data<br>
+			Harness your data to provide strategic value and to make business-critical decisions<br>
+			</p>
+			<hr class="hr-border">
+
+		<!--Organizers-->
+			<div class="row">
+				<h5 class="col-10" id="eventOrganizer">Organizer</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
 			</div>
-		</div>
-		<a href="#"></a> <!-- Link this to registration/login -->
-	</div> <!-- end accordion event -->
+			<div id="collapseTwo" class="collapse" aria-labelledby="eventOrganizer" data-parent="#accordionEvent">
+				<div class="card-group">
+					<div class="card">
+						<img src="#" class="card-img-top img-speaker" alt="photo profile">
+				    	<div class="card-body">
+				      		<h5 class="card-title">name org</h5>
+				    	</div>
+				  	</div>
+				  	<div class="card">
+					    <img src="#" class="card-img-top img-speaker" alt="photo profile">
+					    <div class="card-body">
+					    	<h5 class="card-title">name org</h5>
+					    </div>
+				  	</div>
+				</div>
+			</div>
+			<hr class="hr-border">
+			
+		<!-- Speakers-->
+			<div class="row">
+				<h5 class="col-10" id="eventSpeakers">Speakers</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+			</div>
+			<div id="collapseThree" class="collapse container show" aria-labelledby="eventSpeakers" data-parent="#accordionEvent">
+
+				<div class="card-group">
+					<div class="card">
+						<img src="../frontEnd/assets/images/speakerEventOne.jpg" class="card-img-top img-speaker" alt="photo profile">
+				    	<div class="card-body">
+				      		<h5 class="card-title">Shane Wohlers</h5>
+				      		<p class="card-text">Manager - Business Intelligence & Learner Analytics</p>
+				      		<p>Director - Learning Innovation and Insight</p>
+							<p>Eastern Institute of Technology</p>
+				    	</div>
+				  	</div>
+					<div class="card">
+					    <img src="../frontEnd/assets/images/speakerEventTwo.jpg" class="card-img-top img-speaker" alt="photo profile">
+					    <div class="card-body">
+					      	<h5 class="card-title">Kalyn De Castro</h5>
+					      	<p class="card-text">Data Quality Manager</p>
+					      	<p class="card-text">FMG (Farmers Mutual Group)</p>
+					    </div>
+					</div>
+				  	<div class="card">
+					    <img src="../frontEnd/assets/images/speakerEventThree.jpg" class="card-img-top img-speaker" alt="photo profile">
+					    <div class="card-body">
+					    	<h5 class="card-title">Anshuman Banerjee</h5>
+					      	<p class="card-text">Chapter Lead, Business Insights & Advanced Analytics</p>
+					      	<p class="card-text">Spark New Zealand</p>
+					    </div>
+				  	</div>
+				</div>
+			</div>
+			<hr class="hr-border">
+
+		<!-- Questions & Answers -->
+			<div class="row">
+				<h5 class="col-10" id="eventQA">Questions & Answers</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+				<p class="container">You must be <button type="button" class="btn btn-link">logged in</button> to post a comment, if you don't have an account, please <button type="button" class="btn btn-link">register.</button></p>
+			</div>
+			<div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
+				<div class="post">
+					<div class="row row-qa">
+						<i class="col-1 icon-qa" data-feather="user"></i> 
+						<div class="col-10 container-qa">
+							<p class="#">Hi, I would like to know if there is a refund.</p>
+						</div>
+					</div>
+					<div class="row">
+						<i class="col-1 icon-qa" data-feather="user"></i> 
+						<div class="col-10 container-qa">
+							<p class="#">yes, 100% refund if the event get cancelled by the organizer.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- end accordion event -->
+	</div> <!-- EVENT PAGE ends -->
 
 
-
-
-
-
-<!-- REGISTRATION FORM (Bella)-->
-		<form id="registerForm" action="#">
+<!--================================= REGISTRATION FORM (Bella)=======================================-->
+		<form id="registerForm" class="container container-page" action="#">
 			<h2>Register</h2>
 			<div class="form-group">
 				<label for="registerUsername">Username</label>
@@ -227,8 +286,8 @@
 			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
 		</form>
 
-<!-- LOGIN FORM (Bella)-->
-		<form id="loginForm" action="#">
+<!--================================ LOGIN FORM (Bella)============================================-->
+		<form id="loginForm" class="container container-page" action="#">
 			<h2>Login</h2>
 			<div class="form-group">
 				<label for="loginEmail">Email</label>
@@ -246,7 +305,7 @@
 		</form>
 		
 
-
+<!--====================================== VIEW USER PROFILE (Roy)=================================-->
 
 <!-- Roys view users, view a user, edit user -->
 
@@ -267,7 +326,7 @@
 
 		<!-- view logged in user details -->
 
-		<form id="viewUserForm" action="#" class="hidden">
+		<form id="viewUserForm" action="#" class="container container-page hidden">
 			<h2>view profile</h2>
 			<p type="submit" class="btn btn-primary" id="checkById">View</p>
 
@@ -276,9 +335,10 @@
 
 		</form>
 
+<!-- ===============================EDIT USER PROFILE (Roy) ===========================================-->
 		<!-- edit user -->
 
-				<form id="editForm" class="hidden">
+				<form id="editForm" class="container container-page hidden">
 <div id="passwordCheckForm">
 			<h2>Edit a user</h2>
 						<div class="form-group">
@@ -318,23 +378,7 @@
 
 		</form>
 
-
-	</div> <!-- Add above this <div> all the other sections of code -->
-
-	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
-	<nav class="navbar fixed-bottom navbar-expand-lg nav-style_bottom">
-		<ul class="navbar-nav container">
-			<li class="nav-item">
-				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="home"></i></a>
-				<p class="nav-text_bottom">H O M E</p>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
-				<p class="nav-text_bottom">L O G O U T</p>
-			</li>
-		</ul>
-	</nav>
-
+<!--=============================== JS, BOOSTRAP, JQUERY======================================-->
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/@popperjs/core/dist/umd/popper-base.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
