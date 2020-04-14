@@ -70,7 +70,7 @@ var backendAddress2 = 'http://localhost:5000';
 
 
 //Custom backend address for other port (roy)
- let url;
+ // let url;
 
 //  $.ajax({
 //         url :'http://teamproject/frontEnd/config.json',
@@ -84,6 +84,7 @@ var backendAddress2 = 'http://localhost:5000';
 //             console.log('oops');
 //         }
 // });
+
 
 // jQuery - wait until the page has finished loading
 $(function () {
@@ -136,7 +137,8 @@ $(function () {
     });
 
     // Function for when the login form is submitted
-    $('#loginForm').on('submit', function () {
+    // $('#loginForm').on('submit', function () {
+      $('#loginBtn2').click(function(){
         // Hide any error messages that may be present
         $('#loginError').addClass('d-none');
 
@@ -179,10 +181,13 @@ $(function () {
                         sessionStorage.setItem('photoUrl',response['photoUrl']);
                         sessionStorage.setItem('password',password);
                         console.log(sessionStorage);
-                        $('#viewUserForm').css("display", "block");
+                        document.getElementById('checkById').innerHTML += `<p class="nav-text_top">Hi ${response.username}</p>`;
+                        $('#checkById').css("display", "block");
                         $('#logOutBtn').css("display", "block");
-                        $('#loginForm').css("display", "none");
-                        
+                        $('#usernameInput').css("display", "none");
+                        $('#passwordInput').css("display", "none");
+                        $('#loginBtn2').css("display", "none");
+                      
                         //roys addition end
 
                     }
@@ -194,12 +199,23 @@ $(function () {
     // Bella end
 
     //Roy start
+
+    // function to display log in inputs
+$('#loginBtn').click(function(){
+  $('#usernameInput').show();
+  $('#passwordInput').show();
+  $('#passwordInput').show();
+  $('#loginBtn').hide();
+  $('#registerBtn').hide();
+  $('#loginBtn2').show();
+});
     
 $('#logOutBtn').click(function(){
   console.log('You are logged out');
   sessionStorage.clear();
-  $('#viewUserForm').hide();
-  $('#loginForm').show();
+  $('#checkById').hide();
+  $('#registerBtn').show();
+  $('#loginBtn').show();
     }); //end logout function
 
 $('#test').click(function(){
@@ -231,7 +247,7 @@ $('#checkById').click(function(){
       type :'GET',
       dataType :'json',
       success : function(viewUser){
-        console.log(viewUser);
+        document.getElementById('userChangedDump').innerHTML += ``;
         document.getElementById('userDetails').innerHTML = '';
         document.getElementById('profileHeader').innerHTML = '';
         document.getElementById('profileHeader').innerHTML += `<h5>User profile for ${viewUser.username}</h5>
@@ -240,6 +256,7 @@ $('#checkById').click(function(){
                                                             </button>`;
         document.getElementById('userDetails').innerHTML += `<p>${viewUser.email}</p>
                                                         <img src="${viewUser.photoUrl}" class="img-fluid"></img>`;
+        
         $('#editForm').css("display", "block");
       },//success
       error:function(){
@@ -248,6 +265,9 @@ $('#checkById').click(function(){
   }); //ajax
 });
 
+$('#editUserBtn1').click(function(){
+  $('#passwordCheckForm').show();
+});
 
 //update user password check
 
@@ -301,8 +321,8 @@ $('#changeUserBtn').click(function(){
       },
     success : function(data){
       console.log(data);
-      alert('your profile has been updated!');
-      document.getElementById('userChangedDump').innerHTML += `<p>details changed</p>`;
+      document.getElementById('userChangedDump').innerHTML += `<p>Details updated!</p>`;
+      $('#hiddenEditForm').css("display", "none");
     },//success
     error:function(){
       console.log('error: cannot call api');
