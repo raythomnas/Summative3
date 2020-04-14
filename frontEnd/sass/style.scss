@@ -67,10 +67,9 @@ h3, h4 {
 	padding-left: 250px;
 }
 
-.icon-q&a{
+.icon-q a{
 	background-color: #5eb1bf;
 	color: white;
-	
 }
 
 a {
@@ -97,4 +96,16 @@ a {
 // QUESTIONS AND ANSWERS
 .container-comments{
 	background-color: #cdedf6;
+}
+
+.card-img {
+	background-size: cover;
+	background-position: center;
+}
+.avatar-img {
+	border-radius: 100%;
+	background-size: cover;
+	background-position: center;
+	width: 200px;
+	height: 200px;
 }
