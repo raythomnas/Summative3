@@ -2,7 +2,7 @@
 console.log('howdy');
 
 // ICONS
-feather.replace();
+// feather.replace();
 // Make sure this matches your backend address
 var backendAddress = 'http://localhost:3000';
 
@@ -120,6 +120,8 @@ $(function () {
                         sessionStorage.setItem('password',password);
                         console.log(sessionStorage);
                         $('#viewUserForm').css("display", "block");
+                        $('#logOutBtn').css("display", "block");
+                        $('#loginForm').css("display", "none");
                         
                         //roys addition end
 
@@ -133,6 +135,12 @@ $(function () {
 
     //Roy start
     
+$('#logOutBtn').click(function(){
+  console.log('You are logged out');
+  sessionStorage.clear();
+  $('#viewUserForm').hide();
+  $('#loginForm').show();
+    }); //end logout function
 
 $('#test').click(function(){
          event.preventDefault();
@@ -164,9 +172,14 @@ $('#checkById').click(function(){
       dataType :'json',
       success : function(viewUser){
         console.log(viewUser);
-          document.getElementById('userDump').innerHTML += `<p>${viewUser.username}</p>
-                                                            <p>${viewUser.email}</p>
-                                                        <p>${viewUser.photoUrl}</p>`;
+        document.getElementById('userDetails').innerHTML = '';
+        document.getElementById('profileHeader').innerHTML = '';
+        document.getElementById('profileHeader').innerHTML += `<h5>User profile for ${viewUser.username}</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>`;
+        document.getElementById('userDetails').innerHTML += `<p>${viewUser.email}</p>
+                                                        <img src="${viewUser.photoUrl}" class="img-fluid"></img>`;
         $('#editForm').css("display", "block");
       },//success
       error:function(){
@@ -224,7 +237,7 @@ $('#changeUserBtn').click(function(){
       username : username,
       email : email,
       password : password,
-      imgUrl : userImg
+      photoUrl : userImg
       },
     success : function(data){
       console.log(data);

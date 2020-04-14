@@ -75,7 +75,7 @@ app.patch('/updateUser/:id',(req,res)=> {
       username : req.body.username,
   	  email : req.body.email,
   	  password : hash,
-  	  imageUrl : req.body.imgUrl
+  	  photoUrl : req.body.photoUrl
     };
     User.updateOne({_id:idParam}, updatedUser).then(result => {
       res.send(result);
