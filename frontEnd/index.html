@@ -22,57 +22,31 @@
 				<a class="navbar-brand" href="#homePage"><h2>M E E T apps</h2><span class="sr-only">(current)</span></a> <!-- here introduce image logo -->
 			</li>
 			<li id="registerBtn" class="nav-item">
-				<button type="button" class="btn btn-outline-light btn-lg nav-text_top">R E G I S T E R</button>
+				<button type="button" class="btn btn-outline-light btn-lg nav-text_top" data-toggle="modal" data-target="#registerDump">R E G I S T E R</button>
 			</li>
 			<li id="loginBtn" class="nav-item">
 				<button type="button" class="btn btn-outline-light btn-lg nav-text_top">L O G I N</button>
 			</li>
-
-			<li id="profileLink" class="nav-item">
-				<a class="navbar-link" href="#viewUserForm"><i class="nav-icon_top" data-feather="user"></i></a>
-				<p class="nav-text_top">Hi, Vale O.</p>
-				<p id="logOutBtn" class="btn btn-primary hidden">log out</p>
+			<li id="usernameInput" class="nav-item hidden">
+				<input type="text" class="btn btn-outline-light btn-lg nav-text_top" placeholder="E M A I L" id="loginEmail"></input>
 			</li>
-			<li id="logoutBtn" class="nav-item">
-				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
-				<p class="nav-text_bottom">L O G O U T</p>
+			<li id="passwordInput" class="nav-item hidden">
+				<input type="text" class="btn btn-outline-light btn-lg nav-text_top" placeholder="P A S S W O R D" id="loginPassword"></input>
+			</li>
+			<li  class="nav-item">
+				<button type="button" class="btn btn-outline-light btn-lg nav-text_top hidden" id="loginBtn2">L O G I N</button>
+				<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
+			</li>
+			<li id="checkById" class="nav-item hidden">
+				<i class="nav-icon_top" data-feather="user"  data-toggle="modal" data-target="#userDump"></i>
 			</li>
 		</ul>
-
-		<!-- LOGIN FORM (Bella) (moved by roy) -->
-		<form id="loginForm" action="#">
-			<h2>Login</h2>
-			<div class="form-group">
-				<label for="loginEmail">Email</label>
-				<input type="email" class="form-control" id="loginEmail" placeholder="Email address">
-			</div>
-
-			<div class="form-group">
-				<label for="loginPassword">Password</label>
-				<input type="password" class="form-control" id="loginPassword" placeholder="Password">
-			</div>
-
-			<button type="submit" class="btn btn-primary">Login</button>
-
-			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
-		</form>
-
-		<form id="viewUserForm" action="#" class="hidden">
-			<h2>view profile</h2>
-			<button type="button" id="checkById" class="btn btn-primary" data-toggle="modal" data-target="#userDump">
-  View User Profile</button>
-		</form>
-
 	</nav><!-- header menu -->
 
 
 	<div class="container"> <!-- Add after this <div> all the other content -->
 
-
 <!--ROY user profile modal (needs to be styled) -->
-
-<!-- 			<div id="userDump" class="zindex-modal bg-warning container">
-			</div> -->
 
 <div class="modal" id="userDump" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -84,14 +58,86 @@
         <p>Modal body text goes here.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Edit user</button>
+        <button type="button" id="editUserBtn1" class="btn btn-primary">Edit user</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      <div id="passwordCheckForm" class="hidden">
+			<h2>Edit a user</h2>
+						<div class="form-group">
+				<label for="idCheckEdit">Enter Password</label>
+				<input type="text" class="form-control" id="idCheckEdit" placeholder="Password here">
+			</div>
+		<p type="submit" class="btn btn-primary" id="changeUserPassCheck">Check password</p>
+		</div>
+		<div id="hiddenEditForm" class="hidden">
+			<div class="form-group">
+				<label for="usernameEdit">New Username</label>
+				<input type="text" class="form-control" id="usernameEdit" placeholder="New username">
+			</div>
+
+			<div class="form-group">
+				<label for="userEmailEdit">New Email</label>
+				<input type="email" class="form-control" id="userEmailEdit" placeholder="New email address">
+			</div>
+
+			<div class="form-group">
+				<label for="userPasswordEdit">New Password</label>
+				<input type="password" class="form-control" id="userPasswordEdit" placeholder="New password">
+			</div>
+
+			<div class="form-group">
+				<label for="userImgEdit">New Profile photo</label>
+				<input type="text" class="form-control" id="userImgEdit" placeholder="New photo URL">
+			</div>
+		<p type="submit" class="btn btn-primary" id="changeUserBtn">Commit changes</p>
+		</div>
+		<div id="userChangedDump">
+		
+		</div>
+    </div>
+  </div>
+</div>
+<!-- modal user end -->
+
+<!-- modal register ROY -->
+
+<div class="modal" id="registerDump" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="registerForm" action="#">
+			<h2>Register</h2>
+			<div class="form-group">
+				<label for="registerUsername">Username</label>
+				<input type="text" class="form-control" id="registerUsername" placeholder="Username">
+			</div>
+
+			<div class="form-group">
+				<label for="registerEmail">Email</label>
+				<input type="email" class="form-control" id="registerEmail" placeholder="Email address">
+			</div>
+
+			<div class="form-group">
+				<label for="registerPassword">Password</label>
+				<input type="password" class="form-control" id="registerPassword" placeholder="Password">
+			</div>
+
+			<div class="form-group">
+				<label for="registerPhoto">Profile photo</label>
+				<input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
+			</div>
+			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
+		</form>
+      </div>
+      <div class="modal-footer">
+		<button type="submit" class="btn btn-primary">Register</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- modal end -->
+<!-- modal register end -->
 
 <!-- LANDING PAGE (Vale)-->
 
@@ -151,6 +197,27 @@
 			</div>
 		</div>
 	</div>	
+
+<!-- event card roy -->
+
+<div class="container card mb-3" style="max-width: 540px;">
+			<div class="row no-gutters">
+			    <div class="col-md-4">
+			    	<img src="#" class="card-img" alt="event image">
+				</div>
+				
+			    <div class="col-md-8">
+			    	<div class="card-body">
+			    		<a href="#eventPage2"><h5 class="card-title">Walking Wellington</h5></a>
+			        	<p class="card-text">15.04.2020.</p>
+			        	<p class="card-text">7:00AM</p>
+			        	<p class="card-text">Mt Vic</p>
+			      	</div>
+			    </div>
+			</div>
+		</div>	
+	</div>
+
 </div> <!-- landing page ends -->
 	
 <!--======================================= EVENTS PAGE (Vale)======================================-->
@@ -489,12 +556,195 @@
 				</div>
 			</div>
 		</div> <!-- end accordion event -->
+
+		<!-- event Roy -->
+<div id="eventPage2" class="container container-page">
+		<img class="container" src="../frontEnd/assets/images/eventOne.jpg" alt="image event"><br><br>
+		<h3>Walking Wellington</h3>
+		<hr class="hr-border">
+
+		<!-- Icons: Events details -->
+		<div class="container container-icons_event">
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="calendar"></i>
+				</div>
+				<div class="col-9">
+					15 Apr 2020   7.00AM
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="map-pin"></i>
+				</div>
+				<div class="col-9">
+					Mt Vic, Wellington
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="dollar-sign"></i>
+				</div>
+				<div class="col-9">
+					Free event
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="check-circle"></i>
+				</div>
+				<div class="col-9">
+					Not refund
+				</div>
+			</div> 
+		</div> <!-- END Icons: Events details -->
+		<br>
+		<a href="https://www.meetup.com/Walking-Wellington/events/270016430/" target="_blank"><button type="button" class="btn btn-buyTicket">Buy Tickets</button></a>
+		<hr class="hr-border">
+
+		<!-- *********** Event Toggle starts here********** -->
+		<div class="accordion" id="accordionEvent2">
+		<!--Location-->
+			<div class="row">
+				<h5 class="col-10" id="eventLocation2">Location</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseZero2" aria-expanded="false" aria-controls="collapseZero2">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+			</div>
+			<div id="collapseZero2" class="collapse" aria-labelledby="eventLocation2" data-parent="#accordionEvent2">
+				<iframe class="container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5995.46262803489!2d174.76776037680438!3d-41.29295176709171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38b02952575dbb%3A0xadf3ba89622116f0!2sVictoria%20University%20of%20Wellington!5e0!3m2!1sen!2snz!4v1586092129767!5m2!1sen!2snz" width="400" height="250" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+			</div>
+			<hr class="hr-border">
+
+		<!-- Event Description -->
+			<div class="row">
+				<h5 class="col-10" id="eventDescription2">Event Description</h5>
+				<div class="col-2">
+					<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+			</div>
+			<p id="collapseOne2" class="collapse container" aria-labelledby="eventDescription2" data-parent="#accordionEvent2">At the 2020 Business Intelligence Summit, you will explore the most recent trends in BI, the emerging role that BI plays in today's business environment, and the new technologies that help provide unparalleled insights into how your market is moving and evolving. With the help of our expert presenters, this Summit will help you examine all facets of the sector and gain expertise in analytics, machine learning, AI, data science, cloud, digitisation and IoT.<br><br>
+			Being quick on the uptake of emerging technologies, and an increasing dependency on and growing usage of data are all vital for company growth and success in the modern, fast-paced and highly competitive business environment.<br><br>
+			Look forward to two days of high-quality content that will show you how to best utilise your data when making critical decisions!.<br><br>
+			WHY YOU SHOULD ATTEND:<br>
+			Gain insights from leading Kiwi organisations sharing their BI journey<br>
+			Learn and exchange best practices on how to succeed in nowadays world of data<br>
+			Harness your data to provide strategic value and to make business-critical decisions<br>
+			</p>
+			<hr class="hr-border">
+
+		<!--Organizers-->
+			<div class="row">
+				<h5 class="col-10" id="eventOrganizer2">Organizer</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+			</div>
+			<div id="collapseTwo2" class="collapse" aria-labelledby="eventOrganizer2" data-parent="#accordionEvent2">
+				<div class="card-group">
+					<div class="card">
+						<img src="#" class="card-img-top img-speaker" alt="photo profile">
+				    	<div class="card-body">
+				      		<h5 class="card-title">name org</h5>
+				    	</div>
+				  	</div>
+				  	<div class="card">
+					    <img src="#" class="card-img-top img-speaker" alt="photo profile">
+					    <div class="card-body">
+					    	<h5 class="card-title">name org</h5>
+					    </div>
+				  	</div>
+				</div>
+			</div>
+			<hr class="hr-border">
+			
+		<!-- Speakers-->
+			<div class="row">
+				<h5 class="col-10" id="eventSpeakers2">Speakers</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+			</div>
+			<div id="collapseThree2" class="collapse container show" aria-labelledby="eventSpeakers" data-parent="#accordionEvent2">
+
+				<div class="card-group">
+					<div class="card">
+						<img src="../frontEnd/assets/images/speakerEventOne.jpg" class="card-img-top img-speaker" alt="photo profile">
+				    	<div class="card-body">
+				      		<h5 class="card-title">Shane Wohlers</h5>
+				      		<p class="card-text">Manager - Business Intelligence & Learner Analytics</p>
+				      		<p>Director - Learning Innovation and Insight</p>
+							<p>Eastern Institute of Technology</p>
+				    	</div>
+				  	</div>
+					<div class="card">
+					    <img src="../frontEnd/assets/images/speakerEventTwo.jpg" class="card-img-top img-speaker" alt="photo profile">
+					    <div class="card-body">
+					      	<h5 class="card-title">Kalyn De Castro</h5>
+					      	<p class="card-text">Data Quality Manager</p>
+					      	<p class="card-text">FMG (Farmers Mutual Group)</p>
+					    </div>
+					</div>
+				  	<div class="card">
+					    <img src="../frontEnd/assets/images/speakerEventThree.jpg" class="card-img-top img-speaker" alt="photo profile">
+					    <div class="card-body">
+					    	<h5 class="card-title">Anshuman Banerjee</h5>
+					      	<p class="card-text">Chapter Lead, Business Insights & Advanced Analytics</p>
+					      	<p class="card-text">Spark New Zealand</p>
+					    </div>
+				  	</div>
+				</div>
+			</div>
+			<hr class="hr-border">
+
+		<!-- Questions & Answers -->
+			<div class="row">
+				<h5 class="col-10" id="eventQA2">Questions & Answers</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour2" aria-expanded="false" aria-controls="collapseFour2">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+				<p class="container">You must be <button type="button" class="btn btn-link">logged in</button> to post a comment, if you don't have an account, please <button type="button" class="btn btn-link">register.</button></p>
+			</div>
+			<div id="collapseFour2" class="collapse show container" aria-labelledby="eventQA2" data-parent="#accordionEvent2">
+				<div class="post">
+					<div class="row row-qa">
+						<i class="col-1 icon-qa" data-feather="user"></i> 
+						<div class="col-10 container-qa">
+							<p class="#">Hi, I would like to know if there is a refund.</p>
+						</div>
+					</div>
+					<div class="row">
+						<i class="col-1 icon-qa" data-feather="user"></i> 
+						<div class="col-10 container-qa">
+							<p class="#">yes, 100% refund if the event get cancelled by the organizer.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- end accordion event -->
+	<!-- end event Roy -->
+
+	</div> <!-- EVENT PAGE ends -->
+
+
+
 	</div> <!-- EVENT PAGE ends -->
 
 
 
 <!--================================= REGISTRATION FORM (Bella)=======================================-->
-		<form id="registerForm" class="container container-page" action="#">
+<!-- moved to top by roy -->
+		<!-- <form id="registerForm" class="container container-page" action="#">
 			<h2>Register</h2>
 			<div class="form-group">
 				<label for="registerUsername">Username</label>
@@ -518,14 +768,14 @@
 		<button type="submit" class="btn btn-primary">Register</button>
 
 			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
-		</form>
+		</form> -->
 
 
 <!-- LOGIN FORM (Bella)-->
 <!--  moved to top  -->
 <!-- 		<form id="loginForm" action="#">
 =======
-<!--================================ LOGIN FORM (Bella)============================================-->
+<!-================================ LOGIN FORM (Bella)============================================-->
 <!-- 		<form id="loginForm" class="container container-page" action="#">
 			<h2>Login</h2>
 			<div class="form-group">
@@ -562,76 +812,7 @@
 
 		</form> -->
 
-
-
-		<!-- view logged in user details -->
-
-<!-- 
-		<form id="viewUserForm" action="#" class="hidden">
-
-		<form id="viewUserForm" action="#" class="container container-page hidden">
-
-			<h2>view profile</h2>
-			<p type="submit" class="btn btn-primary" id="checkById">View</p>
-
-			<div id="userDump">
-			</div>
-
-		</form>
-
-<!-- ===============================EDIT USER PROFILE (Roy) ===========================================-->
-
-		<!-- edit user -->
-
-				<form id="editForm" class="container container-page hidden">
-<div id="passwordCheckForm">
-			<h2>Edit a user</h2>
-						<div class="form-group">
-				<label for="idCheckEdit">Enter Password</label>
-				<input type="text" class="form-control" id="idCheckEdit" placeholder="Password here">
-			</div>
-					<p type="submit" class="btn btn-primary" id="changeUserPassCheck">Commit changes</p>
-		</div>
-
-
-	<div id="hiddenEditForm" class="hidden">
-			<div class="form-group">
-				<label for="usernameEdit">New Username</label>
-				<input type="text" class="form-control" id="usernameEdit" placeholder="New username">
-			</div>
-
-			<div class="form-group">
-				<label for="userEmailEdit">New Email</label>
-				<input type="email" class="form-control" id="userEmailEdit" placeholder="New email address">
-			</div>
-
-			<div class="form-group">
-				<label for="userPasswordEdit">New Password</label>
-				<input type="password" class="form-control" id="userPasswordEdit" placeholder="New password">
-			</div>
-
-			<div class="form-group">
-				<label for="userImgEdit">New Profile photo</label>
-				<input type="text" class="form-control" id="userImgEdit" placeholder="New photo URL">
-			</div>
-		<p type="submit" class="btn btn-primary" id="changeUserBtn">Commit changes</p>
-	</div>
-
-	<div id="userChangedDump">
-		
-	</div>
-
-		</form>
-
-
-
-	</div> <!-- Add above this <div> all the other sections of code -->
-
-	<!-- roy add on to push up body content -->
-	
-	<div style="height: 50px;">
-		
-	</div>
+	</div> <!- Add above this <div> all the other sections of code -->
 
 	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
 	<nav class="navbar fixed-bottom navbar-expand-lg nav-style_bottom">
@@ -640,7 +821,7 @@
 				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="home"></i></a>
 				<p class="nav-text_bottom">H O M E</p>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item" id="logOutBtn">
 				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
 				<p class="nav-text_bottom">L O G O U T</p>
 			</li>
