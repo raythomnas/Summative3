@@ -2,28 +2,88 @@
 console.log('howdy');
 
 // ICONS
-// feather.replace();
+
+feather.replace();
+
 // Make sure this matches your backend address
 var backendAddress = 'http://localhost:3000';
-
 var backendAddress2 = 'http://localhost:5000';
+
+//----------------LANDING PAGE JS LOGIC (Vale)---------------------------//
+// console.log('I hope this works');
+// //To show landing page with neccesary features for an external user: all card events, nav login/register options
+// $(document).ready(function(){
+//   $('#homePage').show();
+//   $('#logoutBtn').hide();
+//   $('#profileLink').hide();
+//   $('#eventPage').hide();
+//   $('#viewUserForm').hide();
+//   $('#editForm').hide();
+//   $('#registerForm').hide();
+//   $('#loginForm').hide();
+//   if (sessionStorage['userName']) {
+//     console.log('You are logged in');
+//     $('#logoutBtn').show();
+//     $('#registerBtn').hide();
+//     $('#loginBtn').hide();
+//     } else {
+//       console.log('Please login');
+//       $('#logoutBtn').hide();
+//       };
+//   $('#homeBtn').click(function(){
+//     $('#homePage').show();
+//   });
+//   $('#registerBtn').click(function(){
+//     $('#homeBtn').show();
+//     $('#profileLink').hide();
+//     $('#logoutBtn').hide();
+//     $('#loginBtn').hide();
+//     $('#registerBtn').hide();
+
+//     $('#homePage').hide();
+//     $('#eventPage').hide();
+//     $('#viewUserForm').hide();
+//     $('#editForm').hide();
+//     $('#loginForm').hide();
+//     $('#registerForm').show();
+//   });
+//   $('#loginBtn').click(function(){
+//     $('#homeBtn').show();
+//     $('#profileLink').show();
+//     $('#logoutBtn').show();
+//     $('#loginBtn').hide();
+//     $('#registerBtn').hide();
+
+//     $('#homePage').hide();
+//     $('#eventPage').hide();
+//     $('#viewUserForm').hide();
+//     $('#editForm').hide();
+//     $('#loginForm').show();
+//     $('#registerForm').hide();
+//   });
+//   $('#logoutBtn').click(function(){
+//     console.log('You are logged out');
+//     localStorage.clear();
+//     console.log(localStorage);
+//   });
+// });
 
 
 //Custom backend address for other port (roy)
  let url;
 
- $.ajax({
-        url :'http://teamproject/frontEnd/config.json',
-        type :'GET',
-        dataType :'json',
-        success : function(configData){
-            console.log(configData);
-            url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
-        },
-        error:function (){
-            console.log('oops');
-        }
-});
+//  $.ajax({
+//         url :'http://teamproject/frontEnd/config.json',
+//         type :'GET',
+//         dataType :'json',
+//         success : function(configData){
+//             console.log(configData);
+//             url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
+//         },
+//         error:function (){
+//             console.log('oops');
+//         }
+// });
 
 // jQuery - wait until the page has finished loading
 $(function () {

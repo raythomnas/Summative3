@@ -1,3 +1,5 @@
+
+// VALE starts here
 * {
   margin: 0px;
 }
@@ -10,6 +12,15 @@ h3, h4 {
   color: #ef7b45;
 }
 
+#nav{
+  padding: 10px;
+  box-shadow: 10px 5px 10px #C8C8C8;
+}
+
+.container-page{
+  margin-top: 175px;
+}
+
 /*LINES <HR>*/
 .hr-border {
   border-top: 0.1rem solid #cdedf6;
@@ -19,6 +30,8 @@ h3, h4 {
 .nav-style_top {
   background-color: #5eb1bf;
   height: 150px;
+  border-radius: 0px 0px 80px 80px;
+
 }
 
 /*NAV BOTTOM*/
@@ -26,31 +39,35 @@ h3, h4 {
   background-color: #5eb1bf;
 }
 
+.btn-link{
+  border-radius: 20px;
+}
 .nav-text_top{
-	color: white;
-	font-size: 12px;
+  color: white;
+  font-size: 12px;
+
 }
 .nav-text_bottom{
-	color: white;
-	font-size: 10px;
+  color: white;
+  font-size: 10px;
 }
 
 /*ICONS*/
 .nav-icon_top {
-	background-color: white;
-  	color: #5eb1bf;
-  	height: 50px;
-  	width: 50px;
-  	stroke-width: 1px;
-  	border-radius: 30px;
+  background-color: white;
+    color: #5eb1bf;
+    height: 50px;
+    width: 50px;
+    stroke-width: 1px;
+    border-radius: 30px;
 }
 
-.nav-icon_bottom {
-  color: white;
-  height: 30px;
-  width: 30px;
-  stroke-width: 1px;
-}
+// .nav-icon_bottom {
+//   color: white;
+//   height: 30px;
+//   width: 30px;
+//   stroke-width: 1px;
+// }
 
 .icon-event{
   color: #ef7b45;
@@ -59,18 +76,22 @@ h3, h4 {
 }
 
 .icon-toggle{
-	color: #5eb1bf;
-	stroke-width: 1px;
+  color: #5eb1bf;
+  stroke-width: 1px;
 }
 
 .container-icons_event{
-	padding-left: 250px;
+  padding-left: 250px;
 }
 
-.icon-q&a{
-	background-color: #5eb1bf;
-	color: white;
-	
+.icon-qa{
+  background-color: #5eb1bf;
+  color: white;
+  height: 50px;
+  width: 50px;
+  stroke-width: 1px;
+  border-radius: 30px;
+  
 }
 
 a {
@@ -95,6 +116,29 @@ a {
 }
 
 // QUESTIONS AND ANSWERS
-.container-comments{
-	background-color: #cdedf6;
+.container-qa{
+  background-color: #cdedf6;
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+  margin-left: 50px;
 }
+
+.row-qa{
+  margin-bottom: 5px;
+}
+
+// BUTTONS
+.btn-buyTicket{
+  background-color: #d84727;
+  color: white;
+  border-radius: 0px;
+}
+
+// IMAGES 
+.img-speaker{
+  width: 150px;
+  border-radius: 80px;
+
+}
+// VALE ends here
