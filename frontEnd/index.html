@@ -31,15 +31,72 @@
 			<li id="profileLink" class="nav-item">
 				<a class="navbar-link" href="#viewUserForm"><i class="nav-icon_top" data-feather="user"></i></a>
 				<p class="nav-text_top">Hi, Vale O.</p>
+				<p id="logOutBtn" class="btn btn-primary hidden">log out</p>
 			</li>
 			<li id="logoutBtn" class="nav-item">
 				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
 				<p class="nav-text_bottom">L O G O U T</p>
 			</li>
 		</ul>
+
+		<!-- LOGIN FORM (Bella) (moved by roy) -->
+		<form id="loginForm" action="#">
+			<h2>Login</h2>
+			<div class="form-group">
+				<label for="loginEmail">Email</label>
+				<input type="email" class="form-control" id="loginEmail" placeholder="Email address">
+			</div>
+
+			<div class="form-group">
+				<label for="loginPassword">Password</label>
+				<input type="password" class="form-control" id="loginPassword" placeholder="Password">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Login</button>
+
+			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
+		</form>
+
+		<form id="viewUserForm" action="#" class="hidden">
+			<h2>view profile</h2>
+			<button type="button" id="checkById" class="btn btn-primary" data-toggle="modal" data-target="#userDump">
+  View User Profile</button>
+		</form>
+
 	</nav><!-- header menu -->
 
+
+	<div class="container"> <!-- Add after this <div> all the other content -->
+
+
+<!--ROY user profile modal (needs to be styled) -->
+
+<!-- 			<div id="userDump" class="zindex-modal bg-warning container">
+			</div> -->
+
+<div class="modal" id="userDump" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" id="profileHeader">
+        <!-- user name and exit button posted here -->
+      </div>
+      <div class="modal-body" id="userDetails">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Edit user</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal end -->
+
+<!-- LANDING PAGE (Vale)-->
+
 <!--================================= HOME PAGE (Vale)==============================================-->
+
 	<!-- Popular events -->
 	<div id="homePage" class="container container-page">
 		<h3 class="container-fluid">Popular this week</h3>
@@ -463,8 +520,13 @@
 			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
 		</form>
 
+
+<!-- LOGIN FORM (Bella)-->
+<!--  moved to top  -->
+<!-- 		<form id="loginForm" action="#">
+=======
 <!--================================ LOGIN FORM (Bella)============================================-->
-		<form id="loginForm" class="container container-page" action="#">
+<!-- 		<form id="loginForm" class="container container-page" action="#">
 			<h2>Login</h2>
 			<div class="form-group">
 				<label for="loginEmail">Email</label>
@@ -479,12 +541,13 @@
 			<button type="submit" class="btn btn-primary">Login</button>
 
 			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
-		</form>
-		
+		</form> -->
 
 <!--====================================== VIEW USER PROFILE (Roy)=================================-->
 
 <!-- Roys view users, view a user, edit user -->
+
+<!-- Moved this stuff up to the header -->
 
 <!-- View all users form, just here for checking -->
 
@@ -503,7 +566,11 @@
 
 		<!-- view logged in user details -->
 
+<!-- 
+		<form id="viewUserForm" action="#" class="hidden">
+
 		<form id="viewUserForm" action="#" class="container container-page hidden">
+
 			<h2>view profile</h2>
 			<p type="submit" class="btn btn-primary" id="checkById">View</p>
 
@@ -513,6 +580,7 @@
 		</form>
 
 <!-- ===============================EDIT USER PROFILE (Roy) ===========================================-->
+
 		<!-- edit user -->
 
 				<form id="editForm" class="container container-page hidden">
@@ -543,7 +611,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="userImgEdit">New Profile photo (Optional)</label>
+				<label for="userImgEdit">New Profile photo</label>
 				<input type="text" class="form-control" id="userImgEdit" placeholder="New photo URL">
 			</div>
 		<p type="submit" class="btn btn-primary" id="changeUserBtn">Commit changes</p>
@@ -555,7 +623,32 @@
 
 		</form>
 
+
+
+	</div> <!-- Add above this <div> all the other sections of code -->
+
+	<!-- roy add on to push up body content -->
+	
+	<div style="height: 50px;">
+		
+	</div>
+
+	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
+	<nav class="navbar fixed-bottom navbar-expand-lg nav-style_bottom">
+		<ul class="navbar-nav container">
+			<li class="nav-item">
+				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="home"></i></a>
+				<p class="nav-text_bottom">H O M E</p>
+			</li>
+			<li class="nav-item">
+				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
+				<p class="nav-text_bottom">L O G O U T</p>
+			</li>
+		</ul>
+	</nav>
+
 <!--=============================== JS, BOOSTRAP, JQUERY======================================-->
+
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/@popperjs/core/dist/umd/popper-base.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
