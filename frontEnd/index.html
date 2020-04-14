@@ -15,8 +15,6 @@
 </head>
 
 <body>
-
-
 <!--===================== HEADER: LOGO, USER FAVICON, LOGOUT ICON (Vale)=================================-->
 	<nav id="nav" class="navbar fixed-top navbar-expand-lg nav-style_top">
 		<ul class="navbar-nav container">
@@ -33,15 +31,72 @@
 			<li id="profileLink" class="nav-item">
 				<a class="navbar-link" href="#viewUserForm"><i class="nav-icon_top" data-feather="user"></i></a>
 				<p class="nav-text_top">Hi, Vale O.</p>
+				<p id="logOutBtn" class="btn btn-primary hidden">log out</p>
 			</li>
 			<li id="logoutBtn" class="nav-item">
 				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
 				<p class="nav-text_bottom">L O G O U T</p>
 			</li>
 		</ul>
+
+		<!-- LOGIN FORM (Bella) (moved by roy) -->
+		<form id="loginForm" action="#">
+			<h2>Login</h2>
+			<div class="form-group">
+				<label for="loginEmail">Email</label>
+				<input type="email" class="form-control" id="loginEmail" placeholder="Email address">
+			</div>
+
+			<div class="form-group">
+				<label for="loginPassword">Password</label>
+				<input type="password" class="form-control" id="loginPassword" placeholder="Password">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Login</button>
+
+			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
+		</form>
+
+		<form id="viewUserForm" action="#" class="hidden">
+			<h2>view profile</h2>
+			<button type="button" id="checkById" class="btn btn-primary" data-toggle="modal" data-target="#userDump">
+  View User Profile</button>
+		</form>
+
 	</nav><!-- header menu -->
 
+
+	<div class="container"> <!-- Add after this <div> all the other content -->
+
+
+<!--ROY user profile modal (needs to be styled) -->
+
+<!-- 			<div id="userDump" class="zindex-modal bg-warning container">
+			</div> -->
+
+<div class="modal" id="userDump" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" id="profileHeader">
+        <!-- user name and exit button posted here -->
+      </div>
+      <div class="modal-body" id="userDetails">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Edit user</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal end -->
+
+<!-- LANDING PAGE (Vale)-->
+
 <!--================================= HOME PAGE (Vale)==============================================-->
+
 	<!-- Popular events -->
 	<div id="homePage" class="container container-page">
 		<h3 class="container-fluid">Popular this week</h3>
@@ -67,7 +122,8 @@
 			<div class="row no-gutters">
 			    <div class="col-md-4">
 			    	<img src="#" class="card-img" alt="event image">
-			    </div>
+				</div>
+				
 			    <div class="col-md-8">
 			    	<div class="card-body">
 			    		<a href="#eventPage"><h5 class="card-title">Climate change & COVID-19</h5></a>
@@ -78,7 +134,24 @@
 			    </div>
 			</div>
 		</div>	
-	</div> <!-- landing page ends -->
+	</div>
+
+	<!-- Event Card (Bella) -->
+	<div class="container card mb-3" style="max-width: 540px;">
+		<div class="row no-gutters">
+			<div class="col-md-4 card-img" style="background-image: url('assets/images/heart-for-art.jpg')">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<a href="#eventPage"><h5 class="card-title">Paint Your Own Masterpiece with Heart for Art NZ</h5></a>
+					<p class="card-text">25.04.2020.</p>
+					<p class="card-text">3:00PM - 6:00PM</p>
+					<p class="card-text">Heart for Art, 24 Kekerenga St, Wellington</p>
+				  </div>
+			</div>
+		</div>
+	</div>	
+</div> <!-- landing page ends -->
 	
 <!--======================================= EVENTS PAGE (Vale)======================================-->
 	<!-- Image, Title -->
@@ -258,6 +331,167 @@
 		</div> <!-- end accordion event -->
 	</div> <!-- EVENT PAGE ends -->
 
+	
+	
+	
+	<!-- Event Page (Bella) -->
+	<!-- Image, Title -->
+	<div id="eventPage" class="container container-page">
+		<img class="container" src="assets/images/heart-for-art-painting.jpg" alt="image event"><br><br>
+		<h3>Paint Your Own Masterpiece with Heart for Art NZ</h3>
+		<hr class="hr-border">
+
+		<!-- Icons: Events details -->
+		<div class="container container-icons_event">
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="calendar"></i>
+				</div>
+				<div class="col-9">
+					Saturday 25 April 2020 3:00pm – 6:00pm
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="map-pin"></i>
+				</div>
+				<div class="col-9">
+					Heart for Art, 24 Kekerenga St, Wellington
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="dollar-sign"></i>
+				</div>
+				<div class="col-9">
+					Early Bird Studio Ticket: $59.50<br>
+                    Regular Studio Ticket: $69.50 
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<i class="icon-event" data-feather="check-circle"></i>
+				</div>
+				<div class="col-9">
+					R13
+				</div>
+			</div> 
+		</div> <!-- END Icons: Events details -->
+		<br>
+		<a href="https://www.eventfinda.co.nz/2020/paint-your-own-masterpiece-with-heart-for-art-nz/wellington" target="_blank"><button type="button" class="btn btn-buyTicket">Buy Tickets</button></a>
+		<hr class="hr-border">
+
+		<!-- *********** Event Toggle starts here********** -->
+		<div class="accordion" id="accordionEvent">
+		<!--Location-->
+			<div class="row">
+				<h5 class="col-10" id="eventLocation">Location</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+			</div>
+			<div id="collapseZero" class="collapse" aria-labelledby="eventLocation" data-parent="#accordionEvent">
+				<iframe class="container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.7725109677644!2d174.8125787154242!3d-41.33555987926901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38a55e4655a6ab%3A0x7117b13c2989a2d0!2sHeart%20for%20Art!5e0!3m2!1sen!2snz!4v1586830914257!5m2!1sen!2snz"  width="400" height="250" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+			</div>
+			<hr class="hr-border">
+
+		<!-- Event Description -->
+			<div class="row">
+				<h5 class="col-10" id="eventDescription">Event Description</h5>
+				<div class="col-2">
+					<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+			</div>
+			<p id="collapseOne" class="collapse container" aria-labelledby="eventDescription" data-parent="#accordionEvent">
+				Make your life more fun.<br><br> Our Paint Parties are a super fun and creative way to unwind and try something new. Join us in our 
+				art studio to paint, socialise, unwind and find your creativity. We’ll provide all the arty materials you’ll need and show you, 
+				step by step, how to create your own painting. And, you don’t need any experience. Our Paint Parties are created especially for 
+				people who've never held a paint brush or reckon they can't even draw a stick figure. If you think you're not creative or artistic - 
+				we're here to help you unleash your inner artist and have fun doing it. 
+				<br>Any skill level welcome. You're free to follow along and paint any of the six featured paintings or go freestyle and paint whatever you like.
+				<br><br>What to expect:<br> 3 hours of painting fun in a chilled, creative studio environment.
+				(Includes a short break in the middle to enjoy your complimentary refreshments and snacks).<br>
+				Your finished painting to take home and hang on your wall so you can say "Wow I painted that" every time you see it.
+			</p>
+			<hr class="hr-border">
+
+		<!--Organizers-->
+			<div class="row">
+				<h5 class="col-10" id="eventOrganizer">Organizer</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+			</div>
+			<div id="collapseTwo" class="collapse" aria-labelledby="eventOrganizer" data-parent="#accordionEvent">
+				<div class="card-group">
+					<div class="card d-flex align-items-center">
+					<div class="avatar-img" style="background-image: url(assets/images/heart-for-art-logo.jpg);"></div>
+				    	<div class="card-body">
+				      		<h5 class="card-title">Heart For Art</h5>
+				    	</div>
+				  	</div>
+				</div>
+			</div>
+			<hr class="hr-border">
+			
+		<!-- Speakers-->
+			<div class="row">
+				<h5 class="col-10" id="eventSpeakers">Speakers</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+			</div>
+			<div id="collapseThree" class="collapse container show" aria-labelledby="eventSpeakers" data-parent="#accordionEvent">
+
+				<div class="card-group">
+						<div class="card d-flex align-items-center">
+							<div class="avatar-img" style="background-image: url(assets/images/heart-for-art-speaker.jpg);"></div>
+							<div class="card-body">
+								<h5 class="card-title">Silke, Owner and Artist.</h5>
+							</div>
+						  </div>
+				  	</div>
+				</div>
+			<hr class="hr-border">
+
+		<!-- Questions & Answers -->
+			<div class="row">
+				<h5 class="col-10" id="eventQA">Questions & Answers</h5>
+				<div class="col-2">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+						<i class="icon-toggle" data-feather="plus"></i>
+					</button>
+				</div>
+				<p class="container">You must be <button type="button" class="btn btn-link">logged in</button> to post a comment, if you don't have an account, please <button type="button" class="btn btn-link">register.</button></p>
+			</div>
+			<div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
+				<div class="post">
+					<div class="row row-qa">
+						<i class="col-1 icon-qa" data-feather="user"></i> 
+						<div class="col-10 container-qa">
+							<p class="#">Hi, I would like to know if there is a refund.</p>
+						</div>
+					</div>
+					<div class="row">
+						<i class="col-1 icon-qa" data-feather="user"></i> 
+						<div class="col-10 container-qa">
+							<p class="#">yes, 100% refund if the event get cancelled by the organizer.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- end accordion event -->
+	</div> <!-- EVENT PAGE ends -->
+
+
 
 <!--================================= REGISTRATION FORM (Bella)=======================================-->
 		<form id="registerForm" class="container container-page" action="#">
@@ -286,8 +520,13 @@
 			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
 		</form>
 
+
+<!-- LOGIN FORM (Bella)-->
+<!--  moved to top  -->
+<!-- 		<form id="loginForm" action="#">
+=======
 <!--================================ LOGIN FORM (Bella)============================================-->
-		<form id="loginForm" class="container container-page" action="#">
+<!-- 		<form id="loginForm" class="container container-page" action="#">
 			<h2>Login</h2>
 			<div class="form-group">
 				<label for="loginEmail">Email</label>
@@ -302,12 +541,13 @@
 			<button type="submit" class="btn btn-primary">Login</button>
 
 			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
-		</form>
-		
+		</form> -->
 
 <!--====================================== VIEW USER PROFILE (Roy)=================================-->
 
 <!-- Roys view users, view a user, edit user -->
+
+<!-- Moved this stuff up to the header -->
 
 <!-- View all users form, just here for checking -->
 
@@ -326,7 +566,11 @@
 
 		<!-- view logged in user details -->
 
+<!-- 
+		<form id="viewUserForm" action="#" class="hidden">
+
 		<form id="viewUserForm" action="#" class="container container-page hidden">
+
 			<h2>view profile</h2>
 			<p type="submit" class="btn btn-primary" id="checkById">View</p>
 
@@ -336,6 +580,7 @@
 		</form>
 
 <!-- ===============================EDIT USER PROFILE (Roy) ===========================================-->
+
 		<!-- edit user -->
 
 				<form id="editForm" class="container container-page hidden">
@@ -366,7 +611,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="userImgEdit">New Profile photo (Optional)</label>
+				<label for="userImgEdit">New Profile photo</label>
 				<input type="text" class="form-control" id="userImgEdit" placeholder="New photo URL">
 			</div>
 		<p type="submit" class="btn btn-primary" id="changeUserBtn">Commit changes</p>
@@ -378,7 +623,32 @@
 
 		</form>
 
+
+
+	</div> <!-- Add above this <div> all the other sections of code -->
+
+	<!-- roy add on to push up body content -->
+	
+	<div style="height: 50px;">
+		
+	</div>
+
+	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
+	<nav class="navbar fixed-bottom navbar-expand-lg nav-style_bottom">
+		<ul class="navbar-nav container">
+			<li class="nav-item">
+				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="home"></i></a>
+				<p class="nav-text_bottom">H O M E</p>
+			</li>
+			<li class="nav-item">
+				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
+				<p class="nav-text_bottom">L O G O U T</p>
+			</li>
+		</ul>
+	</nav>
+
 <!--=============================== JS, BOOSTRAP, JQUERY======================================-->
+
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/@popperjs/core/dist/umd/popper-base.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
