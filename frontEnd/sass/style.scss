@@ -116,6 +116,10 @@ a {
 }
 
 // QUESTIONS AND ANSWERS
+.container-comments{
+	background-color: #cdedf6;
+}
+
 .container-qa{
   background-color: #cdedf6;
   height: 50px;
@@ -128,6 +132,7 @@ a {
   margin-bottom: 5px;
 }
 
+
 // BUTTONS
 .btn-buyTicket{
   background-color: #d84727;
@@ -139,6 +144,20 @@ a {
 .img-speaker{
   width: 150px;
   border-radius: 80px;
-
 }
 // VALE ends here
+
+
+// BELLA starts here
+.card-img {
+	background-size: cover;
+	background-position: center;
+}
+.avatar-img {
+	border-radius: 100%;
+	background-size: cover;
+	background-position: center;
+	width: 200px;
+	height: 200px;
+}
+// BELLA ends here

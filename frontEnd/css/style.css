@@ -104,6 +104,10 @@ a {
   color: #5eb1bf;
 }
 
+.container-comments {
+  background-color: #cdedf6;
+}
+
 .container-qa {
   background-color: #cdedf6;
   height: 50px;
@@ -125,6 +129,19 @@ a {
 .img-speaker {
   width: 150px;
   border-radius: 80px;
+}
+
+.card-img {
+  background-size: cover;
+  background-position: center;
+}
+
+.avatar-img {
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 200px;
 }
 
 /*# sourceMappingURL=style.css.map */
