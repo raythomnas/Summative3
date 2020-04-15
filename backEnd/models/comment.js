@@ -20,3 +20,4 @@ const  commentSchema = new mongoose.Schema({
   imageUrl : String
 });
 module.exports = mongoose.model('Comment', commentSchema);
+

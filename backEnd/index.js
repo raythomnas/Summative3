@@ -6,6 +6,8 @@ const cors = require('cors'); //to include cross orgin request
 const bcryptjs = require('bcryptjs');//to hash and compare password in an encrypted method
 const config = require('./config.json');//has credentials
 const User = require('./models/user.js'); //this refers to the structure for user ojects
+const Post = require('./models/post');
+const Comment = require('./models/comment');
 const Conference = require('./models/conference.js'); //this refers to the structure for product ojects
 const Post = require('./models/post.js'); 
 const Comment = require('./models/comment.js'); 
@@ -50,30 +52,30 @@ app.listen(port, () => console.log(`Mongodb app listening on port ${port}!`))
 
 // display users
 
-app.get('/displayUsers', (req,res)=>{ //create request to show all products within Product
-  User.find().then(result =>{ // finds User db
-  res.send(result); //print result
+app.get('/displayUsers', (req, res) => { //create request to show all products within Product
+  User.find().then(result => { // finds User db
+    res.send(result); //print result
   })
 });
 
 // display user by Id
-app.get('/viewUser/:id', (req,res)=>{ //create request to delete a product
+app.get('/viewUser/:id', (req, res) => { //create request to delete a product
   const idParam = req.params.id; //set new reference idParam from last forward slash in request
   const user = req.params.userId;
-    User.findOne({_id:idParam},(err, productResult)=>{ //search Product db for id
+  User.findOne({ _id: idParam }, (err, productResult) => { //search Product db for id
     if (productResult) { //do this if present
-     res.send(productResult);
-  } else { //if not found do this
+      res.send(productResult);
+    } else { //if not found do this
       res.send('not found') //no match message
     }
   }).catch(err => res.send(err)); //error e=message
 });
 
 // edit/update user
-app.patch('/updateUser/:id',(req,res)=> {
+app.patch('/updateUser/:id', (req, res) => {
   const idParam = req.params.id;
   console.log(idParam);
-  User.findById(idParam,(err,item)=> {
+  User.findById(idParam, (err, item) => {
     const hash = bcryptjs.hashSync(req.body.password);
     const updatedUser = {
       username : req.body.username,
@@ -81,7 +83,7 @@ app.patch('/updateUser/:id',(req,res)=> {
       password : hash,
       photoUrl : req.body.photoUrl
     };
-    User.updateOne({_id:idParam}, updatedUser).then(result => {
+    User.updateOne({ _id: idParam }, updatedUser).then(result => {
       res.send(result);
     }).catch(err => res.send(err));
   }).catch(err => res.send('not found'));
@@ -136,7 +138,7 @@ app.post('/login', (req, res) => {
 
 //------------------------------^User Section^----------------------------------------//
 
-//-----------------------------QUESTIONS & ANSWERS (VALE)-----------------------------//
+//-----------------------------QUESTIONS & ANSWERS (VALE, BELLA)-----------------------------//
 
 //Create a Post (C)RUD
 app.post('/writePost', (req, res) => {
@@ -163,17 +165,20 @@ app.get('/allPost/:conferenceId', (req, res) => {
     res.send(result);
   });
 });
+
 //Update post CR(U)D
 app.patch('/updatePost/:id', (req, res) => {
   const idParam = req.params.id;
   Post.findById(idParam, (err, post) => {
     post.text = req.body.text;
     post.imageUrl = req.body.imageUrl;
+
     post.save().then(result => {
       res.send(result);
     }).catch(err => res.send(err));
   }).catch(err => res.send('Not Found'));
 });
+
 //Delete post CRU(D)
 app.delete('/deletePost/:id', (req, res) => {
   const idParam = req.params.id;
@@ -199,12 +204,14 @@ app.post('/writeComment', (req, res)=>{
         text: req.body.text,
         imageUrl: req.body.imageUrl,
       });
-      comment.save().then(result =>{
+      
+      comment.save().then(result => {
         res.send(result);
       }).catch(err => res.send(err));
     }
   });
 });
+
 
 //Retrieve all COMMENTS C(R)UD
 app.get('/allComment/:conferenceId/:postId', (req, res) => {
@@ -212,6 +219,7 @@ app.get('/allComment/:conferenceId/:postId', (req, res) => {
     res.send(result);
   });
 });
+
 
 //Update COMMENT CR(U)D
 app.patch('/updateComment/:id', (req, res)=>{

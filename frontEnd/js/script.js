@@ -9,6 +9,10 @@ feather.replace();
 var backendAddress = 'http://localhost:3000';
 var backendAddress2 = 'http://localhost:5000';
 
+// A fake conference id for all conferences and comments to use
+//  while we figure out how pages will work
+var FAKE_CONFERENCE_ID = '1e9627ee2d5f5ba2841d1623';
+
 //----------------LANDING PAGE JS LOGIC (Vale)---------------------------//
 console.log('I hope this works');
 //To show landing page with neccesary features for an external user: all card events, nav login/register options
@@ -72,7 +76,7 @@ console.log('I hope this works');
 // });
 
 //Custom backend address for other port (roy)
- let url;
+ // let url;
 
 //  $.ajax({
 //         url :'http://teamproject/frontEnd/config.json',
@@ -86,6 +90,7 @@ console.log('I hope this works');
 //             console.log('oops');
 //         }
 // });
+
 
 // jQuery - wait until the page has finished loading
 $(function () {
@@ -138,7 +143,8 @@ $(function () {
     });
 
     // Function for when the login form is submitted
-    $('#loginForm').on('submit', function () {
+    // $('#loginForm').on('submit', function () {
+      $('#loginBtn2').click(function(){
         // Hide any error messages that may be present
         $('#loginError').addClass('d-none');
 
@@ -181,10 +187,16 @@ $(function () {
                         sessionStorage.setItem('photoUrl',response['photoUrl']);
                         sessionStorage.setItem('password',password);
                         console.log(sessionStorage);
-                        $('#viewUserForm').css("display", "block");
+                        document.getElementById('checkById').innerHTML += `<p class="nav-text_top">Hi ${response.username}</p>`;
+                        $('#checkById').css("display", "block");
                         $('#logOutBtn').css("display", "block");
-                        $('#loginForm').css("display", "none");
-                        
+                        $('#usernameInput').css("display", "none");
+                        $('#passwordInput').css("display", "none");
+                        $('#loginBtn2').css("display", "none");
+                        $('#loginBtn').hide();
+                        $('#loginDump').modal('hide');
+                        $('#registerBtn').hide();
+                      
                         //roys addition end
 
                     }
@@ -196,12 +208,16 @@ $(function () {
     // Bella end
 
     //Roy start
+
+    // function to display log in inputs
+
     
 $('#logOutBtn').click(function(){
   console.log('You are logged out');
   sessionStorage.clear();
-  $('#viewUserForm').hide();
-  $('#loginForm').show();
+  $('#checkById').hide();
+  $('#registerBtn').show();
+  $('#loginBtn').show();
     }); //end logout function
 
 $('#test').click(function(){
@@ -233,15 +249,13 @@ $('#checkById').click(function(){
       type :'GET',
       dataType :'json',
       success : function(viewUser){
-        console.log(viewUser);
+        document.getElementById('userChangedDump').innerHTML += ``;
         document.getElementById('userDetails').innerHTML = '';
         document.getElementById('profileHeader').innerHTML = '';
-        document.getElementById('profileHeader').innerHTML += `<h5>User profile for ${viewUser.username}</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                            </button>`;
-        document.getElementById('userDetails').innerHTML += `<p>${viewUser.email}</p>
-                                                        <img src="${viewUser.photoUrl}" class="img-fluid"></img>`;
+        document.getElementById('userDetails').innerHTML += `<img src="${viewUser.photoUrl}" class="rounded mx-auto d-block"></img>
+                                                        <p class="text-center">${viewUser.username}</p>
+                                                        <p class="text-center">${viewUser.email}</p>`;
+        
         $('#editForm').css("display", "block");
       },//success
       error:function(){
@@ -250,6 +264,9 @@ $('#checkById').click(function(){
   }); //ajax
 });
 
+$('#editUserBtn1').click(function(){
+  $('#passwordCheckForm').show();
+});
 
 //update user password check
 
@@ -303,8 +320,8 @@ $('#changeUserBtn').click(function(){
       },
     success : function(data){
       console.log(data);
-      alert('your profile has been updated!');
-      document.getElementById('userChangedDump').innerHTML += `<p>details changed</p>`;
+      document.getElementById('userChangedDump').innerHTML += `<p>Details updated!</p>`;
+      $('#hiddenEditForm').css("display", "none");
     },//success
     error:function(){
       console.log('error: cannot call api');
@@ -316,9 +333,105 @@ $('#changeUserBtn').click(function(){
 
 //     // roy end
 
-//--------------------------LANDING PAGE JS LOGIC (Vale)-------------------------------------//
-$()
+  // Bella start
+  $.ajax({
+    url: backendAddress2 + '/allPost/' + FAKE_CONFERENCE_ID,
+    method: 'GET',
+    success(eventPosts) {
+      console.log("All posts", eventPosts)
+      for(var i=0; i<eventPosts.length; i++) {
+        let post = eventPosts[i];
+        // Create a container div for posts to go into (no content yet)
+        $('#postContainer').append(`<div class="row row-qa" data-post-id="${post._id}"></div>`);
 
-
-
+        // Wait for the browser to update with the post container
+        setTimeout(() => {
+          // Create the actual post content
+          createPostElement(post);
+        });
+      }
+    },
+  });
 });
+
+// Create a post element inside a post container
+// This sets up click events for the edit and delete buttons, etc.
+function createPostElement(post) {
+  // Find the post container element 
+  var postContainer = $(`[data-post-id="${post._id}"]`);
+
+  // Set the contents of the post
+  postContainer.html(`
+      <div class="post-avatar-img" style="background-image: url(${post.userImage});"></div>
+      <div class="col-10 container-qa row">
+        <div class="col-11"><p class="#">${post.text}</p></div>
+        <div class="col-1 text">
+          <i class="icon-event edit-post" data-feather="edit-2"></i>
+          <i class="icon-event delete-post" data-feather="trash"></i>
+        </div>
+      </div>
+    `);
+
+
+  // Wait for the browser to update with the changes from above
+  setTimeout(() => {
+    // EDIT
+    // Click handler for edit button FOR THIS SPECIFIC POST
+    postContainer.find('.edit-post').click(function () {
+      // Replace post with a text area
+      postContainer.html(`
+        <div class="post-avatar-img" style="background-image: url(${post.userImage});"></div>
+        <div class="col-10 ml-4">
+          <textarea class="form-control post-text-area">${post.text}</textarea>
+          <button type="button" class="btn btn-buyTicket save-editing-button">Save</button>
+          <button type="button" class="btn btn-buyTicket cancel-editing-button">Cancel</button>
+        </div>
+      `);
+
+      // Wait for the browser to update with the changes to the post
+      setTimeout(() => {
+        // SAVE
+        // Click handler for "save" button 
+        postContainer.find('.save-editing-button').click(function () {
+          let newPostText = postContainer.find('.post-text-area').val();
+
+          post.text = newPostText;
+          $.ajax({
+            url: backendAddress2 + '/updatePost/' + post._id,
+            method: 'PATCH',
+            data: post,
+            success(updatedPost) {
+              // Recreate this post using the updated post object from the backend
+              createPostElement(updatedPost);
+            },
+          });
+        });
+
+        // CANCEL
+        // Click handler for "cancel" button
+        postContainer.find('.cancel-editing-button').click(function () {
+          createPostElement(post);
+        });
+      });
+    });
+
+    // DELETE
+    // Click handler for delete button FOR THIS SPECIFIC POST
+    postContainer.find('.delete-post').click(function() {
+      if (confirm("Are you sure you wish to delete this post?")) {
+        $.ajax({
+          url: backendAddress2 + '/deletePost/' + post._id,
+          method: 'DELETE', 
+          success(response) {
+            if (response === 'Post deleted') {
+              postContainer.remove();
+            }
+          },
+        });
+      }
+    });
+  });
+
+  feather.replace();
+}
+// Bella end
