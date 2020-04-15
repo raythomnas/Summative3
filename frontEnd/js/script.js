@@ -9,6 +9,10 @@ feather.replace();
 var backendAddress = 'http://localhost:3000';
 var backendAddress2 = 'http://localhost:5000';
 
+// A fake conference id for all conferences and comments to use
+//  while we figure out how pages will work
+var FAKE_CONFERENCE_ID = '1e9627ee2d5f5ba2841d1623';
+
 //----------------LANDING PAGE JS LOGIC (Vale)---------------------------//
 // console.log('I hope this works');
 // //To show landing page with neccesary features for an external user: all card events, nav login/register options
@@ -333,4 +337,106 @@ $('#changeUserBtn').click(function(){
 });//update user function for Edit User Form
 
 //     // roy end
+
+  // Bella start
+  $.ajax({
+    url: backendAddress2 + '/allPost/' + FAKE_CONFERENCE_ID,
+    method: 'GET',
+    success(eventPosts) {
+      console.log("All posts", eventPosts)
+      for(var i=0; i<eventPosts.length; i++) {
+        let post = eventPosts[i];
+        // Create a container div for posts to go into (no content yet)
+        $('#postContainer').append(`<div class="row row-qa" data-post-id="${post._id}"></div>`);
+
+        // Wait for the browser to update with the post container
+        setTimeout(() => {
+          // Create the actual post content
+          createPostElement(post);
+        });
+      }
+    },
+  });
 });
+
+// Create a post element inside a post container
+// This sets up click events for the edit and delete buttons, etc.
+function createPostElement(post) {
+  // Find the post container element 
+  var postContainer = $(`[data-post-id="${post._id}"]`);
+
+  // Set the contents of the post
+  postContainer.html(`
+      <div class="post-avatar-img" style="background-image: url(${post.userImage});"></div>
+      <div class="col-10 container-qa row">
+        <div class="col-11"><p class="#">${post.text}</p></div>
+        <div class="col-1 text">
+          <i class="icon-event edit-post" data-feather="edit-2"></i>
+          <i class="icon-event delete-post" data-feather="trash"></i>
+        </div>
+      </div>
+    `);
+
+
+  // Wait for the browser to update with the changes from above
+  setTimeout(() => {
+    // EDIT
+    // Click handler for edit button FOR THIS SPECIFIC POST
+    postContainer.find('.edit-post').click(function () {
+      // Replace post with a text area
+      postContainer.html(`
+        <div class="post-avatar-img" style="background-image: url(${post.userImage});"></div>
+        <div class="col-10 ml-4">
+          <textarea class="form-control post-text-area">${post.text}</textarea>
+          <button type="button" class="btn btn-buyTicket save-editing-button">Save</button>
+          <button type="button" class="btn btn-buyTicket cancel-editing-button">Cancel</button>
+        </div>
+      `);
+
+      // Wait for the browser to update with the changes to the post
+      setTimeout(() => {
+        // SAVE
+        // Click handler for "save" button 
+        postContainer.find('.save-editing-button').click(function () {
+          let newPostText = postContainer.find('.post-text-area').val();
+
+          post.text = newPostText;
+          $.ajax({
+            url: backendAddress2 + '/updatePost/' + post._id,
+            method: 'PATCH',
+            data: post,
+            success(updatedPost) {
+              // Recreate this post using the updated post object from the backend
+              createPostElement(updatedPost);
+            },
+          });
+        });
+
+        // CANCEL
+        // Click handler for "cancel" button
+        postContainer.find('.cancel-editing-button').click(function () {
+          createPostElement(post);
+        });
+      });
+    });
+
+    // DELETE
+    // Click handler for delete button FOR THIS SPECIFIC POST
+    postContainer.find('.delete-post').click(function() {
+      if (confirm("Are you sure you wish to delete this post?")) {
+        $.ajax({
+          url: backendAddress2 + '/deletePost/' + post._id,
+          method: 'DELETE', 
+          success(response) {
+            if (response === 'Post deleted') {
+              postContainer.remove();
+            }
+          },
+        });
+      }
+    });
+  });
+
+  feather.replace();
+}
+// Bella end

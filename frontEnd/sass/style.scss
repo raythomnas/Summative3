@@ -70,6 +70,7 @@ h3, h4 {
     border-radius: 30px;
 }
 
+
 // .nav-icon_bottom {
 //   color: white;
 //   height: 30px;
@@ -128,7 +129,6 @@ h3, h4 {
 
 .container-qa{
   background-color: #cdedf6;
-  height: 50px;
   width: 100%;
   border-radius: 10px;
   margin-left: 50px;
@@ -165,5 +165,17 @@ h3, h4 {
 	background-position: center;
 	width: 200px;
 	height: 200px;
+}
+
+.post-avatar-img {
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center;
+  width: 80px;
+  height: 80px;
+}
+
+.qa-edit-delete-icons {
+  path { fill: orange }
 }
 // BELLA ends here
