@@ -15,6 +15,14 @@ h3, h4 {
   box-shadow: 10px 5px 10px #C8C8C8;
 }
 
+.navbar-link {
+  color: #cdedf6;
+}
+
+.link-qa {
+  color: #ef7b45;
+}
+
 .container-page {
   margin-top: 175px;
 }
@@ -83,10 +91,6 @@ h3, h4 {
   border-radius: 30px;
 }
 
-a {
-  color: #cdedf6;
-}
-
 /*LANDING*/
 /*IMAGE TOP*/
 .img-event_top {
@@ -110,7 +114,6 @@ a {
 
 .container-qa {
   background-color: #cdedf6;
-  height: 50px;
   width: 100%;
   border-radius: 10px;
   margin-left: 50px;
@@ -144,8 +147,16 @@ a {
   height: 200px;
 }
 
-.hidden {
-  display: none;
+.post-avatar-img {
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center;
+  width: 80px;
+  height: 80px;
+}
+
+.qa-edit-delete-icons path {
+  fill: orange;
 }
 
 /*# sourceMappingURL=style.css.map */
