@@ -9,6 +9,8 @@ const User = require('./models/user.js'); //this refers to the structure for use
 const Post = require('./models/post');
 const Comment = require('./models/comment');
 const Conference = require('./models/conference.js'); //this refers to the structure for product ojects
+const Post = require('./models/post.js'); 
+const Comment = require('./models/comment.js'); 
 
 const port = 5000; //set server port
 
@@ -76,10 +78,10 @@ app.patch('/updateUser/:id', (req, res) => {
   User.findById(idParam, (err, item) => {
     const hash = bcryptjs.hashSync(req.body.password);
     const updatedUser = {
-      username: req.body.username,
-      email: req.body.email,
-      password: hash,
-      photoUrl: req.body.photoUrl
+      username : req.body.username,
+      email : req.body.email,
+      password : hash,
+      photoUrl : req.body.photoUrl
     };
     User.updateOne({ _id: idParam }, updatedUser).then(result => {
       res.send(result);
@@ -157,7 +159,6 @@ app.post('/writePost', (req, res) => {
     }
   });
 });
-
 //Retrieve all POSTS C(R)UD
 app.get('/allPost/:conferenceId', (req, res) => {
   Post.find({ conferenceId: req.params.conferenceId }).then(result => {
@@ -189,14 +190,17 @@ app.delete('/deletePost/:id', (req, res) => {
 
 //-----------------------------COMMENTS (VALE)---------------------------------------//
 
-//Create a Comment (C)RUD
-app.post('/writeComment', (req, res) => {
-  Post.findOne({ _id: req.body.postId }, (err, postResult) => {
-    if (postResult) {
+//Create a COMMENT (C)RUD
+app.post('/writeComment', (req, res)=>{
+  User.findOne({ _id: req.body.userId }, (err, userResult) => {
+    if (userResult){
       const comment = new Comment({
         _id: new mongoose.Types.ObjectId,
         userId: req.body.userId,
+        conferenceId: req.body.conferenceId,
         postId: req.body.postId,
+        userName: userResult.username,
+        userImage: userResult.photoUrl,
         text: req.body.text,
         imageUrl: req.body.imageUrl,
       });
@@ -208,38 +212,32 @@ app.post('/writeComment', (req, res) => {
   });
 });
 
-//Retrieve all POSTS C(R)UD
-app.get('/allComment', (req, res) => {
-  Comment.find().then(result => { // shoul I add a const post id??
+
+//Retrieve all COMMENTS C(R)UD
+app.get('/allComment/:conferenceId/:postId', (req, res) => {
+  Comment.find({ postId: req.params.postId }).then(result => {
     res.send(result);
   });
 });
 
-//Update project CR(U)D
-app.patch('/updateComment/:id', (req, res) => {
+
+//Update COMMENT CR(U)D
+app.patch('/updateComment/:id', (req, res)=>{
   const idParam = req.params.id;
-  Comment.findById(idParam, (err, project) => {
-    const updatedComment = {
-      text: req.body.text,
-      imageUrl: req.body.imageUrl,
-    };
-    Comment.updateOne({ _id: idParam }, updatedComment).then(result => {
+  Comment.findById(idParam,(err, comment)=>{
+    comment.text= req.body.text;
+    comment.imageUrl= req.body.imageUrl;
+    post.save().then(result => {
       res.send(result);
     }).catch(err => res.send(err));
   }).catch(err => res.send('Not Found'));
 });
 
-//Delete project CRU(D)
-app.delete('/deleteComment/:id', (req, res) => {
+//Delete COMMENT CRU(D)
+app.delete('/deleteComment/:id', (req, res)=>{
   const idParam = req.params.id;
-  Comment.findOne({ _id: idParam }, (err, project) => {
-    if (project) {
-      Comment.deleteOne({ _id: idParam }, err => {
-        res.send('Comment deleted')
-      });
-    } else {
-      res.send('Not found')
-    }
+  Comment.findOne({_id:idParam}, err=>{
+    res.send('Comment deleted')
   }).catch(err => res.send(err));
 });
 

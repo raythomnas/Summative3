@@ -63,3 +63,38 @@ This is an events app where attendees/organizers will be able to read, comment, 
 			Lab computer: http://192.168.33.10
 			Laptop: http://localhost/ (accessing through MAMP)
 
+		FILES STRUCTURE
+			├── ...
+			├── frontEnd                    
+			│   ├── assets
+			│   │ 	├──/images
+			│   │ 	├── icons.html
+			│   │   	└── colours.css   
+			│   ├── css
+			│   │   ├── style.css
+			│   │   └── style.css.map 
+			│   ├── js
+			│   │   └── script.js
+			│   ├── /sass
+			│   │   └── style.scss
+			│   ├── /node_modules
+			│   ├── .gitignore
+			│   ├── config.json
+			│   ├── Gruntfile.js 
+			│   ├── package.json   
+			│   └── index.html                 
+			├── backEnd                    
+			│   ├── /models
+			│   │ 	├── comment.js
+			│   │ 	├── conference.js
+			│   │ 	├── user.js
+			│   │   └── post.js   
+			│   ├── /node_modules
+			│   ├── .gitignore
+			│   ├── config.json
+			│   ├── package-lock.json
+			│   ├── package.json
+			│   └── index.js                      
+			├── config.json                   
+			└── README.md
+

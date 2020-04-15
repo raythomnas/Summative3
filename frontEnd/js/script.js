@@ -14,13 +14,15 @@ var backendAddress2 = 'http://localhost:5000';
 var FAKE_CONFERENCE_ID = '1e9627ee2d5f5ba2841d1623';
 
 //----------------LANDING PAGE JS LOGIC (Vale)---------------------------//
-// console.log('I hope this works');
-// //To show landing page with neccesary features for an external user: all card events, nav login/register options
+console.log('I hope this works');
+//To show landing page with neccesary features for an external user: all card events, nav login/register options
 // $(document).ready(function(){
 //   $('#homePage').show();
 //   $('#logoutBtn').hide();
 //   $('#profileLink').hide();
-//   $('#eventPage').hide();
+//   $('#eventPageZero').hide();
+//   $('#eventPageOne').hide();
+//   $('#eventPageTwo').hide();
 //   $('#viewUserForm').hide();
 //   $('#editForm').hide();
 //   $('#registerForm').hide();
@@ -36,6 +38,7 @@ var FAKE_CONFERENCE_ID = '1e9627ee2d5f5ba2841d1623';
 //       };
 //   $('#homeBtn').click(function(){
 //     $('#homePage').show();
+//     $('#loginForm').hide();
 //   });
 //   $('#registerBtn').click(function(){
 //     $('#homeBtn').show();
@@ -67,11 +70,10 @@ var FAKE_CONFERENCE_ID = '1e9627ee2d5f5ba2841d1623';
 //   });
 //   $('#logoutBtn').click(function(){
 //     console.log('You are logged out');
-//     localStorage.clear();
+//     sessionStorage.clear();
 //     console.log(localStorage);
 //   });
 // });
-
 
 //Custom backend address for other port (roy)
  // let url;
