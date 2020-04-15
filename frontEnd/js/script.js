@@ -10,13 +10,15 @@ var backendAddress = 'http://localhost:3000';
 var backendAddress2 = 'http://localhost:5000';
 
 //----------------LANDING PAGE JS LOGIC (Vale)---------------------------//
-// console.log('I hope this works');
-// //To show landing page with neccesary features for an external user: all card events, nav login/register options
+console.log('I hope this works');
+//To show landing page with neccesary features for an external user: all card events, nav login/register options
 // $(document).ready(function(){
 //   $('#homePage').show();
 //   $('#logoutBtn').hide();
 //   $('#profileLink').hide();
-//   $('#eventPage').hide();
+//   $('#eventPageZero').hide();
+//   $('#eventPageOne').hide();
+//   $('#eventPageTwo').hide();
 //   $('#viewUserForm').hide();
 //   $('#editForm').hide();
 //   $('#registerForm').hide();
@@ -32,6 +34,7 @@ var backendAddress2 = 'http://localhost:5000';
 //       };
 //   $('#homeBtn').click(function(){
 //     $('#homePage').show();
+//     $('#loginForm').hide();
 //   });
 //   $('#registerBtn').click(function(){
 //     $('#homeBtn').show();
@@ -63,11 +66,10 @@ var backendAddress2 = 'http://localhost:5000';
 //   });
 //   $('#logoutBtn').click(function(){
 //     console.log('You are logged out');
-//     localStorage.clear();
+//     sessionStorage.clear();
 //     console.log(localStorage);
 //   });
 // });
-
 
 //Custom backend address for other port (roy)
  let url;
@@ -195,7 +197,7 @@ $(function () {
 
     //Roy start
     
-$('#logOutBtn').click(function(){
+$('#logoutBtn').click(function(){
   console.log('You are logged out');
   sessionStorage.clear();
   $('#viewUserForm').hide();
