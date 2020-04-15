@@ -197,7 +197,7 @@ $(function () {
 
     //Roy start
     
-$('#logoutBtn').click(function(){
+$('#logOutBtn').click(function(){
   console.log('You are logged out');
   sessionStorage.clear();
   $('#viewUserForm').hide();
@@ -315,4 +315,10 @@ $('#changeUserBtn').click(function(){
 });//update user function for Edit User Form
 
 //     // roy end
+
+//--------------------------LANDING PAGE JS LOGIC (Vale)-------------------------------------//
+$()
+
+
+
 });
