@@ -7,6 +7,8 @@ const bcryptjs = require('bcryptjs');//to hash and compare password in an encryp
 const config = require('./config.json');//has credentials
 const User = require('./models/user.js'); //this refers to the structure for user ojects
 const Conference = require('./models/conference.js'); //this refers to the structure for product ojects
+const Post = require('./models/post.js'); 
+const Comment = require('./models/comment.js'); 
 
 const port = 5000; //set server port
 
@@ -60,8 +62,8 @@ app.get('/viewUser/:id', (req,res)=>{ //create request to delete a product
   const user = req.params.userId;
     User.findOne({_id:idParam},(err, productResult)=>{ //search Product db for id
     if (productResult) { //do this if present
-		 res.send(productResult);
-	} else { //if not found do this
+     res.send(productResult);
+  } else { //if not found do this
       res.send('not found') //no match message
     }
   }).catch(err => res.send(err)); //error e=message
@@ -75,9 +77,9 @@ app.patch('/updateUser/:id',(req,res)=> {
     const hash = bcryptjs.hashSync(req.body.password);
     const updatedUser = {
       username : req.body.username,
-  	  email : req.body.email,
-  	  password : hash,
-  	  photoUrl : req.body.photoUrl
+      email : req.body.email,
+      password : hash,
+      photoUrl : req.body.photoUrl
     };
     User.updateOne({_id:idParam}, updatedUser).then(result => {
       res.send(result);
@@ -137,68 +139,63 @@ app.post('/login', (req, res) => {
 //-----------------------------QUESTIONS & ANSWERS (VALE)-----------------------------//
 
 //Create a Post (C)RUD
-app.post('/writePost', (req, res)=>{
-  Post.findOne({authorId: req.body.text.imageUrl},(err, postResult)=>{
-    if (postResult){
+app.post('/writePost', (req, res) => {
+  User.findOne({ _id: req.body.userId }, (err, userResult) => {
+    if (userResult) {
       const post = new Post({
         _id: new mongoose.Types.ObjectId,
-        authorId: req.body.authorId,
+        userId: req.body.userId,
+        userName: userResult.username,
+        userImage: userResult.photoUrl,
+        conferenceId: req.body.conferenceId,
         text: req.body.text,
         imageUrl: req.body.imageUrl,
       });
-      post.save().then(result =>{
+      post.save().then(result => {
         res.send(result);
       }).catch(err => res.send(err));
     }
   });
 });
-
 //Retrieve all POSTS C(R)UD
-app.get('/allPost', (req, res)=>{
-  Post.find().then(result =>{
+app.get('/allPost/:conferenceId', (req, res) => {
+  Post.find({ conferenceId: req.params.conferenceId }).then(result => {
     res.send(result);
   });
 });
-
-//Update project CR(U)D
-app.patch('/updatePost/:id', (req, res)=>{
+//Update post CR(U)D
+app.patch('/updatePost/:id', (req, res) => {
   const idParam = req.params.id;
-  Post.findById(idParam,(err, project)=>{
-    const updatedPost = {
-      text: req.body.text,
-      imageUrl: req.body.imageUrl,
-    };
-    Post.updateOne({_id:idParam}, updatedProject).then(result =>{
-      res.send(result); 
+  Post.findById(idParam, (err, post) => {
+    post.text = req.body.text;
+    post.imageUrl = req.body.imageUrl;
+    post.save().then(result => {
+      res.send(result);
     }).catch(err => res.send(err));
   }).catch(err => res.send('Not Found'));
 });
-
-//Delete project CRU(D)
-app.delete('/deleteProject/:id', (req, res)=>{
+//Delete post CRU(D)
+app.delete('/deletePost/:id', (req, res) => {
   const idParam = req.params.id;
-  Project.findOne({_id:idParam}, (err, project)=>{
-    if (project) {
-      Project.deleteOne({_id:idParam}, err=>{
-        res.send('Post deleted')
-      });
-    } else {
-      res.send('Not found')
-    }
+  Post.deleteOne({ _id: idParam }, err => {
+    res.send('Post deleted');
   }).catch(err => res.send(err));
 });
 //----------------------------^POSTS Section^-----------------------------------------//
 
 //-----------------------------COMMENTS (VALE)---------------------------------------//
 
-//Create a Comment (C)RUD
+//Create a COMMENT (C)RUD
 app.post('/writeComment', (req, res)=>{
-  Comment.findOne({authorId: req.body.text.imageUrl},(err, commentResult)=>{
-    if (commentResult){
+  User.findOne({ _id: req.body.userId }, (err, userResult) => {
+    if (userResult){
       const comment = new Comment({
         _id: new mongoose.Types.ObjectId,
-        authorId: req.body.authorId,
+        userId: req.body.userId,
+        conferenceId: req.body.conferenceId,
         postId: req.body.postId,
+        userName: userResult.username,
+        userImage: userResult.photoUrl,
         text: req.body.text,
         imageUrl: req.body.imageUrl,
       });
@@ -209,38 +206,30 @@ app.post('/writeComment', (req, res)=>{
   });
 });
 
-//Retrieve all POSTS C(R)UD
-app.get('/allComment', (req, res)=>{
-  Comment.find().then(result =>{ // shoul I add a const post id??
+//Retrieve all COMMENTS C(R)UD
+app.get('/allComment/:conferenceId/:postId', (req, res) => {
+  Comment.find({ postId: req.params.postId }).then(result => {
     res.send(result);
   });
 });
 
-//Update project CR(U)D
+//Update COMMENT CR(U)D
 app.patch('/updateComment/:id', (req, res)=>{
   const idParam = req.params.id;
-  Comment.findById(idParam,(err, project)=>{
-    const updatedComment = {
-      text: req.body.text,
-      imageUrl: req.body.imageUrl,
-    };
-    Comment.updateOne({_id:idParam}, updatedComment).then(result =>{
-      res.send(result); 
+  Comment.findById(idParam,(err, comment)=>{
+    comment.text= req.body.text;
+    comment.imageUrl= req.body.imageUrl;
+    post.save().then(result => {
+      res.send(result);
     }).catch(err => res.send(err));
   }).catch(err => res.send('Not Found'));
 });
 
-//Delete project CRU(D)
+//Delete COMMENT CRU(D)
 app.delete('/deleteComment/:id', (req, res)=>{
   const idParam = req.params.id;
-  Comment.findOne({_id:idParam}, (err, project)=>{
-    if (project) {
-      Comment.deleteOne({_id:idParam}, err=>{
-        res.send('Comment deleted')
-      });
-    } else {
-      res.send('Not found')
-    }
+  Comment.findOne({_id:idParam}, err=>{
+    res.send('Comment deleted')
   }).catch(err => res.send(err));
 });
 

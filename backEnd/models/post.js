@@ -2,10 +2,16 @@ const mongoose = require('mongoose'); // since we are using mongoose we have to 
 
 const  postSchema = new mongoose.Schema({
   _id : mongoose.Schema.Types.ObjectId,
-  authorId : {
-  type : mongoose.Schema.Types.ObjectId,
-  ref : 'User'
-  }
+  userId : {
+	  type : mongoose.Schema.Types.ObjectId,
+	  ref : 'User'
+  },
+  conferenceId: {
+	  type : mongoose.Schema.Types.ObjectId,
+	  ref : 'Conference'
+  },
+  userName: String,
+  userImage: String,
   text : String,
   imageUrl : String
 });
