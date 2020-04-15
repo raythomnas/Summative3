@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
 <!--===================== HEADER: LOGO, USER FAVICON, LOGOUT ICON (Vale)=================================-->
 	<nav id="nav" class="navbar fixed-top navbar-expand-lg nav-style_top">
 		<ul class="navbar-nav container">
@@ -27,6 +28,7 @@
 			<li id="loginBtn" class="nav-item">
 				<button type="button" class="btn btn-outline-light btn-lg nav-text_top">L O G I N</button>
 			</li>
+
 			<li id="usernameInput" class="nav-item hidden">
 				<input type="text" class="btn btn-outline-light btn-lg nav-text_top" placeholder="E M A I L" id="loginEmail"></input>
 			</li>
@@ -44,9 +46,70 @@
 	</nav><!-- header menu -->
 
 
-	<div class="container"> <!-- Add after this <div> all the other content -->
+<!--================================= REGISTRATION FORM (Bella)=======================================-->
+<!-- 	<form id="registerForm" class="container container-page" action="#">
+		<h2>Register</h2>
+		<div class="form-group">
+			<label for="registerUsername">Username</label>
+			<input type="text" class="form-control" id="registerUsername" placeholder="Username">
+		</div>
+
+		<div class="form-group">
+			<label for="registerEmail">Email</label>
+			<input type="email" class="form-control" id="registerEmail" placeholder="Email address">
+		</div>
+
+		<div class="form-group">
+			<label for="registerPassword">Password</label>
+			<input type="password" class="form-control" id="registerPassword" placeholder="Password">
+		</div>
+
+		<div class="form-group">
+			<label for="registerPhoto">Profile photo (Optional)</label>
+			<input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
+		</div>
+		<button type="submit" class="btn btn-primary">Register</button>
+		<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
+	</form> -->
+
+<!--================================ LOGIN FORM (Bella)============================================-->
+<!-- 	<form id="loginForm" class="container container-page" action="#">
+		<h2>Login</h2>
+		<div class="form-group">
+			<label for="loginEmail">Email</label>
+			<input type="email" class="form-control" id="loginEmail" placeholder="Email address">
+		</div>
+
+		<div class="form-group">
+			<label for="loginPassword">Password</label>
+			<input type="password" class="form-control" id="loginPassword" placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-primary">Login</button>
+		<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
+	</form> -->
+
+<!--====================================== VIEW USER PROFILE (Roy)=================================-->
+
+<!-- Roys view users, view a user, edit user -->
+
+<!-- Moved this stuff up to the header -->
+
+<!-- View all users form, just here for checking -->
+
+<!-- 		<form id="viewAllForm">
+			<h2>View all users</h2>
+		
+		<p class="btn btn-primary" id="test">View all</p>
+
+		<div id="usersAllDump">
+			
+		</div>
+
+		</form> -->
+
 
 <!--ROY user profile modal (needs to be styled) -->
+
 
 <div class="modal" id="userDump" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -139,10 +202,43 @@
 
 <!-- modal register end -->
 
-<!-- LANDING PAGE (Vale)-->
+<!-- ===============================EDIT USER PROFILE (Roy) ===========================================-->
+	<form id="editForm" class="container container-page hidden">
+		<div id="passwordCheckForm">
+			<h2>Edit a user</h2>
+			<div class="form-group">
+				<label for="idCheckEdit">Enter Password</label>
+				<input type="text" class="form-control" id="idCheckEdit" placeholder="Password here">
+			</div>
+			<p type="submit" class="btn btn-primary" id="changeUserPassCheck">Commit changes</p>
+		</div>
+		<div id="hiddenEditForm" class="hidden">
+			<div class="form-group">
+				<label for="usernameEdit">New Username</label>
+				<input type="text" class="form-control" id="usernameEdit" placeholder="New username">
+			</div>
+
+			<div class="form-group">
+				<label for="userEmailEdit">New Email</label>
+				<input type="email" class="form-control" id="userEmailEdit" placeholder="New email address">
+			</div>
+
+			<div class="form-group">
+				<label for="userPasswordEdit">New Password</label>
+				<input type="password" class="form-control" id="userPasswordEdit" placeholder="New password">
+			</div>
+
+			<div class="form-group">
+				<label for="userImgEdit">New Profile photo</label>
+				<input type="text" class="form-control" id="userImgEdit" placeholder="New photo URL">
+			</div>
+			<p type="submit" class="btn btn-primary" id="changeUserBtn">Commit changes</p>
+		</div>
+
+		<div id="userChangedDump"></div>
+	</form>
 
 <!--================================= HOME PAGE (Vale)==============================================-->
-
 	<!-- Popular events -->
 	<div id="homePage" class="container container-page">
 		<h3 class="container-fluid">Popular this week</h3>
@@ -164,6 +260,7 @@
 	<!-- All Events -->
 		<h4 class="container-fluid">Events</h4>
 
+		<!-- Event Card (Vale) -->
 		<div class="container card mb-3" style="max-width: 540px;">
 			<div class="row no-gutters">
 			    <div class="col-md-4">
@@ -219,6 +316,7 @@
 	</div>
 
 </div> <!-- landing page ends -->
+
 	
 <!--======================================= EVENTS PAGE (Vale)======================================-->
 	<!-- Image, Title -->
@@ -263,7 +361,7 @@
 			</div> 
 		</div> <!-- END Icons: Events details -->
 		<br>
-		<a href="https://www.conferenz.co.nz/events/2020-business-intelligence-summit" target="_blank"><button type="button" class="btn btn-buyTicket">Buy Tickets</button></a>
+		<a type="button" class="btn btn-buyTicket" href="https://www.conferenz.co.nz/events/2020-business-intelligence-summit" target="_blank">Buy Tickets</a>
 		<hr class="hr-border">
 
 		<!-- *********** Event Toggle starts here********** -->
@@ -377,7 +475,7 @@
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
-				<p class="container">You must be <button type="button" class="btn btn-link">logged in</button> to post a comment, if you don't have an account, please <button type="button" class="btn btn-link">register.</button></p>
+				<p class="container">You must be <a class="link-qa" href="#loginForm">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#registerForm"> register.</a></p>
 			</div>
 			<div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
 				<div class="post">
@@ -445,35 +543,35 @@
 			</div> 
 		</div> <!-- END Icons: Events details -->
 		<br>
-		<a href="https://www.eventfinda.co.nz/2020/paint-your-own-masterpiece-with-heart-for-art-nz/wellington" target="_blank"><button type="button" class="btn btn-buyTicket">Buy Tickets</button></a>
+		<a type="button" class="btn btn-buyTicket" href="https://www.eventfinda.co.nz/2020/paint-your-own-masterpiece-with-heart-for-art-nz/wellington" target="_blank">Buy Tickets</a>
 		<hr class="hr-border">
 
 		<!-- *********** Event Toggle starts here********** -->
-		<div class="accordion" id="accordionEvent">
+		<div class="accordion" id="accordionEventOne">
 		<!--Location-->
 			<div class="row">
-				<h5 class="col-10" id="eventLocation">Location</h5>
+				<h5 class="col-10" id="eventLocationOne">Location</h5>
 				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
 			</div>
-			<div id="collapseZero" class="collapse" aria-labelledby="eventLocation" data-parent="#accordionEvent">
+			<div id="collapseFive" class="collapse" aria-labelledby="eventLocationOne" data-parent="#accordionEventOne">
 				<iframe class="container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.7725109677644!2d174.8125787154242!3d-41.33555987926901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38a55e4655a6ab%3A0x7117b13c2989a2d0!2sHeart%20for%20Art!5e0!3m2!1sen!2snz!4v1586830914257!5m2!1sen!2snz"  width="400" height="250" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 			</div>
 			<hr class="hr-border">
 
 		<!-- Event Description -->
 			<div class="row">
-				<h5 class="col-10" id="eventDescription">Event Description</h5>
+				<h5 class="col-10" id="eventDescriptionOne">Event Description</h5>
 				<div class="col-2">
-					<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
 			</div>
-			<p id="collapseOne" class="collapse container" aria-labelledby="eventDescription" data-parent="#accordionEvent">
+			<p id="collapseSix" class="collapse container" aria-labelledby="eventDescriptionOne" data-parent="#accordionEventOne">
 				Make your life more fun.<br><br> Our Paint Parties are a super fun and creative way to unwind and try something new. Join us in our 
 				art studio to paint, socialise, unwind and find your creativity. We’ll provide all the arty materials you’ll need and show you, 
 				step by step, how to create your own painting. And, you don’t need any experience. Our Paint Parties are created especially for 
@@ -488,14 +586,14 @@
 
 		<!--Organizers-->
 			<div class="row">
-				<h5 class="col-10" id="eventOrganizer">Organizer</h5>
+				<h5 class="col-10" id="eventOrganizerOne">Organizer</h5>
 				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
 			</div>
-			<div id="collapseTwo" class="collapse" aria-labelledby="eventOrganizer" data-parent="#accordionEvent">
+			<div id="collapseSeven" class="collapse" aria-labelledby="eventOrganizerOne" data-parent="#accordionEventOne">
 				<div class="card-group">
 					<div class="card d-flex align-items-center">
 					<div class="avatar-img" style="background-image: url(assets/images/heart-for-art-logo.jpg);"></div>
@@ -509,14 +607,14 @@
 			
 		<!-- Speakers-->
 			<div class="row">
-				<h5 class="col-10" id="eventSpeakers">Speakers</h5>
+				<h5 class="col-10" id="eventSpeakersOne">Speakers</h5>
 				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
 			</div>
-			<div id="collapseThree" class="collapse container show" aria-labelledby="eventSpeakers" data-parent="#accordionEvent">
+			<div id="collapseEight" class="collapse container show" aria-labelledby="eventSpeakersOne" data-parent="#accordionEventOne">
 
 				<div class="card-group">
 						<div class="card d-flex align-items-center">
@@ -531,15 +629,15 @@
 
 		<!-- Questions & Answers -->
 			<div class="row">
-				<h5 class="col-10" id="eventQA">Questions & Answers</h5>
+				<h5 class="col-10" id="eventQAOne">Questions & Answers</h5>
 				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
 				<p class="container">You must be <button type="button" class="btn btn-link">logged in</button> to post a comment, if you don't have an account, please <button type="button" class="btn btn-link">register.</button></p>
 			</div>
-			<div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
+			<div id="collapseNine" class="collapse show container" aria-labelledby="eventQAOne" data-parent="#accordionEventOne">
 				<div class="post">
 					<div class="row row-qa">
 						<i class="col-1 icon-qa" data-feather="user"></i> 
@@ -733,10 +831,6 @@
 			</div>
 		</div> <!-- end accordion event -->
 	<!-- end event Roy -->
-
-	</div> <!-- EVENT PAGE ends -->
-
-
 
 	</div> <!-- EVENT PAGE ends -->
 
