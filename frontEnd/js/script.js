@@ -316,9 +316,5 @@ $('#changeUserBtn').click(function(){
 
 //     // roy end
 
-//--------------------------LANDING PAGE JS LOGIC (Vale)-------------------------------------//
-$()
-
-
 
 });
