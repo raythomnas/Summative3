@@ -187,6 +187,9 @@ $(function () {
                         $('#usernameInput').css("display", "none");
                         $('#passwordInput').css("display", "none");
                         $('#loginBtn2').css("display", "none");
+                        $('#loginBtn').hide();
+                        $('#loginDump').modal('hide');
+                        $('#registerBtn').hide();
                       
                         //roys addition end
 
@@ -201,14 +204,7 @@ $(function () {
     //Roy start
 
     // function to display log in inputs
-$('#loginBtn').click(function(){
-  $('#usernameInput').show();
-  $('#passwordInput').show();
-  $('#passwordInput').show();
-  $('#loginBtn').hide();
-  $('#registerBtn').hide();
-  $('#loginBtn2').show();
-});
+
     
 $('#logOutBtn').click(function(){
   console.log('You are logged out');
@@ -250,12 +246,9 @@ $('#checkById').click(function(){
         document.getElementById('userChangedDump').innerHTML += ``;
         document.getElementById('userDetails').innerHTML = '';
         document.getElementById('profileHeader').innerHTML = '';
-        document.getElementById('profileHeader').innerHTML += `<h5>User profile for ${viewUser.username}</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                            </button>`;
-        document.getElementById('userDetails').innerHTML += `<p>${viewUser.email}</p>
-                                                        <img src="${viewUser.photoUrl}" class="img-fluid"></img>`;
+        document.getElementById('userDetails').innerHTML += `<img src="${viewUser.photoUrl}" class="rounded mx-auto d-block"></img>
+                                                        <p class="text-center">${viewUser.username}</p>
+                                                        <p class="text-center">${viewUser.email}</p>`;
         
         $('#editForm').css("display", "block");
       },//success
