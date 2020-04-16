@@ -8,9 +8,6 @@ const config = require('./config.json');//has credentials
 const User = require('./models/user'); //this refers to the structure for user ojects
 const Post = require('./models/post');
 const Comment = require('./models/comment');
-
-
-
 const port = 5000; //set server port
 
 //connect to db
