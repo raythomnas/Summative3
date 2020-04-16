@@ -4,6 +4,11 @@
 
 body {
   background-color: white;
+  margin-bottom: 100px;
+}
+
+h2 {
+  color: #cdedf6;
 }
 
 h3, h4 {
@@ -15,6 +20,11 @@ h3, h4 {
   box-shadow: 10px 5px 10px #C8C8C8;
 }
 
+.carrousel-caption-container {
+  background-color: grey;
+  opacity: 50%;
+}
+
 .navbar-link {
   color: #cdedf6;
 }
@@ -24,7 +34,7 @@ h3, h4 {
 }
 
 .container-page {
-  margin-top: 175px;
+  margin-top: 192px;
 }
 
 /*LINES <HR>*/
@@ -104,8 +114,8 @@ h3, h4 {
   font-size: 1.5rem;
 }
 
-.icon-body {
-  color: #5eb1bf;
+.icon-carrousel {
+  color: white;
 }
 
 .container-comments {
@@ -157,6 +167,10 @@ h3, h4 {
 
 .qa-edit-delete-icons path {
   fill: orange;
+}
+
+.event-card {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
