@@ -535,6 +535,8 @@ function createPostElement(post) {
     });
   });
 
+
+
   // Draw any feather icons
   feather.replace();
 
