@@ -20,9 +20,9 @@ console.log('I hope this works');
 //   $('#homePage').show();
 //   $('#logoutBtn').hide();
 //   $('#profileLink').hide();
-//   $('#eventPageZero').hide();
-//   $('#eventPageOne').hide();
-//   $('#eventPageTwo').hide();
+//   $('#event-page-000000000000000000000000').hide();
+//   $('#event-page-000000000000000000000001').hide();
+//   $('#event-page-000000000000000000000002').hide();
 //   $('#viewUserForm').hide();
 //   $('#editForm').hide();
 //   $('#registerForm').hide();
@@ -95,6 +95,10 @@ console.log('I hope this works');
 // jQuery - wait until the page has finished loading
 $(function () {
     // Bella start
+    $('#homePage').show();
+    $('#event-page-000000000000000000000000').hide();
+    $('#event-page-000000000000000000000001').hide();
+    $('#event-page-000000000000000000000002').hide();
 
     // Function for when the register form is submitted
     $('#registerForm').on('submit', function () {
@@ -351,6 +355,46 @@ $('#changeUserBtn').click(function(){
         });
       }
     },
+  });
+
+  // Click home button in nav
+  $('#nav-home-btn').click(function() {
+    $('#homePage').show();
+    $('#event-page-000000000000000000000000').hide();
+    $('#event-page-000000000000000000000001').hide();
+    $('#event-page-000000000000000000000002').hide();
+  });
+
+  // Click home button in footer
+  $('#footer-home-btn').click(function() {
+    $('#homePage').show();
+    $('#event-page-000000000000000000000000').hide();
+    $('#event-page-000000000000000000000001').hide();
+    $('#event-page-000000000000000000000002').hide();
+  });
+
+  // Click First event card (on home page)
+  $('[data-event-card-event-id="000000000000000000000000"]').click(function() {
+    $('#homePage').hide();
+    $('#event-page-000000000000000000000000').show();
+    $('#event-page-000000000000000000000001').hide();
+    $('#event-page-000000000000000000000002').hide();
+  });
+
+  // Click Second event card (on home page)
+  $('[data-event-card-event-id="000000000000000000000001"]').click(function() {
+    $('#homePage').hide();
+    $('#event-page-000000000000000000000000').hide();
+    $('#event-page-000000000000000000000001').show();
+    $('#event-page-000000000000000000000002').hide();
+  });
+
+  // Click Third event card (on home page)
+  $('[data-event-card-event-id="000000000000000000000002"]').click(function() {
+    $('#homePage').hide();
+    $('#event-page-000000000000000000000000').hide();
+    $('#event-page-000000000000000000000001').hide();
+    $('#event-page-000000000000000000000002').show();
   });
 });
 
