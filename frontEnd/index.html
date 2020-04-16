@@ -20,7 +20,7 @@
 	<nav id="nav" class="navbar fixed-top navbar-expand-lg nav-style_top">
 		<ul class="navbar-nav container">
 			<li id="homeBtn" class="nav-item col-6">
-				<a class="navbar-brand" href="#homePage"><h2>M E E T apps</h2><span class="sr-only">(current)</span></a> <!-- here introduce image logo -->
+				<a class="navbar-brand" href="#" id="nav-home-btn"><h2>M E E T apps</h2><span class="sr-only">(current)</span></a> <!-- here introduce image logo -->
 			</li>
 			<li id="registerBtn" class="nav-item">
 				<button type="button" class="btn btn-outline-light btn-lg nav-text_top" data-toggle="modal" data-target="#registerDump">R E G I S T E R</button>
@@ -28,7 +28,8 @@
 			<li id="loginBtn" class="nav-item">
 				<button type="button" class="btn btn-outline-light btn-lg nav-text_top" data-toggle="modal" data-target="#loginDump">L O G I N</button>
 			</li>
-			<li id="checkById" class="nav-item hidden">
+			<li id="checkById" class="nav-item d-none">
+        <p id="welcomeMessage" class="nav-text_top d-none"></p>
 				<i class="nav-icon_top" data-feather="user"  data-toggle="modal" data-target="#userDump"></i>
 			</li>
 		</ul>
@@ -94,35 +95,37 @@
 <div class="modal" id="registerDump" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-body">
-        <form id="registerForm" action="#">
-			<h2 class="w-100 text-center">Register</h2>
-			<div class="form-group">
-				<label for="registerUsername" class="w-100 text-center">Username</label>
-				<input type="text" class="form-control" id="registerUsername" placeholder="Username">
-			</div>
 
-			<div class="form-group">
-				<label for="registerEmail" class="w-100 text-center">Email</label>
-				<input type="email" class="form-control" id="registerEmail" placeholder="Email address">
-			</div>
+      <form id="registerForm" action="#">
+        <div class="modal-body">
+          <h2 class="w-100">Register</h2>
+          <div class="form-group">
+            <label for="registerUsername" class="w-100">Username</label>
+            <input type="text" class="form-control" id="registerUsername" placeholder="Username">
+          </div>
 
-			<div class="form-group">
-				<label for="registerPassword" class="w-100 text-center">Password</label>
-				<input type="password" class="form-control" id="registerPassword" placeholder="Password">
-			</div>
+          <div class="form-group">
+            <label for="registerEmail" class="w-100">Email</label>
+            <input type="email" class="form-control" id="registerEmail" placeholder="Email address">
+          </div>
 
-			<div class="form-group">
-				<label for="registerPhoto" class="w-100 text-center">Profile photo</label>
-				<input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
-			</div>
-			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
-		</form>
-      </div>
-      <div class="modal-footer">
-		<button type="submit" class="btn btn-primary" style="background-color: blue;">Register</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+          <div class="form-group">
+            <label for="registerPassword" class="w-100">Password</label>
+            <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+          </div>
+
+          <div class="form-group">
+            <label for="registerPhoto" class="w-100">Profile photo</label>
+            <input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
+          </div>
+          <div class="alert alert-danger d-none" role="alert" id="registerError"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-buyTicket">Register</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div class="alert alert-danger d-none" role="alert" id="registerError"></div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -134,24 +137,34 @@
 <div class="modal" id="loginDump" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
+      <!-- Header -->
       <div class="modal-header" id="profileHeader">
         <h2 class="w-100 text-center">Login</h2>
       </div>
-      <div class="modal-body">
-			<div id="usernameInput">
-				<label for="loginEmail" class="w-100 text-center">email</label>
-				<input type="text" class="form-control" id="loginEmail"></input>
-			</div>
-			<div id="passwordInput">
-				<label for="loginPassword" class="w-100 text-center">password</label>
-				<input type="text" class="form-control" id="loginPassword"></input>
-			</div>
-      </div>
-      <div class="modal-footer">
-      	<button type="button" class="btn w-100 btn-primary" style="background-color: blue;" id="loginBtn2">Login</button>
-		<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
-        <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">Close</button>
-      </div>
+
+      <!-- Login form -->
+		  <form id="loginForm" action="#">
+        <!-- Body -->
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="Email address">
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+              <button type="submit" class="btn w-100 btn-buyTicket">Login</button>
+              <div class="alert alert-danger d-none w-100" role="alert" id="loginError"></div>
+              <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">Close</button>
+        </div>
+	    </form>
     </div>
   </div>
 </div>
@@ -181,13 +194,13 @@
 		<h4 class="container-fluid">Events</h4>
 
 		<!-- Event Card (Vale) -->
-		<div class="container card mb-3" style="max-width: 540px;">
+		<div class="container card mb-3 event-card" style="max-width: 540px;" data-event-card-event-id="000000000000000000000000">
 			<div class="row no-gutters">
 			    <div class="col-md-4 card-img" style="background-image: url('assets/images/business.jpg')"></div>
 				
 			    <div class="col-md-8">
 			    	<div class="card-body">
-			    		<a href="#eventPageZero"><h5 class="card-title">Business Intelligence Summit 2020</h5></a>
+			    		<a href="#"><h5 class="card-title">Business Intelligence Summit 2020</h5></a>
 			        	<p class="card-text">04-05.08.2020</p>
 			        	<p class="card-text">7:00PM</p>
 			        	<p class="card-text">Heritage, Auckland</p>
@@ -197,13 +210,13 @@
 		</div>
 
 		<!-- Event Card (Bella) -->
-		<div class="container card mb-3" style="max-width: 540px;">
+		<div class="container card mb-3 event-card" style="max-width: 540px;" data-event-card-event-id="000000000000000000000001">
 			<div class="row no-gutters">
 				<div class="col-md-4 card-img" style="background-image: url('assets/images/heart-for-art.jpg')">
 				</div>
 				<div class="col-md-8">
 					<div class="card-body">
-						<a href="#eventPageOne"><h5 class="card-title">Paint Your Own Masterpiece with Heart for Art NZ</h5></a>
+						<a href="#"><h5 class="card-title">Paint Your Own Masterpiece with Heart for Art NZ</h5></a>
 						<p class="card-text">25.04.2020.</p>
 						<p class="card-text">3:00PM - 6:00PM</p>
 						<p class="card-text">Heart for Art, 24 Kekerenga St, Wellington</p>
@@ -214,7 +227,7 @@
 
 <!-- event card roy -->
 
-    <div class="container card mb-3" style="max-width: 540px;">
+    <div class="container card mb-3 event-card" style="max-width: 540px;" data-event-card-event-id="000000000000000000000002">
           <div class="row no-gutters">
               <div class="col-md-4">
                 <img src="#" class="card-img" alt="event image">
@@ -222,7 +235,7 @@
 
               <div class="col-md-8">
                 <div class="card-body">
-                  <a href="#eventPage2"><h5 class="card-title">Walking Wellington</h5></a>
+                  <a href="#"><h5 class="card-title">Walking Wellington</h5></a>
                     <p class="card-text">15.04.2020.</p>
                     <p class="card-text">7:00AM</p>
                     <p class="card-text">Mt Vic</p>
@@ -238,7 +251,7 @@
 	
 <!--======================================= EVENTS PAGE (Vale)======================================-->
 	<!-- Image, Title -->
-	<div id="eventPageZero" class="container container-page">
+	<div id="event-page-000000000000000000000000" class="container container-page">
 		<img class="container" src="../frontEnd/assets/images/eventOne.jpg" alt="image event"><br><br>
 		<h3>Business Intelligence Summit 2020</h3>
 		<hr class="hr-border">
@@ -331,14 +344,8 @@
 					<div class="card d-flex align-items-center">
 						<div class="avatar-img" style="background-image: url(assets/images/speakerEventOne.jpg);"></div>
 				    	<div class="card-body">
-				      		<h5 class="card-title">name org</h5>
+				      		<h5 class="card-title">Shane Wohlers</h5>
 				    	</div>
-				  	</div>
-				  	<div class="card d-flex align-items-center">
-					    <div class="avatar-img" style="background-image: url(assets/images/heart-for-art-logo.jpg);"></div>
-					    <div class="card-body">
-					    	<h5 class="card-title">name org</h5>
-					    </div>
 				  	</div>
 				</div>
 			</div>
@@ -385,6 +392,7 @@
 			</div>
 			<hr class="hr-border">
 
+
 		<!-- Questions & Answers -->
 			<div class="row">
 				<h5 class="col-10" id="eventQA">Questions & Answers</h5>
@@ -393,10 +401,31 @@
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
-				<p class="container">You must be <a class="link-qa" href="#loginForm">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#registerForm"> register.</a></p>
-			</div>
+      </div>
+      
+      <div class="qa-logged-out">
+        <p class="container">You must be <a class="link-qa" href="#" data-toggle="modal" data-target="#loginDump">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#" data-toggle="modal" data-target="#registerDump"> register.</a></p>
+      </div>
+
+      <div class="qa-logged-in d-none">
+        <p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
+        <form id="post-form-000000000000000000000000" action="#">
+          <div class="input-group container">
+            <textarea class="form-control mb-3" id="post-contents-000000000000000000000000"></textarea>
+          </div>
+          <div class="row container mb-5">
+            <!-- <div class="col-2">
+              <button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
+            </div> -->
+            <div class="col-5">
+              <button type="submit" class="btn btn-buyTicket col-4">Post</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
 			<div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
-				<div class="post" id="postContainer">
+				<div class="post" id="postContainer-000000000000000000000000">
 				</div>
 			</div>
 		</div> <!-- end accordion event -->
@@ -407,7 +436,7 @@
 	
 	<!-- Event Page (Bella) -->
 	<!-- Image, Title -->
-	<div id="eventPageOne" class="container container-page">
+	<div id="event-page-000000000000000000000001" class="container container-page">
 		<img class="container" src="assets/images/heart-for-art-painting.jpg" alt="image event"><br><br>
 		<h3>Paint Your Own Masterpiece with Heart for Art NZ</h3>
 		<hr class="hr-border">
@@ -533,59 +562,48 @@
 				</div>
 			<hr class="hr-border">
 
-		<!-- Questions & Answers (logged out)-->
+      <!-- Questions & Answers -->
 			<div class="row">
-				<h5 class="col-10" id="eventQAOne">Questions & Answers</h5>
+				<h5 class="col-10" id="eventQA">Questions & Answers</h5>
 				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
-				<p class="container">You must be <button type="button" class="btn btn-link">logged in</button> to post a comment, if you don't have an account, please <button type="button" class="btn btn-link">register.</button></p>
-			</div>
-			<div id="collapseNine" class="collapse show container" aria-labelledby="eventQAOne" data-parent="#accordionEventOne">
-				<div class="post">
-					<div class="row row-qa">
-						<i class="col-1 icon-qa" data-feather="user"></i> 
-						<div class="col-10 container-qa">
-							<p class="#">Hi, I would like to know if there is a refund.</p>
-						</div>
-					</div>
-					<div class="row">
-						<i class="col-1 icon-qa" data-feather="user"></i> 
-						<div class="col-10 container-qa">
-							<p class="#">yes, 100% refund if the event get cancelled by the organizer.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><br><br> <!-- end accordion event -->
+      </div>
+      
+      <div class="qa-logged-out">
+        <p class="container">You must be <a class="link-qa" href="#" data-toggle="modal" data-target="#loginDump">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#" data-toggle="modal" data-target="#registerDump"> register.</a></p>
+      </div>
 
-		<!-- Questions & Answers (logged in)-->
-		<div class="row">
-				<h5 class="col-10" id="eventQAOne">Questions & Answers</h5>
-				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-						<i class="icon-toggle" data-feather="plus"></i>
-					</button>
+      <div class="qa-logged-in d-none">
+        <p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
+        <form id="post-form-000000000000000000000001" action="#">
+          <div class="input-group container">
+            <textarea class="form-control mb-3" id="post-contents-000000000000000000000001"></textarea>
+          </div>
+          <div class="row container mb-5">
+            <!-- TODO attach image to post -->
+            <!-- <div class="col-2">
+              <button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
+            </div> -->
+            <div class="col-5">
+              <button type="submit" class="btn btn-buyTicket col-4">Post</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+			<div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
+				<div class="post" id="postContainer-000000000000000000000001">
 				</div>
-				<p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
-				<div class="input-group container">
-					<textarea class="form-control" aria-label="With textarea"></textarea><br><br>
-				</div><br>
-				<div class="row container">
-					<button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
-					<div class="col-1"></div>
-					<button type="button" class="btn btn-buyTicket col-4">Post</button>
-					<div class="col-5"></div>
-				</div>
-				
-			</div>
-			<div id="collapseNine" class="collapse show container" aria-labelledby="eventQAOne" data-parent="#accordionEventOne">
-		</div> <!-- end accordion event -->
+      </div>
+		</div>
+	</div> <!-- EVENT PAGE ends -->
+
 
 		<!-- event Roy -->
-<div id="eventPage2" class="container container-page">
+<div id="event-page-000000000000000000000002" class="container container-page">
 		<img class="container" src="../frontEnd/assets/images/eventOne.jpg" alt="image event"><br><br>
 		<h3>Walking Wellington</h3>
 		<hr class="hr-border">
@@ -652,94 +670,83 @@
 			<hr class="hr-border">
 
 		<!--Organizers-->
-			<div class="row">
-				<h5 class="col-10" id="eventOrganizer2">Organizer</h5>
-				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
-						<i class="icon-toggle" data-feather="plus"></i>
-					</button>
-				</div>
+		<div class="row">
+			<h5 class="col-10" id="eventOrganizerOne">Organizer</h5>
+			<div class="col-2">
+				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+					<i class="icon-toggle" data-feather="plus"></i>
+				</button>
 			</div>
-			<div id="collapseTwo2" class="collapse" aria-labelledby="eventOrganizer2" data-parent="#accordionEvent2">
-				<div class="card-group">
-					<div class="card">
-						<img src="#" class="card-img-top img-speaker" alt="photo profile">
-				    	<div class="card-body">
-				      		<h5 class="card-title">name org</h5>
-				    	</div>
-				  	</div>
-				  	<div class="card">
-					    <img src="#" class="card-img-top img-speaker" alt="photo profile">
-					    <div class="card-body">
-					    	<h5 class="card-title">name org</h5>
-					    </div>
-				  	</div>
-				</div>
+		</div>
+		<div id="collapseSeven" class="collapse" aria-labelledby="eventOrganizerOne" data-parent="#accordionEventOne">
+			<div class="card-group">
+				<div class="card d-flex align-items-center">
+				<div class="avatar-img" style="background-image: url(assets/images/speakerEventThree.jpg);"></div>
+					<div class="card-body">
+						  <h5 class="card-title">Anshuman Banerjee</h5>
+					</div>
+				  </div>
 			</div>
-			<hr class="hr-border">
+		</div>
+		<hr class="hr-border">
 			
 		<!-- Speakers-->
-			<div class="row">
-				<h5 class="col-10" id="eventSpeakers2">Speakers</h5>
-				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
-						<i class="icon-toggle" data-feather="plus"></i>
-					</button>
-				</div>
+		<div class="row">
+			<h5 class="col-10" id="eventSpeakersOne">Speakers</h5>
+			<div class="col-2">
+				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+					<i class="icon-toggle" data-feather="plus"></i>
+				</button>
 			</div>
-			<div id="collapseThree2" class="collapse container show" aria-labelledby="eventSpeakers" data-parent="#accordionEvent2">
+		</div>
+		<div id="collapseEight" class="collapse container" aria-labelledby="eventSpeakersOne" data-parent="#accordionEventOne">
 
-				<div class="card-group">
-					<div class="card">
-						<img src="../frontEnd/assets/images/speakerEventOne.jpg" class="card-img-top img-speaker" alt="photo profile">
-				    	<div class="card-body">
-				      		<h5 class="card-title">John V</h5>
-				      		<p class="card-text">Manager - Wellington walking tours</p>
-				    	</div>
-				  	</div>
-				</div>
+			<div class="card-group">
+					<div class="card d-flex align-items-center">
+						<div class="avatar-img" style="background-image: url(assets/images/speakerEventTwo.jpg);"></div>
+						<div class="card-body">
+							<h5 class="card-title">Kalyn De Castro<Var></Var></h5>
+						</div>
+					  </div>
+				  </div>
 			</div>
-			<hr class="hr-border">
+		<hr class="hr-border">
 
 		<!-- Questions & Answers -->
-			<div class="row">
-				<h5 class="col-10" id="eventQA2">Questions & Answers</h5>
-				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour2" aria-expanded="false" aria-controls="collapseFour2">
-						<i class="icon-toggle" data-feather="plus"></i>
-					</button>
-				</div>
-				<p class="container">You must be <button type="button" class="btn btn-link">logged in</button> to post a comment, if you don't have an account, please <button type="button" class="btn btn-link">register.</button></p>
-			</div>
-			<div id="collapseFour2" class="collapse show container" aria-labelledby="eventQA2" data-parent="#accordionEvent2">
-				<div class="post">
-					<div class="row row-qa">
-						<i class="col-1 icon-qa" data-feather="user"></i> 
-						<div class="col-10 container-qa">
-							<p class="#">loremimpsum</p>
-						</div>
-					</div>
-					<div class="row">
-						<i class="col-1 icon-qa" data-feather="user"></i>
-						<div class="col-10 container-qa">
-							<div class="row">
-								<div class="col-11">
-									<p class="#">loremimpsum</p>
-								</div>
-								<div class="col-1">
-									<i class="icon-menu" data-feather="edit-2"></i>
-								</div>
-								<div class="col-11">
-								</div>
-								<div class="col-1">
-									<i class="icon-menu" data-feather="trash-2"></i>
-								</div>
+    <div class="row">
+      <h5 class="col-10" id="eventQA">Questions & Answers</h5>
+      <div class="col-2">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          <i class="icon-toggle" data-feather="plus"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="qa-logged-out">
+      <p class="container">You must be <a class="link-qa" href="#" data-toggle="modal" data-target="#loginDump">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#" data-toggle="modal" data-target="#registerDump"> register.</a></p>
+    </div>
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+    <div class="qa-logged-in d-none">
+      <p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
+      <form id="post-form-000000000000000000000002" action="#">
+        <div class="input-group container">
+          <textarea class="form-control mb-3" id="post-contents-000000000000000000000002"></textarea>
+        </div>
+        <div class="row container mb-5">
+          <!-- <div class="col-2">
+            <button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
+          </div> -->
+          <div class="col-5">
+            <button type="submit" class="btn btn-buyTicket col-4">Post</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
+      <div class="post" id="postContainer-000000000000000000000002">
+      </div>
+    </div>
 		</div><br><br> <!-- end accordion event -->
 
 
@@ -821,16 +828,16 @@
 
 		</form> -->
 
-	</div> <!- Add above this <div> all the other sections of code -->
+	</div> <!-- Add above this <div> all the other sections of code -->
 
 	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
 	<nav class="navbar fixed-bottom navbar-expand-lg nav-style_bottom">
 		<ul class="navbar-nav container">
-			<li class="nav-item">
+			<li class="nav-item" id="footer-home-btn">
 				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="home"></i></a>
 				<p class="nav-text_bottom">H O M E</p>
 			</li>
-			<li class="nav-item" id="logOutBtn">
+			<li class="nav-item d-none" id="logOutBtn">
 				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
 				<p class="nav-text_bottom">L O G O U T</p>
 			</li>

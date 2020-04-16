@@ -6,6 +6,7 @@
 
 body {
   background-color: white;
+  margin-bottom: 100px;
 }
 
 h2{
@@ -161,7 +162,6 @@ h3, h4{
 }
 // VALE ends here
 
-
 // BELLA starts here
 .card-img {
 	background-size: cover;
@@ -185,5 +185,9 @@ h3, h4{
 
 .qa-edit-delete-icons {
   path { fill: orange }
+}
+
+.event-card {
+  cursor: pointer;
 }
 // BELLA ends here
