@@ -252,7 +252,7 @@ $('#checkById').click(function(){
         document.getElementById('userChangedDump').innerHTML += ``;
         document.getElementById('userDetails').innerHTML = '';
         document.getElementById('profileHeader').innerHTML = '';
-        document.getElementById('userDetails').innerHTML += `<img src="${viewUser.photoUrl}" class="rounded mx-auto d-block"></img>
+        document.getElementById('userDetails').innerHTML += `<img src="${viewUser.photoUrl}" class="mx-auto d-block avatar-img"></img>
                                                         <p class="text-center">${viewUser.username}</p>
                                                         <p class="text-center">${viewUser.email}</p>`;
         
