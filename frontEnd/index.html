@@ -29,14 +29,17 @@
 				<button type="button" class="btn btn-outline-light btn-lg nav-text_top" data-toggle="modal" data-target="#loginDump">L O G I N</button>
 			</li>
 			<li id="checkById" class="nav-item d-none">
-        <p id="welcomeMessage" class="nav-text_top d-none"></p>
+        		<p id="welcomeMessage" class="nav-text_top d-none"></p>
 				<i class="nav-icon_top" data-feather="user"  data-toggle="modal" data-target="#userDump"></i>
+			</li>
+			<li class="nav-item d-none" id="logOutBtn">
+				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
+				<p class="nav-text_bottom">L O G O U T</p>
 			</li>
 		</ul>
 	</nav><!-- header menu -->
 
-<!--ROY user profile modal (needs to be styled) -->
-
+<!--================================= USER PROFILE MODAL (Roy)==============================================-->
 <div class="modal" id="userDump" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -87,11 +90,9 @@
 		</div>
     </div>
   </div>
-</div>
-<!-- modal user end -->
+</div><!-- modal user end -->
 
-<!-- modal register ROY -->
-
+<!--================================= REGISTER MODAL (Roy)==============================================-->
 <div class="modal" id="registerDump" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -128,12 +129,9 @@
       </form>
     </div>
   </div>
-</div>
+</div> <!-- modal register end -->
 
-<!-- modal register end -->
-
-<!-- modal log in ROY -->
-
+<!--================================= LOGIN MODAL (Roy)==============================================-->
 <div class="modal" id="loginDump" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -167,28 +165,13 @@
 	    </form>
     </div>
   </div>
-</div>
+</div> <!-- modal log in end -->
 
-<!-- modal log in end -->
+
 
 <!--================================= HOME PAGE (Vale)==============================================-->
 	<!-- Popular events -->
 	<div id="homePage" class="container container-page">
-		<h3 class="container-fluid">Popular this week</h3>
-		<div class="img-event_top">
-			<img src="#" alt="event img">
-		</div>
-		<div class="row">
-			<div class="col center">
-				<i class="icon-body" data-feather="calendar"></i>
-				<p>04.04.2020</p>
-			</div>
-			<div class="col">
-				<p class="title-event_top">Covid-19: All you need to know</p>
-			</div>
-		</div>
-		<hr class="hr-border">
-		<br>
 
 	<!-- All Events -->
 		<h4 class="container-fluid">Events</h4>
@@ -225,29 +208,26 @@
 			</div>
 		</div>
 
-<!-- event card roy -->
+	<!-- event card roy -->
 
-    <div class="container card mb-3 event-card" style="max-width: 540px;" data-event-card-event-id="000000000000000000000002">
-          <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src="#" class="card-img" alt="event image">
-            </div>
+	    <div class="container card mb-3 event-card" style="max-width: 540px;" data-event-card-event-id="000000000000000000000002">
+	          <div class="row no-gutters">
+	              <div class="col-md-4">
+	                <img src="#" class="card-img" alt="event image">
+	            </div>
 
-              <div class="col-md-8">
-                <div class="card-body">
-                  <a href="#"><h5 class="card-title">Walking Wellington</h5></a>
-                    <p class="card-text">15.04.2020.</p>
-                    <p class="card-text">7:00AM</p>
-                    <p class="card-text">Mt Vic</p>
-                  </div>
-              </div>
-          </div>
-        </div>	
-      </div>
-
-</div> <!-- landing page ends -->
-
-
+	              <div class="col-md-8">
+	                <div class="card-body">
+	                  <a href="#"><h5 class="card-title">Walking Wellington</h5></a>
+	                    <p class="card-text">15.04.2020.</p>
+	                    <p class="card-text">7:00AM</p>
+	                    <p class="card-text">Mt Vic</p>
+	                  </div>
+	              </div>
+	          </div>
+	        </div>	
+	      </div>
+	</div> <!-- landing page ends -->
 	
 <!--======================================= EVENTS PAGE (Vale)======================================-->
 	<!-- Image, Title -->
@@ -401,28 +381,28 @@
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
-      </div>
+      		</div>
       
-      <div class="qa-logged-out">
-        <p class="container">You must be <a class="link-qa" href="#" data-toggle="modal" data-target="#loginDump">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#" data-toggle="modal" data-target="#registerDump"> register.</a></p>
-      </div>
+	      	<div class="qa-logged-out">
+	        	<p class="container">You must be <a class="link-qa" href="#" data-toggle="modal" data-target="#loginDump">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#" data-toggle="modal" data-target="#registerDump"> register.</a></p>
+	      	</div>
 
-      <div class="qa-logged-in d-none">
-        <p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
-        <form id="post-form-000000000000000000000000" action="#">
-          <div class="input-group container">
-            <textarea class="form-control mb-3" id="post-contents-000000000000000000000000"></textarea>
-          </div>
-          <div class="row container mb-5">
-            <!-- <div class="col-2">
-              <button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
-            </div> -->
-            <div class="col-5">
-              <button type="submit" class="btn btn-buyTicket col-4">Post</button>
-            </div>
-          </div>
-        </form>
-      </div>
+	      	<div class="qa-logged-in d-none">
+	        	<p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
+	        	<form id="post-form-000000000000000000000000" action="#">
+		          	<div class="input-group container">
+		            	<textarea class="form-control mb-3" id="post-contents-000000000000000000000000"></textarea>
+		          	</div>
+	          		<div class="row container mb-5">
+			            <!-- <div class="col-2">
+			              <button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
+			            </div> -->
+	           			<div class="col-5">
+	              			<button type="submit" class="btn btn-buyTicket col-4">Post</button>
+	            		</div>
+	          		</div>
+	        	</form>
+	      	</div>
       
 			<div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
 				<div class="post" id="postContainer-000000000000000000000000">
@@ -431,9 +411,7 @@
 		</div> <!-- end accordion event -->
 	</div> <!-- EVENT PAGE ends -->
 
-	
-	
-	
+
 	<!-- Event Page (Bella) -->
 	<!-- Image, Title -->
 	<div id="event-page-000000000000000000000001" class="container container-page">
@@ -755,94 +733,6 @@
 
 
 	</div> <!-- EVENT PAGE ends -->
-
-
-
-<!--================================= REGISTRATION FORM (Bella)=======================================-->
-<!-- moved to top by roy -->
-		<!-- <form id="registerForm" class="container container-page" action="#">
-			<h2>Register</h2>
-			<div class="form-group">
-				<label for="registerUsername">Username</label>
-				<input type="text" class="form-control" id="registerUsername" placeholder="Username">
-			</div>
-
-			<div class="form-group">
-				<label for="registerEmail">Email</label>
-				<input type="email" class="form-control" id="registerEmail" placeholder="Email address">
-			</div>
-
-			<div class="form-group">
-				<label for="registerPassword">Password</label>
-				<input type="password" class="form-control" id="registerPassword" placeholder="Password">
-			</div>
-
-			<div class="form-group">
-				<label for="registerPhoto">Profile photo (Optional)</label>
-				<input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
-			</div>
-		<button type="submit" class="btn btn-primary">Register</button>
-
-			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
-		</form> -->
-
-
-<!-- LOGIN FORM (Bella)-->
-<!--  moved to top  -->
-<!-- 		<form id="loginForm" action="#">
-=======
-<!-================================ LOGIN FORM (Bella)============================================-->
-<!-- 		<form id="loginForm" class="container container-page" action="#">
-			<h2>Login</h2>
-			<div class="form-group">
-				<label for="loginEmail">Email</label>
-				<input type="email" class="form-control" id="loginEmail" placeholder="Email address">
-			</div>
-
-			<div class="form-group">
-				<label for="loginPassword">Password</label>
-				<input type="password" class="form-control" id="loginPassword" placeholder="Password">
-			</div>
-
-			<button type="submit" class="btn btn-primary">Login</button>
-
-			<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
-		</form> -->
-
-<!--====================================== VIEW USER PROFILE (Roy)=================================-->
-
-<!-- Roys view users, view a user, edit user -->
-
-<!-- Moved this stuff up to the header -->
-
-<!-- View all users form, just here for checking -->
-
-<!-- 		<form id="viewAllForm">
-			<h2>View all users</h2>
-		
-		<p class="btn btn-primary" id="test">View all</p>
-
-		<div id="usersAllDump">
-			
-		</div>
-
-		</form> -->
-
-	</div> <!-- Add above this <div> all the other sections of code -->
-
-	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
-	<nav class="navbar fixed-bottom navbar-expand-lg nav-style_bottom">
-		<ul class="navbar-nav container">
-			<li class="nav-item" id="footer-home-btn">
-				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="home"></i></a>
-				<p class="nav-text_bottom">H O M E</p>
-			</li>
-			<li class="nav-item d-none" id="logOutBtn">
-				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
-				<p class="nav-text_bottom">L O G O U T</p>
-			</li>
-		</ul>
-	</nav>
 
 <!--=============================== JS, BOOSTRAP, JQUERY======================================-->
 
