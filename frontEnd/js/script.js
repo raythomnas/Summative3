@@ -408,7 +408,7 @@ function getPostsForConference(conferenceId) {
       for(var i=0; i<eventPosts.length; i++) {
         let post = eventPosts[i];
         // Create a container div for posts to go into (no content yet)
-        $('#postContainer-' + conferenceId).prepend(`<div class="row row-qa" data-post-id="${post._id}"></div>`);
+        $('#postContainer-' + conferenceId).prepend(`<div class="row row-qa" data-post-id="${post._id}" data-post-user-id="${post.userId}"></div>`);
 
         // Wait for the browser to update with the post container
         setTimeout(() => {
@@ -437,7 +437,7 @@ function getPostsForConference(conferenceId) {
         },
         success(newPost) {
           // Create a container div for posts to go into (no content yet)
-          $('#postContainer-' + conferenceId).prepend(`<div class="row row-qa" data-post-id="${newPost._id}"></div>`);
+          $('#postContainer-' + conferenceId).prepend(`<div class="row row-qa" data-post-id="${newPost._id}" data-post-user-id="${newPost.userId}"></div>`);
 
           // Wait for the browser to update with the post container
           setTimeout(() => {
@@ -463,7 +463,10 @@ function createPostElement(post) {
   postContainer.html(`
       <div class="post-avatar-img" style="background-image: url(${post.userImage});"></div>
       <div class="col-10 container-qa row">
-        <div class="col-11"><p class="#">${post.text}</p></div>
+      <div class="col-11">
+          <div><strong>${post.userName} - </strong></div>
+          <p class="#">${post.text}</p>
+        </div>
         <div class="col-1 text">
           <i class="icon-event edit-post" data-feather="edit-2"></i>
           <i class="icon-event delete-post" data-feather="trash"></i>
@@ -557,6 +560,24 @@ function showHideLoggedInThings() {
     $('#welcomeMessage').toggleClass('d-none', true);
   }
 
+  // Edit/Delete Post controls are only visible if you're logged in
+  //  and the post belongs to you
+  $('.edit-post,.delete-post').each(function() {
+    var icon = $(this);
+    // Find the user id of the post 
+    var postUserId = icon.parents('[data-post-user-id]').attr('data-post-user-id');
+
+    // Check whether this is your post or not
+    if (postUserId === sessionStorage['userID']) {
+      // Show icon - this is your post
+      icon.toggleClass('d-none', false);
+    } else {
+      // Hide icon - this is not your post
+      icon.toggleClass('d-none', true);
+    }
+  });
+
+
   // Stuff only visible when logged out
   // Log in button
   $('#registerBtn').toggleClass('d-none', loggedIn);
@@ -572,9 +593,6 @@ function showHideLoggedInThings() {
   $('#logOutBtn').toggleClass('d-none', loggedOut);
   // "Logged in" Q/A stuff
   $('.qa-logged-in').toggleClass('d-none', loggedOut);
-  // "Edit post" controls
-  $('.edit-post').toggleClass('d-none', loggedOut);
-  // "Delete post" controls
-  $('.delete-post').toggleClass('d-none', loggedOut);
+  
 }
 // Bella end
