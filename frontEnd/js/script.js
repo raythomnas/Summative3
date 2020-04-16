@@ -1,4 +1,3 @@
-
 console.log('howdy');
 
 // ICONS
@@ -101,7 +100,10 @@ $(function () {
     $('#event-page-000000000000000000000002').hide();
 
     // Function for when the register form is submitted
-    $('#registerForm').on('submit', function () {
+    $('#registerForm').on('submit', function (e) {
+        // Prevent modal from closing
+        e.preventDefault();
+        
         // Hide any error messages that may be present
         $('#registerError').addClass('d-none');
 
@@ -140,6 +142,18 @@ $(function () {
                         // Successfully registered
                         console.log("Successfully registered");
                         console.log(response);
+
+                        // Store API response in session storage
+                        sessionStorage.setItem('userID', response['_id']);
+                        sessionStorage.setItem('userName', response['username']);
+                        sessionStorage.setItem('userEmail', response['email']);
+                        sessionStorage.setItem('photoUrl', response['photoUrl']);
+
+                        // Update page to be logged in
+                        showHideLoggedInThings();
+
+                        // Hide modal
+                        $('#registerDump').modal('hide');
                     }
                 }
             });
@@ -147,67 +161,64 @@ $(function () {
     });
 
     // Function for when the login form is submitted
-    // $('#loginForm').on('submit', function () {
-      $('#loginBtn2').click(function(){
-        // Hide any error messages that may be present
-        $('#loginError').addClass('d-none');
+  $('#loginForm').on('submit', function (e) {
+    // Stop modal from closing
+    e.preventDefault();
 
-        // Get the values of the form fields
-        var email = $('#loginEmail').val();
-        var password = $('#loginPassword').val();
+    // Hide any error messages that may be present
+    $('#loginError').addClass('d-none');
 
-        if (!email) {
+    // Get the values of the form fields
+    var email = $('#loginEmail').val();
+    var password = $('#loginPassword').val();
+
+    if (!email) {
+      $('#loginError').removeClass('d-none');
+      $('#loginError').text("Please enter your email");
+    } else if (!password) {
+      $('#loginError').removeClass('d-none');
+      $('#loginError').text("Please enter your password");
+    } else {
+      // Send the form values to the backend
+      $.ajax({
+        url: backendAddress2 + '/login',
+        method: 'POST',
+        data: {
+          email: email,
+          password: password,
+        },
+        success: function (response) {
+          if (response === "Not authorised. Incorrect password") {
+            // Failed because incorrect password
             $('#loginError').removeClass('d-none');
-            $('#loginError').text("Please enter your email");
-        } else if (!password) {
+            $('#loginError').text(response);
+            // Failed because user not found
+          } else if (response === "User not found") {
             $('#loginError').removeClass('d-none');
-            $('#loginError').text("Please enter your password");
-        } else {
-            // Send the form values to the backend
-            $.ajax({
-                url: backendAddress2 + '/login',
-                method: 'POST',
-                data: {
-                    email: email,
-                    password: password,
-                },
-                success: function (response) {
-                    if (response === "Not authorised. Incorrect password") {
-                        // Failed because incorrect password
-                        $('#loginError').removeClass('d-none');
-                        $('#loginError').text(response);
-                        // Failed because user not found
-                    } else if (response === "User not found") {
-                        $('#loginError').removeClass('d-none');
-                        $('#loginError').text("No user associated with this email. Please register.");
-                    } else {
-                        // Successfully logged in
-                        console.log("Successfully logged in");
-                        console.log(response);
-                        // roys added session storage bits
-                        sessionStorage.setItem('userID', response['_id']);
-                        sessionStorage.setItem('userName',response['username']);
-                        sessionStorage.setItem('userEmail',response['email']);
-                        sessionStorage.setItem('photoUrl',response['photoUrl']);
-                        sessionStorage.setItem('password',password);
-                        console.log(sessionStorage);
-                        document.getElementById('checkById').innerHTML += `<p class="nav-text_top">Hi ${response.username}</p>`;
-                        $('#checkById').css("display", "block");
-                        $('#logOutBtn').css("display", "block");
-                        $('#usernameInput').css("display", "none");
-                        $('#passwordInput').css("display", "none");
-                        $('#loginBtn2').css("display", "none");
-                        $('#loginBtn').hide();
-                        $('#loginDump').modal('hide');
-                        $('#registerBtn').hide();
-                      
-                        //roys addition end
+            $('#loginError').text("No user associated with this email. Please register.");
+          } else {
+            // Successfully logged in
+            console.log("Successfully logged in");
+            console.log(response);
 
-                    }
-                }
-            });
+            // Store API response in session storage
+            // roys added session storage bits
+            sessionStorage.setItem('userID', response['_id']);
+            sessionStorage.setItem('userName', response['username']);
+            sessionStorage.setItem('userEmail', response['email']);
+            sessionStorage.setItem('photoUrl', response['photoUrl']);
+            // end roy
+
+            // Update page to be logged in
+            showHideLoggedInThings();
+
+            // Hide modal
+            $('#loginDump').modal('hide');
+          }
         }
-    });
+      });
+    }
+  });
 
     // Bella end
 
@@ -216,13 +227,13 @@ $(function () {
     // function to display log in inputs
 
     
-$('#logOutBtn').click(function(){
-  console.log('You are logged out');
-  sessionStorage.clear();
-  $('#checkById').hide();
-  $('#registerBtn').show();
-  $('#loginBtn').show();
-    }); //end logout function
+  $('#logOutBtn').click(function () {
+    // Empty out sessionStorage
+    sessionStorage.clear();
+
+    // Update page to be logged in
+    showHideLoggedInThings();
+  }); //end logout function
 
 $('#test').click(function(){
          event.preventDefault();
@@ -338,24 +349,12 @@ $('#changeUserBtn').click(function(){
 //     // roy end
 
   // Bella start
-  $.ajax({
-    url: backendAddress2 + '/allPost/' + FAKE_CONFERENCE_ID,
-    method: 'GET',
-    success(eventPosts) {
-      console.log("All posts", eventPosts)
-      for(var i=0; i<eventPosts.length; i++) {
-        let post = eventPosts[i];
-        // Create a container div for posts to go into (no content yet)
-        $('#postContainer').append(`<div class="row row-qa" data-post-id="${post._id}"></div>`);
+  // Get posts for conference pages
+  getPostsForConference('000000000000000000000000');
+  getPostsForConference('000000000000000000000001');
+  getPostsForConference('000000000000000000000002');
 
-        // Wait for the browser to update with the post container
-        setTimeout(() => {
-          // Create the actual post content
-          createPostElement(post);
-        });
-      }
-    },
-  });
+  
 
   // Click home button in nav
   $('#nav-home-btn').click(function() {
@@ -396,7 +395,63 @@ $('#changeUserBtn').click(function(){
     $('#event-page-000000000000000000000001').hide();
     $('#event-page-000000000000000000000002').show();
   });
+
+  // Ensure page is in the right state
+  showHideLoggedInThings();
 });
+
+function getPostsForConference(conferenceId) {
+  $.ajax({
+    url: backendAddress2 + '/allPost/' + conferenceId,
+    method: 'GET',
+    success(eventPosts) {
+      for(var i=0; i<eventPosts.length; i++) {
+        let post = eventPosts[i];
+        // Create a container div for posts to go into (no content yet)
+        $('#postContainer-' + conferenceId).prepend(`<div class="row row-qa" data-post-id="${post._id}"></div>`);
+
+        // Wait for the browser to update with the post container
+        setTimeout(() => {
+          // Create the actual post content
+          createPostElement(post);
+        });
+      }
+    },
+  });
+
+  // Handle submission for each create post form
+  $('#post-form-' + conferenceId).on('submit', function(e) {
+    e.preventDefault();
+
+    var postContents = $('#post-contents-' + conferenceId).val();
+
+    if (postContents) {
+      $.ajax({
+        url: backendAddress2 + '/writePost',
+        method: 'POST',
+        data: {
+          "userId": sessionStorage['userID'],
+          "conferenceId": conferenceId,
+          "text": postContents,
+          // "imageUrl": "https://srilavan007.files.wordpress.com/2017/04/hosue.jpg"
+        },
+        success(newPost) {
+          // Create a container div for posts to go into (no content yet)
+          $('#postContainer-' + conferenceId).prepend(`<div class="row row-qa" data-post-id="${newPost._id}"></div>`);
+
+          // Wait for the browser to update with the post container
+          setTimeout(() => {
+            // Create the actual post content
+            createPostElement(newPost);
+          });
+
+          // Empty out text area
+          $('#post-contents-' + conferenceId).val('');
+        }
+      })
+    }
+  });
+}
 
 // Create a post element inside a post container
 // This sets up click events for the edit and delete buttons, etc.
@@ -423,6 +478,7 @@ function createPostElement(post) {
     // Click handler for edit button FOR THIS SPECIFIC POST
     postContainer.find('.edit-post').click(function () {
       // Replace post with a text area
+      // TODO if user has no image, need to show a default
       postContainer.html(`
         <div class="post-avatar-img" style="background-image: url(${post.userImage});"></div>
         <div class="col-10 ml-4">
@@ -476,6 +532,49 @@ function createPostElement(post) {
     });
   });
 
+  // Draw any feather icons
   feather.replace();
+
+  // Ensure stuff is shown/hidden based on whether the user is logged in
+    showHideLoggedInThings();
+}
+
+// Show and hide parts of the website based on whether the user is logged in
+function showHideLoggedInThings() {
+  // Whether the user is currently logged in
+  var loggedIn = sessionStorage['userID'] !== undefined;
+  // Whether the user is current logged out
+  var loggedOut = !loggedIn;
+
+  // Welcome message is a special case
+  if (loggedIn) {
+    // Show welcome message if logged in
+    $('#welcomeMessage').toggleClass('d-none', false);
+    // Update the contents of the welcome message
+    $('#welcomeMessage').text(`Hi, ${sessionStorage['userName']}!`);
+  } else {
+    // Hide welcome message if user is logged out
+    $('#welcomeMessage').toggleClass('d-none', true);
+  }
+
+  // Stuff only visible when logged out
+  // Log in button
+  $('#registerBtn').toggleClass('d-none', loggedIn);
+  // Register button
+  $('#loginBtn').toggleClass('d-none', loggedIn);
+  // "Logged out" Q/A stuff
+  $('.qa-logged-out').toggleClass('d-none', loggedIn);
+
+  // Stuff only visible when logged in
+  // Profile element
+  $('#checkById').toggleClass('d-none', loggedOut);
+  // Logout button
+  $('#logOutBtn').toggleClass('d-none', loggedOut);
+  // "Logged in" Q/A stuff
+  $('.qa-logged-in').toggleClass('d-none', loggedOut);
+  // "Edit post" controls
+  $('.edit-post').toggleClass('d-none', loggedOut);
+  // "Delete post" controls
+  $('.delete-post').toggleClass('d-none', loggedOut);
 }
 // Bella end

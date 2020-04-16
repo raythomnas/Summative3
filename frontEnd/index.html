@@ -28,7 +28,8 @@
 			<li id="loginBtn" class="nav-item">
 				<button type="button" class="btn btn-outline-light btn-lg nav-text_top" data-toggle="modal" data-target="#loginDump">L O G I N</button>
 			</li>
-			<li id="checkById" class="nav-item hidden">
+			<li id="checkById" class="nav-item d-none">
+        <p id="welcomeMessage" class="nav-text_top d-none"></p>
 				<i class="nav-icon_top" data-feather="user"  data-toggle="modal" data-target="#userDump"></i>
 			</li>
 		</ul>
@@ -94,35 +95,37 @@
 <div class="modal" id="registerDump" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-body">
-        <form id="registerForm" action="#">
-			<h2 class="w-100 text-center">Register</h2>
-			<div class="form-group">
-				<label for="registerUsername" class="w-100 text-center">Username</label>
-				<input type="text" class="form-control" id="registerUsername" placeholder="Username">
-			</div>
 
-			<div class="form-group">
-				<label for="registerEmail" class="w-100 text-center">Email</label>
-				<input type="email" class="form-control" id="registerEmail" placeholder="Email address">
-			</div>
+      <form id="registerForm" action="#">
+        <div class="modal-body">
+          <h2 class="w-100">Register</h2>
+          <div class="form-group">
+            <label for="registerUsername" class="w-100">Username</label>
+            <input type="text" class="form-control" id="registerUsername" placeholder="Username">
+          </div>
 
-			<div class="form-group">
-				<label for="registerPassword" class="w-100 text-center">Password</label>
-				<input type="password" class="form-control" id="registerPassword" placeholder="Password">
-			</div>
+          <div class="form-group">
+            <label for="registerEmail" class="w-100">Email</label>
+            <input type="email" class="form-control" id="registerEmail" placeholder="Email address">
+          </div>
 
-			<div class="form-group">
-				<label for="registerPhoto" class="w-100 text-center">Profile photo</label>
-				<input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
-			</div>
-			<div class="alert alert-danger d-none" role="alert" id="registerError"></div>
-		</form>
-      </div>
-      <div class="modal-footer">
-		<button type="submit" class="btn btn-primary" style="background-color: blue;">Register</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+          <div class="form-group">
+            <label for="registerPassword" class="w-100">Password</label>
+            <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+          </div>
+
+          <div class="form-group">
+            <label for="registerPhoto" class="w-100">Profile photo</label>
+            <input type="text" class="form-control" id="registerPhoto" placeholder="Photo URL">
+          </div>
+          <div class="alert alert-danger d-none" role="alert" id="registerError"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-buyTicket">Register</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div class="alert alert-danger d-none" role="alert" id="registerError"></div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -134,24 +137,34 @@
 <div class="modal" id="loginDump" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
+      <!-- Header -->
       <div class="modal-header" id="profileHeader">
         <h2 class="w-100 text-center">Login</h2>
       </div>
-      <div class="modal-body">
-			<div id="usernameInput">
-				<label for="loginEmail" class="w-100 text-center">email</label>
-				<input type="text" class="form-control" id="loginEmail"></input>
-			</div>
-			<div id="passwordInput">
-				<label for="loginPassword" class="w-100 text-center">password</label>
-				<input type="text" class="form-control" id="loginPassword"></input>
-			</div>
-      </div>
-      <div class="modal-footer">
-      	<button type="button" class="btn w-100 btn-primary" style="background-color: blue;" id="loginBtn2">Login</button>
-		<div class="alert alert-danger d-none" role="alert" id="loginError"></div>
-        <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">Close</button>
-      </div>
+
+      <!-- Login form -->
+		  <form id="loginForm" action="#">
+        <!-- Body -->
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="Email address">
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+              <button type="submit" class="btn w-100 btn-buyTicket">Login</button>
+              <div class="alert alert-danger d-none w-100" role="alert" id="loginError"></div>
+              <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">Close</button>
+        </div>
+	    </form>
     </div>
   </div>
 </div>
@@ -388,10 +401,31 @@
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
-				<p class="container">You must be <a class="link-qa" href="#loginForm">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#registerForm"> register.</a></p>
-			</div>
+      </div>
+      
+      <div class="qa-logged-out">
+        <p class="container">You must be <a class="link-qa" href="#" data-toggle="modal" data-target="#loginDump">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#" data-toggle="modal" data-target="#registerDump"> register.</a></p>
+      </div>
+
+      <div class="qa-logged-in d-none">
+        <p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
+        <form id="post-form-000000000000000000000000" action="#">
+          <div class="input-group container">
+            <textarea class="form-control mb-3" id="post-contents-000000000000000000000000"></textarea>
+          </div>
+          <div class="row container mb-5">
+            <!-- <div class="col-2">
+              <button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
+            </div> -->
+            <div class="col-5">
+              <button type="submit" class="btn btn-buyTicket col-4">Post</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
 			<div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
-				<div class="post" id="postContainer">
+				<div class="post" id="postContainer-000000000000000000000000">
 				</div>
 			</div>
 		</div> <!-- end accordion event -->
@@ -528,43 +562,43 @@
 				</div>
 			<hr class="hr-border">
 
-		<!-- Questions & Answers (logged out)-->
+      <!-- Questions & Answers -->
 			<div class="row">
-				<h5 class="col-10" id="eventQAOne">Questions & Answers</h5>
+				<h5 class="col-10" id="eventQA">Questions & Answers</h5>
 				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 						<i class="icon-toggle" data-feather="plus"></i>
 					</button>
 				</div>
-				<p class="container">You must be <a class="link-qa" href="#loginForm">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#registerForm"> register.</a></p>
-			</div>
-			<div id="collapseNine" class="collapse show container" aria-labelledby="eventQAOne" data-parent="#accordionEventOne">
-				<div class="post" id="postContainer">
+      </div>
+      
+      <div class="qa-logged-out">
+        <p class="container">You must be <a class="link-qa" href="#" data-toggle="modal" data-target="#loginDump">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#" data-toggle="modal" data-target="#registerDump"> register.</a></p>
+      </div>
+
+      <div class="qa-logged-in d-none">
+        <p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
+        <form id="post-form-000000000000000000000001" action="#">
+          <div class="input-group container">
+            <textarea class="form-control mb-3" id="post-contents-000000000000000000000001"></textarea>
+          </div>
+          <div class="row container mb-5">
+            <!-- TODO attach image to post -->
+            <!-- <div class="col-2">
+              <button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
+            </div> -->
+            <div class="col-5">
+              <button type="submit" class="btn btn-buyTicket col-4">Post</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+			<div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
+				<div class="post" id="postContainer-000000000000000000000001">
 				</div>
-			</div>
-		</div> <!-- end accordion event -->
-		<!-- Questions & Answers (logged in)-->
-		<div class="row">
-				<h5 class="col-10" id="eventQAOne">Questions & Answers</h5>
-				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-						<i class="icon-toggle" data-feather="plus"></i>
-					</button>
-				</div>
-				<p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
-				<div class="input-group container">
-					<textarea class="form-control" aria-label="With textarea"></textarea><br><br>
-				</div><br>
-				<div class="row container">
-					<button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
-					<div class="col-1"></div>
-					<button type="button" class="btn btn-buyTicket col-4">Post</button>
-					<div class="col-5"></div>
-				</div>
-				
-			</div>
-			<div id="collapseNine" class="collapse show container" aria-labelledby="eventQAOne" data-parent="#accordionEventOne">
-		</div> <!-- end accordion event -->
+      </div>
+		</div>
 	</div> <!-- EVENT PAGE ends -->
 
 
@@ -679,44 +713,40 @@
 		<hr class="hr-border">
 
 		<!-- Questions & Answers -->
-			<div class="row">
-				<h5 class="col-10" id="eventQA2">Questions & Answers</h5>
-				<div class="col-2">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour2" aria-expanded="false" aria-controls="collapseFour2">
-						<i class="icon-toggle" data-feather="plus"></i>
-					</button>
-				</div>
-				<p class="container">You must be <button type="button" class="btn btn-link">logged in</button> to post a comment, if you don't have an account, please <button type="button" class="btn btn-link">register.</button></p>
-			</div>
-			<div id="collapseFour2" class="collapse show container" aria-labelledby="eventQA2" data-parent="#accordionEvent2">
-				<div class="post">
-					<div class="row row-qa">
-						<i class="col-1 icon-qa" data-feather="user"></i> 
-						<div class="col-10 container-qa">
-							<p class="#">loremimpsum</p>
-						</div>
-					</div>
-					<div class="row">
-						<i class="col-1 icon-qa" data-feather="user"></i>
-						<div class="col-10 container-qa">
-							<div class="row">
-								<div class="col-11">
-									<p class="#">loremimpsum</p>
-								</div>
-								<div class="col-1">
-									<i class="icon-menu" data-feather="edit-2"></i>
-								</div>
-								<div class="col-11">
-								</div>
-								<div class="col-1">
-									<i class="icon-menu" data-feather="trash-2"></i>
-								</div>
+    <div class="row">
+      <h5 class="col-10" id="eventQA">Questions & Answers</h5>
+      <div class="col-2">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          <i class="icon-toggle" data-feather="plus"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="qa-logged-out">
+      <p class="container">You must be <a class="link-qa" href="#" data-toggle="modal" data-target="#loginDump">logged in</a> to make a post, if you don't have an account, please <a class="link-qa" href="#" data-toggle="modal" data-target="#registerDump"> register.</a></p>
+    </div>
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+    <div class="qa-logged-in d-none">
+      <p class="container">Have any questions for the organisors or speakers?. Anything related to the event you want to share?.</button></p>
+      <form id="post-form-000000000000000000000002" action="#">
+        <div class="input-group container">
+          <textarea class="form-control mb-3" id="post-contents-000000000000000000000002"></textarea>
+        </div>
+        <div class="row container mb-5">
+          <!-- <div class="col-2">
+            <button type="button container" class="btn btn-buyTicket col-2"><i class="icon-menu" data-feather="camera"></i></button>
+          </div> -->
+          <div class="col-5">
+            <button type="submit" class="btn btn-buyTicket col-4">Post</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <div id="collapseFour" class="collapse show container" aria-labelledby="eventQA" data-parent="#accordionEvent">
+      <div class="post" id="postContainer-000000000000000000000002">
+      </div>
+    </div>
 		</div><br><br> <!-- end accordion event -->
 
 
@@ -798,7 +828,7 @@
 
 		</form> -->
 
-	</div> <!- Add above this <div> all the other sections of code -->
+	</div> <!-- Add above this <div> all the other sections of code -->
 
 	<!-- FOOTER: STICKY BOTTOM MENU (Vale)-->
 	<nav class="navbar fixed-bottom navbar-expand-lg nav-style_bottom">
@@ -807,7 +837,7 @@
 				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="home"></i></a>
 				<p class="nav-text_bottom">H O M E</p>
 			</li>
-			<li class="nav-item" id="logOutBtn">
+			<li class="nav-item d-none" id="logOutBtn">
 				<a class="navbar-link" href="#"><i class="nav-icon_bottom" data-feather="log-out"></i></a>
 				<p class="nav-text_bottom">L O G O U T</p>
 			</li>
