@@ -1,4 +1,3 @@
-console.log('howdy');
 
 // ICONS
 
@@ -13,82 +12,6 @@ var backendAddress2 = 'http://localhost:5000';
 var FAKE_CONFERENCE_ID = '1e9627ee2d5f5ba2841d1623';
 
 //----------------LANDING PAGE JS LOGIC (Vale)---------------------------//
-console.log('I hope this works');
-//To show landing page with neccesary features for an external user: all card events, nav login/register options
-// $(document).ready(function(){
-//   $('#homePage').show();
-//   $('#logoutBtn').hide();
-//   $('#profileLink').hide();
-//   $('#event-page-000000000000000000000000').hide();
-//   $('#event-page-000000000000000000000001').hide();
-//   $('#event-page-000000000000000000000002').hide();
-//   $('#viewUserForm').hide();
-//   $('#editForm').hide();
-//   $('#registerForm').hide();
-//   $('#loginForm').hide();
-//   if (sessionStorage['userName']) {
-//     console.log('You are logged in');
-//     $('#logoutBtn').show();
-//     $('#registerBtn').hide();
-//     $('#loginBtn').hide();
-//     } else {
-//       console.log('Please login');
-//       $('#logoutBtn').hide();
-//       };
-//   $('#homeBtn').click(function(){
-//     $('#homePage').show();
-//     $('#loginForm').hide();
-//   });
-//   $('#registerBtn').click(function(){
-//     $('#homeBtn').show();
-//     $('#profileLink').hide();
-//     $('#logoutBtn').hide();
-//     $('#loginBtn').hide();
-//     $('#registerBtn').hide();
-
-//     $('#homePage').hide();
-//     $('#eventPage').hide();
-//     $('#viewUserForm').hide();
-//     $('#editForm').hide();
-//     $('#loginForm').hide();
-//     $('#registerForm').show();
-//   });
-//   $('#loginBtn').click(function(){
-//     $('#homeBtn').show();
-//     $('#profileLink').show();
-//     $('#logoutBtn').show();
-//     $('#loginBtn').hide();
-//     $('#registerBtn').hide();
-
-//     $('#homePage').hide();
-//     $('#eventPage').hide();
-//     $('#viewUserForm').hide();
-//     $('#editForm').hide();
-//     $('#loginForm').show();
-//     $('#registerForm').hide();
-//   });
-//   $('#logoutBtn').click(function(){
-//     console.log('You are logged out');
-//     sessionStorage.clear();
-//     console.log(localStorage);
-//   });
-// });
-
-//Custom backend address for other port (roy)
- // let url;
-
-//  $.ajax({
-//         url :'http://teamproject/frontEnd/config.json',
-//         type :'GET',
-//         dataType :'json',
-//         success : function(configData){
-//             console.log(configData);
-//             url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
-//         },
-//         error:function (){
-//             console.log('oops');
-//         }
-// });
 
 
 // jQuery - wait until the page has finished loading
@@ -140,15 +63,13 @@ $(function () {
                         $('#registerError').text(response);
                     } else {
                         // Successfully registered
-                        console.log("Successfully registered");
-                        console.log(response);
 
                         // Store API response in session storage
                         sessionStorage.setItem('userID', response['_id']);
                         sessionStorage.setItem('userName', response['username']);
                         sessionStorage.setItem('userEmail', response['email']);
                         sessionStorage.setItem('photoUrl', response['photoUrl']);
-
+                        sessionStorage.setItem('password', response['password']);
                         // Update page to be logged in
                         showHideLoggedInThings();
 
@@ -198,8 +119,6 @@ $(function () {
             $('#loginError').text("No user associated with this email. Please register.");
           } else {
             // Successfully logged in
-            console.log("Successfully logged in");
-            console.log(response);
 
             // Store API response in session storage
             // roys added session storage bits
@@ -207,6 +126,7 @@ $(function () {
             sessionStorage.setItem('userName', response['username']);
             sessionStorage.setItem('userEmail', response['email']);
             sessionStorage.setItem('photoUrl', response['photoUrl']);
+            sessionStorage.setItem('password', response['password']);
             // end roy
 
             // Update page to be logged in
@@ -235,95 +155,52 @@ $(function () {
     showHideLoggedInThings();
   }); //end logout function
 
-$('#test').click(function(){
-         event.preventDefault();
-        console.log('view all fired');
-   $.ajax({
-  url :`${backendAddress2}/displayUsers`,
-  type :'GET',
-  dataType :'json',
-  success : function(viewUser){
-    console.log(viewUser);
-    for(let i=0; i<viewUser.length; i++){
-      document.getElementById('usersAllDump').innerHTML += `<p>${viewUser[i].username}</p>
-                                                            <p>${viewUser[i]._id}</p>`;
-   }// for loop
-  },//success
-  error:function(){
-    console.log('error: cannot call api');
-  }//error
-  }); //ajax
-});
-
 $('#checkById').click(function(){
-         event.preventDefault();
-        console.log('view by id fired');
-        let  givenId = sessionStorage['userID']
-       $.ajax({
-      url :`${backendAddress2}/viewUser/${givenId}`,
-      type :'GET',
-      dataType :'json',
-      success : function(viewUser){
-        document.getElementById('userChangedDump').innerHTML += ``;
-        document.getElementById('userDetails').innerHTML = '';
-        document.getElementById('profileHeader').innerHTML = '';
-        document.getElementById('userDetails').innerHTML += `<img src="${viewUser.photoUrl}" class="mx-auto d-block avatar-img"></img>
+  event.preventDefault();
+  let  givenId = sessionStorage['userID']
+  $.ajax({
+    url :`${backendAddress2}/viewUser/${givenId}`,
+    type :'GET',
+    dataType :'json',
+    success : function(viewUser){
+      document.getElementById('userChangedDump').innerHTML += ``;
+      document.getElementById('userDetails').innerHTML = '';
+      document.getElementById('profileHeader').innerHTML = '';
+      document.getElementById('userDetails').innerHTML += `<img src="${viewUser.photoUrl}" class="mx-auto d-block avatar-img"></img>
                                                         <p class="text-center">${viewUser.username}</p>
                                                         <p class="text-center">${viewUser.email}</p>`;
         
-        $('#editForm').css("display", "block");
-      },//success
-      error:function(){
-        console.log('error: cannot call api');
-      }//error
+      $('#editForm').css("display", "block");
+    },//success
+    error:function(){
+    }//error
   }); //ajax
 });
 
 $('#editUserBtn1').click(function(){
-  $('#passwordCheckForm').show();
+  $('#hiddenEditForm').show();
 });
-
-//update user password check
-
-$('#changeUserPassCheck').click(function(){
-  event.preventDefault();
-   let  userPassW = $('#idCheckEdit').val();
-
-   if (userPassW == sessionStorage['password']){
-    $('#hiddenEditForm').css("display", "block");
-    $('#passwordCheckForm').css("display", "none");
-   } else {
-    alert('incorrect password');
-   }
-
-});
-
 
 // update user (Edit User Form) - profile page
 $('#changeUserBtn').click(function(){
   event.preventDefault();
-
   let  userID = sessionStorage['userID'];
   let  username = $('#usernameEdit').val();
   let  email = $('#userEmailEdit').val();
   let  password = $('#userPasswordEdit').val();
   let  userImg = $('#userImgEdit').val();
-
-  console.log(userID, username, email, password, userImg);
-
-        if (username == ''){
-        username = sessionStorage['userName']
+  if (username == ''){
+    username = sessionStorage['userName']
     };
-        if (email == ''){
-        email = sessionStorage['userEmail']
+  if (email == ''){
+    email = sessionStorage['userEmail']
     };
-        if (password == ''){
-        password = sessionStorage['password']
+  if (password == ''){
+    password = sessionStorage['password']
     };
-        if (userImg == ''){
-        userImg = sessionStorage['photoUrl']
+  if (userImg == ''){
+    userImg = sessionStorage['photoUrl']
     };
-
   $.ajax({
     url :`${backendAddress2}/updateUser/${userID}`,
     type :'PATCH',
@@ -334,16 +211,12 @@ $('#changeUserBtn').click(function(){
       photoUrl : userImg
       },
     success : function(data){
-      console.log(data);
       document.getElementById('userChangedDump').innerHTML += `<p>Details updated!</p>`;
       $('#hiddenEditForm').css("display", "none");
     },//success
     error:function(){
-      console.log('error: cannot call api');
     }//error
-
-    });//ajax
-  // } //else
+  });//ajax
 });//update user function for Edit User Form
 
 //     // roy end

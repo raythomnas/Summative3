@@ -20,9 +20,10 @@ h3, h4 {
   box-shadow: 10px 5px 10px #C8C8C8;
 }
 
-.carrousel-caption-container {
-  background-color: grey;
-  opacity: 50%;
+.img-logo {
+  vertical-align: middle;
+  border-style: none;
+  width: 200px;
 }
 
 .navbar-link {
@@ -173,7 +174,8 @@ h3, h4 {
   cursor: pointer;
 }
 
-/*# sourceMappingURL=style.css.map */
 .hidden {
   display: none;
 }
+
+/*# sourceMappingURL=style.css.map */

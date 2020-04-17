@@ -52,17 +52,9 @@
         <p>Modal body text goes here.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" id="editUserBtn1" class="btn w-100 btn-primary" style="background-color: blue;">Edit user</button>
+        <button type="button" id="editUserBtn1" class="btn btn-buyTicket w-100">Edit user</button>
         <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">Close</button>
       </div>
-      <div id="passwordCheckForm" class="hidden">
-			<h2 class="text-center">Edit a user</h2>
-						<div class="form-group">
-				<label for="idCheckEdit" class="text-center w-100">Enter Password</label>
-				<input type="text" class="form-control" id="idCheckEdit" placeholder="Password here">
-			</div>
-		<p type="submit" class="btn w-100 btn-primary" style="background-color: blue;" id="changeUserPassCheck" >Check password</p>
-		</div>
 		<div id="hiddenEditForm" class="hidden">
 			<div class="form-group">
 				<label for="usernameEdit" class="text-center w-100">New Username</label>
@@ -83,7 +75,7 @@
 				<label for="userImgEdit" class="text-center w-100">New Profile photo</label>
 				<input type="text" class="form-control" id="userImgEdit" placeholder="New photo URL">
 			</div>
-		<p type="submit" class="btn w-100 btn-primary" id="changeUserBtn" style="background-color: blue;">Commit changes</p>
+		<p type="submit" class="btn btn-buyTicket w-100" id="changeUserBtn">Commit changes</p>
 		</div>
 		<div id="userChangedDump">
 		
@@ -212,8 +204,7 @@
 
 	    <div class="container card mb-3 event-card" style="max-width: 540px;" data-event-card-event-id="000000000000000000000002">
 	          <div class="row no-gutters">
-	              <div class="col-md-4">
-	                <img src="#" class="card-img" alt="event image">
+	              <div class="col-md-4" style="background-image: url('assets/images/eventThree.jpg')">
 	            </div>
 
 	              <div class="col-md-8">
@@ -226,7 +217,6 @@
 	              </div>
 	          </div>
 	        </div>	
-	      </div>
 	</div> <!-- landing page ends -->
 	
 <!--======================================= EVENTS PAGE (Vale)======================================-->
@@ -582,7 +572,7 @@
 
 		<!-- event Roy -->
 <div id="event-page-000000000000000000000002" class="container container-page">
-		<img class="container" src="../frontEnd/assets/images/eventOne.jpg" alt="image event"><br><br>
+		<img class="container" src="assets/images/eventThree.jpg" alt="image event"><br><br>
 		<h3>Walking Wellington</h3>
 		<hr class="hr-border">
 
