@@ -1,3 +1,5 @@
+
+// VALE starts here
 * {
   margin: 0px;
 }
@@ -7,34 +9,34 @@ body {
   margin-bottom: 100px;
 }
 
-h2 {
+h2{
   color: #cdedf6;
 }
-
-h3, h4 {
+h3, h4{
   color: #ef7b45;
 }
 
-#nav {
+#nav{
   padding: 10px;
   box-shadow: 10px 5px 10px #C8C8C8;
 }
 
 .img-logo {
-  vertical-align: middle;
-  border-style: none;
-  width: 200px;
+    vertical-align: middle;
+    border-style: none;
+    width: 200px;
 }
 
-.navbar-link {
+
+.navbar-link{
   color: #cdedf6;
 }
 
-.link-qa {
-  color: #ef7b45;
+.link-qa{
+  color: #ef7b45,
 }
 
-.container-page {
+.container-page{
   margin-top: 192px;
 }
 
@@ -48,6 +50,7 @@ h3, h4 {
   background-color: #5eb1bf;
   height: 150px;
   border-radius: 0px 0px 80px 80px;
+
 }
 
 /*NAV BOTTOM*/
@@ -55,16 +58,15 @@ h3, h4 {
   background-color: #5eb1bf;
 }
 
-.btn-link {
+.btn-link{
   border-radius: 20px;
 }
-
-.nav-text_top {
+.nav-text_top{
   color: white;
   font-size: 12px;
-}
 
-.nav-text_bottom {
+}
+.nav-text_bottom{
   color: white;
   font-size: 10px;
 }
@@ -72,35 +74,47 @@ h3, h4 {
 /*ICONS*/
 .nav-icon_top {
   background-color: white;
-  color: #5eb1bf;
-  height: 50px;
-  width: 50px;
-  stroke-width: 1px;
-  border-radius: 30px;
+    color: #5eb1bf;
+    height: 50px;
+    width: 50px;
+    stroke-width: 1px;
+    border-radius: 30px;
 }
 
-.icon-event {
+
+// .nav-icon_bottom {
+//   color: white;
+//   height: 30px;
+//   width: 30px;
+//   stroke-width: 1px;
+// }
+
+.icon-event{
   color: #ef7b45;
   Stroke-width: 1px;
+  // opacity: 60%;
 }
 
-.icon-toggle {
+.icon-toggle{
   color: #5eb1bf;
   stroke-width: 1px;
 }
 
-.container-icons_event {
+.container-icons_event{
   padding-left: 250px;
 }
 
-.icon-qa {
+.icon-qa{
   background-color: #5eb1bf;
   color: white;
   height: 50px;
   width: 50px;
   stroke-width: 1px;
   border-radius: 30px;
+  
 }
+
+
 
 /*LANDING*/
 /*IMAGE TOP*/
@@ -119,43 +133,48 @@ h3, h4 {
   color: white;
 }
 
-.container-comments {
-  background-color: #cdedf6;
+// QUESTIONS AND ANSWERS
+.container-comments{
+	background-color: #cdedf6;
 }
 
-.container-qa {
+.container-qa{
   background-color: #cdedf6;
   width: 100%;
   border-radius: 10px;
   margin-left: 50px;
 }
 
-.row-qa {
+.row-qa{
   margin-bottom: 5px;
 }
 
-.btn-buyTicket {
+
+// BUTTONS
+.btn-buyTicket{
   background-color: #d84727;
   color: white;
   border-radius: 0px;
 }
 
-.img-speaker {
+// IMAGES 
+.img-speaker{
   width: 150px;
   border-radius: 80px;
 }
+// VALE ends here
 
+// BELLA starts here
 .card-img {
-  background-size: cover;
-  background-position: center;
+	background-size: cover;
+	background-position: center;
 }
-
 .avatar-img {
-  border-radius: 100%;
-  background-size: cover;
-  background-position: center;
-  width: 200px;
-  height: 200px;
+	border-radius: 100%;
+	background-size: cover;
+	background-position: center;
+	width: 200px;
+	height: 200px;
 }
 
 .post-avatar-img {
@@ -166,16 +185,17 @@ h3, h4 {
   height: 80px;
 }
 
-.qa-edit-delete-icons path {
-  fill: orange;
+.qa-edit-delete-icons {
+  path { fill: orange }
 }
 
 .event-card {
   cursor: pointer;
 }
+// BELLA ends here
+
+// Roy
 
 .hidden {
   display: none;
 }
-
-/*# sourceMappingURL=style.css.map */
