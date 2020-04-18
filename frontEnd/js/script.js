@@ -157,7 +157,7 @@ $(function () {
 
 $('#checkById').click(function(){
   event.preventDefault();
-  let  givenId = sessionStorage['userID']
+  let  givenId = sessionStorage['userID'];
   $.ajax({
     url :`${backendAddress2}/viewUser/${givenId}`,
     type :'GET',
@@ -190,17 +190,17 @@ $('#changeUserBtn').click(function(){
   let  password = $('#userPasswordEdit').val();
   let  userImg = $('#userImgEdit').val();
   if (username == ''){
-    username = sessionStorage['userName']
-    };
+    username = sessionStorage['userName'];
+    }
   if (email == ''){
-    email = sessionStorage['userEmail']
-    };
+    email = sessionStorage['userEmail'];
+    }
   if (password == ''){
-    password = sessionStorage['password']
-    };
+    password = sessionStorage['password'];
+    }
   if (userImg == ''){
-    userImg = sessionStorage['photoUrl']
-    };
+    userImg = sessionStorage['photoUrl'];
+    }
   $.ajax({
     url :`${backendAddress2}/updateUser/${userID}`,
     type :'PATCH',
@@ -321,7 +321,7 @@ function getPostsForConference(conferenceId) {
           // Empty out text area
           $('#post-contents-' + conferenceId).val('');
         }
-      })
+      });
     }
   });
 }

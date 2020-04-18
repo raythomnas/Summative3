@@ -10,7 +10,13 @@ module.exports = function (grunt) {
         options: {
           esversion: 6,
         },
-        all: ['Gruntfile.js', 'js/*.js']
+        all: {
+          options: {
+            '-W069': true,
+            '-W083': true,
+          },
+          src: ['Gruntfile.js', 'js/*.js'],
+        }
       },
       sass: {                              
         dist: {                           
@@ -26,7 +32,9 @@ module.exports = function (grunt) {
         lax: {
           options: {
             import: false,
-            'order-alphabetical': false
+            'order-alphabetical': false,
+            'universal-selector': false,
+            'zero-units': false,
           },
           src: ['css/*.css', '!*.min.css']
         }
