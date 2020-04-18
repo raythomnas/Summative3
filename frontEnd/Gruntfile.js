@@ -37,6 +37,7 @@ module.exports = function (grunt) {
           tasks: ['sass', 'csslint', 'jshint'],
           options: {
             spawn: false,
+            atBegin: true,
           }
         }
       }
